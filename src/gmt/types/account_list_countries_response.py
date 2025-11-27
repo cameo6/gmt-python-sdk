@@ -31,3 +31,6 @@ class AccountListCountriesResponse(BaseModel):
     display_name: DisplayName
 
     price: Price
+
+    provider: str
+    """Name of the account provider for this country."""
