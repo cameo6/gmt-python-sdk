@@ -25,12 +25,9 @@ pip install gmt-python-sdk
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-import os
 from gmt import Gmt
 
-client = Gmt(
-    api_key=os.environ.get("x-api-key"),  # This is the default and can be omitted
-)
+client = Gmt()
 
 response = client.service.health_check()
 print(response.now)
@@ -46,13 +43,10 @@ so that your API Key is not stored in source control.
 Simply import `AsyncGmt` instead of `Gmt` and use `await` with each API call:
 
 ```python
-import os
 import asyncio
 from gmt import AsyncGmt
 
-client = AsyncGmt(
-    api_key=os.environ.get("x-api-key"),  # This is the default and can be omitted
-)
+client = AsyncGmt()
 
 
 async def main() -> None:
@@ -86,7 +80,6 @@ from gmt import AsyncGmt
 
 async def main() -> None:
     async with AsyncGmt(
-        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.service.health_check()
