@@ -1,7 +1,7 @@
 # Gmt Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/gmt.svg?label=pypi%20(stable))](https://pypi.org/project/gmt/)
+[![PyPI version](https://img.shields.io/pypi/v/gmt-python-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/gmt-python-sdk/)
 
 The Gmt Python library provides convenient access to the Gmt REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
@@ -16,12 +16,9 @@ The REST API documentation can be found on [api.getmytg.com](https://api.getmytg
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/cameo6/gmt-python-sdk.git
+# install from PyPI
+pip install gmt-python-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install gmt`
 
 ## Usage
 
@@ -75,8 +72,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from the production repo
-pip install 'gmt[aiohttp] @ git+ssh://git@github.com/cameo6/gmt-python-sdk.git'
+# install from PyPI
+pip install gmt-python-sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
