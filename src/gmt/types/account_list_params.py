@@ -2,10 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import Literal, Required, TypedDict
-
-from .._types import SequenceNotStr
 
 __all__ = ["AccountListParams"]
 
@@ -20,5 +17,5 @@ class AccountListParams(TypedDict, total=False):
     sort: Required[Literal["price_asc", "price_desc", "name_asc", "name_desc"]]
     """Sort order for accounts."""
 
-    country_code: Union[str, SequenceNotStr[str]]
+    country_code: str
     """Filter by country codes (comma-separated, e.g., 'US,RU,GB')."""
