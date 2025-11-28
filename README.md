@@ -1,7 +1,7 @@
 # Gmt Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/gmt.svg?label=pypi%20(stable))](https://pypi.org/project/gmt/)
+[![PyPI version](https://img.shields.io/pypi/v/gmt-python-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/gmt-python-sdk/)
 
 The Gmt Python library provides convenient access to the Gmt REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
@@ -16,12 +16,9 @@ The REST API documentation can be found on [api.getmytg.com](https://api.getmytg
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/gmt-python.git
+# install from PyPI
+pip install gmt-python-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install gmt`
 
 ## Usage
 
@@ -75,8 +72,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from this staging repo
-pip install 'gmt[aiohttp] @ git+ssh://git@github.com/stainless-sdks/gmt-python.git'
+# install from PyPI
+pip install gmt-python-sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
@@ -313,9 +310,9 @@ service = response.parse()  # get the object that `service.health_check()` would
 print(service.now)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/gmt-python/tree/main/src/gmt/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/cameo6/gmt-python-sdk/tree/main/src/gmt/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/gmt-python/tree/main/src/gmt/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/cameo6/gmt-python-sdk/tree/main/src/gmt/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -419,7 +416,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/gmt-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/cameo6/gmt-python-sdk/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 
