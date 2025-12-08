@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 (2025-12-08)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([6fd4046](https://github.com/cameo6/gmt-python-sdk/commit/6fd4046e10082492f50987970e6880390272ba37))
+
+
+### Chores
+
+* update lockfile ([dbbf2e9](https://github.com/cameo6/gmt-python-sdk/commit/dbbf2e9f243aa59dd4eb64246cab4eaec204f506))
+
 ## 0.3.0 (2025-11-28)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.2.0...v0.3.0)
