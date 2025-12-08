@@ -100,9 +100,9 @@ class AccountsResource(SyncAPIResource):
         Returns paginated list of accounts with filtering and sorting options.
 
         Args:
-          page: Page number (starts from 1).
+          page: Page number.
 
-          page_size: Number of items per page (max 50).
+          page_size: Number of items per page.
 
           sort: Sort order for accounts.
 
@@ -157,9 +157,9 @@ class AccountsResource(SyncAPIResource):
         availability. No authentication required.
 
         Args:
-          page: Page number (starts from 1).
+          page: Page number.
 
-          page_size: Number of items per page (max 50).
+          page_size: Number of items per page.
 
           sort: Sort order for accounts.
 
@@ -270,9 +270,9 @@ class AsyncAccountsResource(AsyncAPIResource):
         Returns paginated list of accounts with filtering and sorting options.
 
         Args:
-          page: Page number (starts from 1).
+          page: Page number.
 
-          page_size: Number of items per page (max 50).
+          page_size: Number of items per page.
 
           sort: Sort order for accounts.
 
@@ -327,9 +327,9 @@ class AsyncAccountsResource(AsyncAPIResource):
         availability. No authentication required.
 
         Args:
-          page: Page number (starts from 1).
+          page: Page number.
 
-          page_size: Number of items per page (max 50).
+          page_size: Number of items per page.
 
           sort: Sort order for accounts.
 

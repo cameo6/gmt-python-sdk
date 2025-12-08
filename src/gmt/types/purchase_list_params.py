@@ -9,10 +9,10 @@ __all__ = ["PurchaseListParams"]
 
 class PurchaseListParams(TypedDict, total=False):
     page: Required[int]
-    """Page number (starts from 1)."""
+    """Page number."""
 
     page_size: Required[int]
-    """Number of items per page (max 50)."""
+    """Number of items per page."""
 
     status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
     """
