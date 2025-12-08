@@ -162,9 +162,9 @@ class PurchasesResource(SyncAPIResource):
         all successful purchases).
 
         Args:
-          page: Page number (starts from 1).
+          page: Page number.
 
-          page_size: Number of items per page (max 50).
+          page_size: Number of items per page.
 
           status: **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
               request) or `ERROR` (provider failure). Any status can transition to `REFUND`
@@ -409,9 +409,9 @@ class AsyncPurchasesResource(AsyncAPIResource):
         all successful purchases).
 
         Args:
-          page: Page number (starts from 1).
+          page: Page number.
 
-          page_size: Number of items per page (max 50).
+          page_size: Number of items per page.
 
           status: **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
               request) or `ERROR` (provider failure). Any status can transition to `REFUND`
