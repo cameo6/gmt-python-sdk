@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-12-08)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** add webhooks endpoint ([eb61be5](https://github.com/cameo6/gmt-python-sdk/commit/eb61be5bdfde7153dc653d265893f5c1ef21b4ca))
+
 ## 0.4.0 (2025-12-08)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.3.0...v0.4.0)
