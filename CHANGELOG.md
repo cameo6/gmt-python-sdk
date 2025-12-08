@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 (2025-12-08)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** add refund repository ([d8db552](https://github.com/cameo6/gmt-python-sdk/commit/d8db552d131f6c5ef561b525a88ddb640367f381))
+
 ## 0.6.0 (2025-12-08)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.5.0...v0.6.0)
