@@ -5,10 +5,34 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["PurchaseRequestVerificationCodeResponse", "DisplayName", "Price", "Verification"]
+__all__ = [
+    "PurchaseRequestVerificationCodeResponse",
+    "CodeRequest",
+    "Purchase",
+    "PurchaseDisplayName",
+    "PurchasePrice",
+    "PurchaseVerification",
+]
 
 
-class DisplayName(BaseModel):
+class CodeRequest(BaseModel):
+    attempt: int
+    """Current attempt number"""
+
+    max_attempts: int
+    """Maximum number of attempts"""
+
+    next_attempt_at: Optional[str] = None
+    """ISO timestamp of next attempt (null if not scheduled)"""
+
+    retry_after: Optional[int] = None
+    """Seconds until next attempt (null if not scheduled)"""
+
+    status: Literal["not_requested", "pending", "success", "failed"]
+    """Current status of the code request"""
+
+
+class PurchaseDisplayName(BaseModel):
     en: str
     """Name in English."""
 
@@ -16,7 +40,7 @@ class DisplayName(BaseModel):
     """Name in Russian."""
 
 
-class Price(BaseModel):
+class PurchasePrice(BaseModel):
     amount: str
     """Monetary amount as a string with up to 2 decimal places."""
 
@@ -24,7 +48,7 @@ class Price(BaseModel):
     """ISO 4217 currency code."""
 
 
-class Verification(BaseModel):
+class PurchaseVerification(BaseModel):
     code: str
     """Verification code for account."""
 
@@ -46,7 +70,7 @@ class Verification(BaseModel):
     """
 
 
-class PurchaseRequestVerificationCodeResponse(BaseModel):
+class Purchase(BaseModel):
     id: int
     """Unique purchase identifier."""
 
@@ -56,7 +80,7 @@ class PurchaseRequestVerificationCodeResponse(BaseModel):
     created_at: str
     """Purchase creation time in ISO 8601 format (UTC)."""
 
-    display_name: DisplayName
+    display_name: PurchaseDisplayName
 
     phone_number: str
     """
@@ -67,7 +91,7 @@ class PurchaseRequestVerificationCodeResponse(BaseModel):
     and `verification.password` to access the account.
     """
 
-    price: Price
+    price: PurchasePrice
     """
     **Final Price After Discount.** The actual amount deducted from your balance,
     with your personal discount already applied.
@@ -96,7 +120,7 @@ class PurchaseRequestVerificationCodeResponse(BaseModel):
     - `REFUND` - money returned.
     """
 
-    verification: Optional[Verification] = None
+    verification: Optional[PurchaseVerification] = None
     """
     **Verification Credentials.** Login credentials for the purchased Telegram
     account. Initially `null` after purchase creation.
@@ -106,3 +130,9 @@ class PurchaseRequestVerificationCodeResponse(BaseModel):
 
     **Security.** Verification data is only visible to the purchase owner.
     """
+
+
+class PurchaseRequestVerificationCodeResponse(BaseModel):
+    code_request: CodeRequest
+
+    purchase: Purchase

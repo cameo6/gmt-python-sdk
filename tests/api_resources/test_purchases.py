@@ -142,7 +142,16 @@ class TestPurchases:
     @parametrize
     def test_method_request_verification_code(self, client: Gmt) -> None:
         purchase = client.purchases.request_verification_code(
-            12345,
+            purchase_id=12345,
+        )
+        assert_matches_type(PurchaseRequestVerificationCodeResponse, purchase, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_request_verification_code_with_all_params(self, client: Gmt) -> None:
+        purchase = client.purchases.request_verification_code(
+            purchase_id=12345,
+            callback_url="https://example.com/webhooks/code-received",
         )
         assert_matches_type(PurchaseRequestVerificationCodeResponse, purchase, path=["response"])
 
@@ -150,7 +159,7 @@ class TestPurchases:
     @parametrize
     def test_raw_response_request_verification_code(self, client: Gmt) -> None:
         response = client.purchases.with_raw_response.request_verification_code(
-            12345,
+            purchase_id=12345,
         )
 
         assert response.is_closed is True
@@ -162,7 +171,7 @@ class TestPurchases:
     @parametrize
     def test_streaming_response_request_verification_code(self, client: Gmt) -> None:
         with client.purchases.with_streaming_response.request_verification_code(
-            12345,
+            purchase_id=12345,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -297,7 +306,16 @@ class TestAsyncPurchases:
     @parametrize
     async def test_method_request_verification_code(self, async_client: AsyncGmt) -> None:
         purchase = await async_client.purchases.request_verification_code(
-            12345,
+            purchase_id=12345,
+        )
+        assert_matches_type(PurchaseRequestVerificationCodeResponse, purchase, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_request_verification_code_with_all_params(self, async_client: AsyncGmt) -> None:
+        purchase = await async_client.purchases.request_verification_code(
+            purchase_id=12345,
+            callback_url="https://example.com/webhooks/code-received",
         )
         assert_matches_type(PurchaseRequestVerificationCodeResponse, purchase, path=["response"])
 
@@ -305,7 +323,7 @@ class TestAsyncPurchases:
     @parametrize
     async def test_raw_response_request_verification_code(self, async_client: AsyncGmt) -> None:
         response = await async_client.purchases.with_raw_response.request_verification_code(
-            12345,
+            purchase_id=12345,
         )
 
         assert response.is_closed is True
@@ -317,7 +335,7 @@ class TestAsyncPurchases:
     @parametrize
     async def test_streaming_response_request_verification_code(self, async_client: AsyncGmt) -> None:
         async with async_client.purchases.with_streaming_response.request_verification_code(
-            12345,
+            purchase_id=12345,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

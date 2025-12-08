@@ -81,7 +81,7 @@ class TestAccounts:
             page=1,
             page_size=50,
             sort="price_asc",
-            country_code="US,RU",
+            country_codes="US,RU,GB",
         )
         assert_matches_type(SyncPageNumber[AccountListResponse], account, path=["response"])
 
@@ -132,7 +132,7 @@ class TestAccounts:
             page=1,
             page_size=50,
             sort="price_asc",
-            country_code="US,RU",
+            country_codes="US,RU,GB",
         )
         assert_matches_type(SyncPageNumber[AccountListCountriesResponse], account, path=["response"])
 
@@ -231,7 +231,7 @@ class TestAsyncAccounts:
             page=1,
             page_size=50,
             sort="price_asc",
-            country_code="US,RU",
+            country_codes="US,RU,GB",
         )
         assert_matches_type(AsyncPageNumber[AccountListResponse], account, path=["response"])
 
@@ -282,7 +282,7 @@ class TestAsyncAccounts:
             page=1,
             page_size=50,
             sort="price_asc",
-            country_code="US,RU",
+            country_codes="US,RU,GB",
         )
         assert_matches_type(AsyncPageNumber[AccountListCountriesResponse], account, path=["response"])
 

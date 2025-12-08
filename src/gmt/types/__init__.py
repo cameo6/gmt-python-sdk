@@ -15,6 +15,9 @@ from .account_list_countries_params import AccountListCountriesParams as Account
 from .service_health_check_response import ServiceHealthCheckResponse as ServiceHealthCheckResponse
 from .account_list_countries_response import AccountListCountriesResponse as AccountListCountriesResponse
 from .service_get_server_time_response import ServiceGetServerTimeResponse as ServiceGetServerTimeResponse
+from .purchase_request_verification_code_params import (
+    PurchaseRequestVerificationCodeParams as PurchaseRequestVerificationCodeParams,
+)
 from .purchase_request_verification_code_response import (
     PurchaseRequestVerificationCodeResponse as PurchaseRequestVerificationCodeResponse,
 )
