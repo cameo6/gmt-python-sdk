@@ -46,6 +46,7 @@ from gmt.types import (
     PurchaseCreateResponse,
     PurchaseRetrieveResponse,
     PurchaseListResponse,
+    PurchaseRefundResponse,
     PurchaseRequestVerificationCodeResponse,
 )
 ```
@@ -55,6 +56,7 @@ Methods:
 - <code title="post /v1/purchases/">client.purchases.<a href="./src/gmt/resources/purchases.py">create</a>(\*\*<a href="src/gmt/types/purchase_create_params.py">params</a>) -> <a href="./src/gmt/types/purchase_create_response.py">PurchaseCreateResponse</a></code>
 - <code title="get /v1/purchases/{purchase_id}">client.purchases.<a href="./src/gmt/resources/purchases.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchase_retrieve_response.py">PurchaseRetrieveResponse</a></code>
 - <code title="get /v1/purchases/">client.purchases.<a href="./src/gmt/resources/purchases.py">list</a>(\*\*<a href="src/gmt/types/purchase_list_params.py">params</a>) -> <a href="./src/gmt/types/purchase_list_response.py">SyncPageNumber[PurchaseListResponse]</a></code>
+- <code title="post /v1/purchases/{purchase_id}/refund">client.purchases.<a href="./src/gmt/resources/purchases.py">refund</a>(purchase_id) -> <a href="./src/gmt/types/purchase_refund_response.py">PurchaseRefundResponse</a></code>
 - <code title="post /v1/purchases/{purchase_id}/request-code">client.purchases.<a href="./src/gmt/resources/purchases.py">request_verification_code</a>(purchase_id, \*\*<a href="src/gmt/types/purchase_request_verification_code_params.py">params</a>) -> <a href="./src/gmt/types/purchase_request_verification_code_response.py">PurchaseRequestVerificationCodeResponse</a></code>
 
 # Webhooks
