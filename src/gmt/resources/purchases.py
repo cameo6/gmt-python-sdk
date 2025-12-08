@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import purchase_list_params, purchase_create_params
+from ..types import purchase_list_params, purchase_create_params, purchase_request_verification_code_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -211,6 +211,7 @@ class PurchasesResource(SyncAPIResource):
         self,
         purchase_id: int,
         *,
+        callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,8 +236,20 @@ class PurchasesResource(SyncAPIResource):
         **Provider timeout.** Code retrieval may take 5-30 seconds depending on provider
         availability.
 
+        **Webhook notification.** Optionally provide `callback_url` to receive a POST
+        webhook when code is retrieved. See [Webhooks](#tag/webhooks) section for
+        payload structure and **Models** section for `WebhookSuccessPayload` /
+        `WebhookFailedPayload` schemas.
+
         Args:
           purchase_id: Unique purchase identifier.
+
+          callback_url: URL to receive webhook notification when code is received. POST request will be
+              sent with either `WebhookSuccessPayload` or `WebhookFailedPayload`.
+
+              **Retry policy.** If your endpoint does not return HTTP 200, webhook will be
+              retried up to 3 times with delays: immediately, after 10 seconds, after 30
+              seconds. Any non-200 response triggers retry.
 
           extra_headers: Send extra headers
 
@@ -248,6 +261,10 @@ class PurchasesResource(SyncAPIResource):
         """
         return self._post(
             f"/v1/purchases/{purchase_id}/request-code",
+            body=maybe_transform(
+                {"callback_url": callback_url},
+                purchase_request_verification_code_params.PurchaseRequestVerificationCodeParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -441,6 +458,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
         self,
         purchase_id: int,
         *,
+        callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -465,8 +483,20 @@ class AsyncPurchasesResource(AsyncAPIResource):
         **Provider timeout.** Code retrieval may take 5-30 seconds depending on provider
         availability.
 
+        **Webhook notification.** Optionally provide `callback_url` to receive a POST
+        webhook when code is retrieved. See [Webhooks](#tag/webhooks) section for
+        payload structure and **Models** section for `WebhookSuccessPayload` /
+        `WebhookFailedPayload` schemas.
+
         Args:
           purchase_id: Unique purchase identifier.
+
+          callback_url: URL to receive webhook notification when code is received. POST request will be
+              sent with either `WebhookSuccessPayload` or `WebhookFailedPayload`.
+
+              **Retry policy.** If your endpoint does not return HTTP 200, webhook will be
+              retried up to 3 times with delays: immediately, after 10 seconds, after 30
+              seconds. Any non-200 response triggers retry.
 
           extra_headers: Send extra headers
 
@@ -478,6 +508,10 @@ class AsyncPurchasesResource(AsyncAPIResource):
         """
         return await self._post(
             f"/v1/purchases/{purchase_id}/request-code",
+            body=await async_maybe_transform(
+                {"callback_url": callback_url},
+                purchase_request_verification_code_params.PurchaseRequestVerificationCodeParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

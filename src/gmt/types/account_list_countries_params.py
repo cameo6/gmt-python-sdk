@@ -17,5 +17,8 @@ class AccountListCountriesParams(TypedDict, total=False):
     sort: Required[Literal["price_asc", "price_desc", "name_asc", "name_desc"]]
     """Sort order for accounts."""
 
-    country_code: str
-    """Filter by country codes (comma-separated, e.g., 'US,RU,GB')."""
+    country_codes: str
+    """Filter by country codes.
+
+    Comma-separated list of ISO 3166-1 alpha-2 codes (e.g., 'US,RU,GB').
+    """
