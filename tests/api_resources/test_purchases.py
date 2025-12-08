@@ -11,6 +11,7 @@ from gmt import Gmt, AsyncGmt
 from gmt.types import (
     PurchaseListResponse,
     PurchaseCreateResponse,
+    PurchaseRefundResponse,
     PurchaseRetrieveResponse,
     PurchaseRequestVerificationCodeResponse,
 )
@@ -135,6 +136,40 @@ class TestPurchases:
 
             purchase = response.parse()
             assert_matches_type(SyncPageNumber[PurchaseListResponse], purchase, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_refund(self, client: Gmt) -> None:
+        purchase = client.purchases.refund(
+            12345,
+        )
+        assert_matches_type(PurchaseRefundResponse, purchase, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_refund(self, client: Gmt) -> None:
+        response = client.purchases.with_raw_response.refund(
+            12345,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        purchase = response.parse()
+        assert_matches_type(PurchaseRefundResponse, purchase, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_refund(self, client: Gmt) -> None:
+        with client.purchases.with_streaming_response.refund(
+            12345,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            purchase = response.parse()
+            assert_matches_type(PurchaseRefundResponse, purchase, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -299,6 +334,40 @@ class TestAsyncPurchases:
 
             purchase = await response.parse()
             assert_matches_type(AsyncPageNumber[PurchaseListResponse], purchase, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_refund(self, async_client: AsyncGmt) -> None:
+        purchase = await async_client.purchases.refund(
+            12345,
+        )
+        assert_matches_type(PurchaseRefundResponse, purchase, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_refund(self, async_client: AsyncGmt) -> None:
+        response = await async_client.purchases.with_raw_response.refund(
+            12345,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        purchase = await response.parse()
+        assert_matches_type(PurchaseRefundResponse, purchase, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_refund(self, async_client: AsyncGmt) -> None:
+        async with async_client.purchases.with_streaming_response.refund(
+            12345,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            purchase = await response.parse()
+            assert_matches_type(PurchaseRefundResponse, purchase, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -21,6 +21,7 @@ from ..pagination import SyncPageNumber, AsyncPageNumber
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.purchase_list_response import PurchaseListResponse
 from ..types.purchase_create_response import PurchaseCreateResponse
+from ..types.purchase_refund_response import PurchaseRefundResponse
 from ..types.purchase_retrieve_response import PurchaseRetrieveResponse
 from ..types.purchase_request_verification_code_response import PurchaseRequestVerificationCodeResponse
 
@@ -205,6 +206,44 @@ class PurchasesResource(SyncAPIResource):
                 ),
             ),
             model=PurchaseListResponse,
+        )
+
+    def refund(
+        self,
+        purchase_id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PurchaseRefundResponse:
+        """
+        Refunds a purchase if verification code was not received within 20 minutes.
+
+        **Requirements:**
+
+        - Status `PENDING`, code not received
+        - At least 20 minutes since purchase creation
+
+        Args:
+          purchase_id: Unique purchase identifier.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            f"/v1/purchases/{purchase_id}/refund",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PurchaseRefundResponse,
         )
 
     def request_verification_code(
@@ -454,6 +493,44 @@ class AsyncPurchasesResource(AsyncAPIResource):
             model=PurchaseListResponse,
         )
 
+    async def refund(
+        self,
+        purchase_id: int,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PurchaseRefundResponse:
+        """
+        Refunds a purchase if verification code was not received within 20 minutes.
+
+        **Requirements:**
+
+        - Status `PENDING`, code not received
+        - At least 20 minutes since purchase creation
+
+        Args:
+          purchase_id: Unique purchase identifier.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            f"/v1/purchases/{purchase_id}/refund",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PurchaseRefundResponse,
+        )
+
     async def request_verification_code(
         self,
         purchase_id: int,
@@ -532,6 +609,9 @@ class PurchasesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             purchases.list,
         )
+        self.refund = to_raw_response_wrapper(
+            purchases.refund,
+        )
         self.request_verification_code = to_raw_response_wrapper(
             purchases.request_verification_code,
         )
@@ -549,6 +629,9 @@ class AsyncPurchasesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             purchases.list,
+        )
+        self.refund = async_to_raw_response_wrapper(
+            purchases.refund,
         )
         self.request_verification_code = async_to_raw_response_wrapper(
             purchases.request_verification_code,
@@ -568,6 +651,9 @@ class PurchasesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             purchases.list,
         )
+        self.refund = to_streamed_response_wrapper(
+            purchases.refund,
+        )
         self.request_verification_code = to_streamed_response_wrapper(
             purchases.request_verification_code,
         )
@@ -585,6 +671,9 @@ class AsyncPurchasesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             purchases.list,
+        )
+        self.refund = async_to_streamed_response_wrapper(
+            purchases.refund,
         )
         self.request_verification_code = async_to_streamed_response_wrapper(
             purchases.request_verification_code,
