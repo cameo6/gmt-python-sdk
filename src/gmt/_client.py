@@ -21,7 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import profile, service, accounts, purchases
+from .resources import profile, service, accounts, webhooks, purchases
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import GmtError, APIStatusError
 from ._base_client import (
@@ -38,6 +38,7 @@ class Gmt(SyncAPIClient):
     accounts: accounts.AccountsResource
     profile: profile.ProfileResource
     purchases: purchases.PurchasesResource
+    webhooks: webhooks.WebhooksResource
     with_raw_response: GmtWithRawResponse
     with_streaming_response: GmtWithStreamedResponse
 
@@ -99,6 +100,7 @@ class Gmt(SyncAPIClient):
         self.accounts = accounts.AccountsResource(self)
         self.profile = profile.ProfileResource(self)
         self.purchases = purchases.PurchasesResource(self)
+        self.webhooks = webhooks.WebhooksResource(self)
         self.with_raw_response = GmtWithRawResponse(self)
         self.with_streaming_response = GmtWithStreamedResponse(self)
 
@@ -212,6 +214,7 @@ class AsyncGmt(AsyncAPIClient):
     accounts: accounts.AsyncAccountsResource
     profile: profile.AsyncProfileResource
     purchases: purchases.AsyncPurchasesResource
+    webhooks: webhooks.AsyncWebhooksResource
     with_raw_response: AsyncGmtWithRawResponse
     with_streaming_response: AsyncGmtWithStreamedResponse
 
@@ -273,6 +276,7 @@ class AsyncGmt(AsyncAPIClient):
         self.accounts = accounts.AsyncAccountsResource(self)
         self.profile = profile.AsyncProfileResource(self)
         self.purchases = purchases.AsyncPurchasesResource(self)
+        self.webhooks = webhooks.AsyncWebhooksResource(self)
         self.with_raw_response = AsyncGmtWithRawResponse(self)
         self.with_streaming_response = AsyncGmtWithStreamedResponse(self)
 
@@ -387,6 +391,7 @@ class GmtWithRawResponse:
         self.accounts = accounts.AccountsResourceWithRawResponse(client.accounts)
         self.profile = profile.ProfileResourceWithRawResponse(client.profile)
         self.purchases = purchases.PurchasesResourceWithRawResponse(client.purchases)
+        self.webhooks = webhooks.WebhooksResourceWithRawResponse(client.webhooks)
 
 
 class AsyncGmtWithRawResponse:
@@ -395,6 +400,7 @@ class AsyncGmtWithRawResponse:
         self.accounts = accounts.AsyncAccountsResourceWithRawResponse(client.accounts)
         self.profile = profile.AsyncProfileResourceWithRawResponse(client.profile)
         self.purchases = purchases.AsyncPurchasesResourceWithRawResponse(client.purchases)
+        self.webhooks = webhooks.AsyncWebhooksResourceWithRawResponse(client.webhooks)
 
 
 class GmtWithStreamedResponse:
@@ -403,6 +409,7 @@ class GmtWithStreamedResponse:
         self.accounts = accounts.AccountsResourceWithStreamingResponse(client.accounts)
         self.profile = profile.ProfileResourceWithStreamingResponse(client.profile)
         self.purchases = purchases.PurchasesResourceWithStreamingResponse(client.purchases)
+        self.webhooks = webhooks.WebhooksResourceWithStreamingResponse(client.webhooks)
 
 
 class AsyncGmtWithStreamedResponse:
@@ -411,6 +418,7 @@ class AsyncGmtWithStreamedResponse:
         self.accounts = accounts.AsyncAccountsResourceWithStreamingResponse(client.accounts)
         self.profile = profile.AsyncProfileResourceWithStreamingResponse(client.profile)
         self.purchases = purchases.AsyncPurchasesResourceWithStreamingResponse(client.purchases)
+        self.webhooks = webhooks.AsyncWebhooksResourceWithStreamingResponse(client.webhooks)
 
 
 Client = Gmt
