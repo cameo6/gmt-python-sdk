@@ -1,5 +1,8 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import List
+from typing_extensions import Literal
+
 from .._models import BaseModel
 
 __all__ = ["AccountRetrieveResponse", "Discount", "DisplayName", "Price"]
@@ -41,3 +44,6 @@ class AccountRetrieveResponse(BaseModel):
     display_name: DisplayName
 
     price: Price
+
+    tags: List[Literal["HIGH_QUALITY", "HIGH_DEMAND"]]
+    """Account tags (e.g., HIGH_QUALITY for premium accounts)."""
