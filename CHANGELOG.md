@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 (2025-12-09)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.8.0...v0.8.1)
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([58aeecc](https://github.com/cameo6/gmt-python-sdk/commit/58aeecc79443b9b01525e4fee4175a17d032de39))
+
 ## 0.8.0 (2025-12-08)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.7.0...v0.8.0)
