@@ -17,6 +17,14 @@ class DisplayName(BaseModel):
 
 
 class Price(BaseModel):
+    """
+    **Final Price After Discount.** The actual amount deducted from your balance, with your personal discount already applied.
+
+    **To see pricing breakdown before purchase.** Check `GET /accounts/:country_code` which shows both discounted price and original `base_price`.
+
+    **Discount eligibility.** Based on your total successful purchase count. Higher volume = bigger discounts.
+    """
+
     amount: str
     """Monetary amount as a string with up to 2 decimal places."""
 
@@ -25,6 +33,14 @@ class Price(BaseModel):
 
 
 class Verification(BaseModel):
+    """
+    **Verification Credentials.** Login credentials for the purchased Telegram account. Initially `null` after purchase creation.
+
+    **Availability.** Populated after calling `POST /purchases/:id/request-code`. Once received, credentials are permanent and cannot be re-requested.
+
+    **Security.** Verification data is only visible to the purchase owner.
+    """
+
     code: str
     """Verification code for account."""
 
