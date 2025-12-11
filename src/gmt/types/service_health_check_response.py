@@ -11,6 +11,8 @@ __all__ = ["ServiceHealthCheckResponse", "Checks"]
 
 
 class Checks(BaseModel):
+    """Detailed information about dependencies state."""
+
     database: bool
     """Database connection status."""
 
@@ -19,6 +21,8 @@ class Checks(BaseModel):
 
 
 class ServiceHealthCheckResponse(BaseModel):
+    """Successful response."""
+
     now: str
     """Current server time in ISO 8601 format."""
 

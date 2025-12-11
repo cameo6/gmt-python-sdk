@@ -8,6 +8,8 @@ __all__ = ["WebhookTestResponse"]
 
 
 class WebhookTestResponse(BaseModel):
+    """Result of webhook test request."""
+
     success: bool
     """Whether the webhook was delivered successfully (HTTP 200)."""
 

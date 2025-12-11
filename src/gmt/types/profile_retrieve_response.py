@@ -33,6 +33,8 @@ class Discount(BaseModel):
 
 
 class ReferralBalance(BaseModel):
+    """Current referral balance available for withdrawal."""
+
     amount: str
     """Monetary amount as a string with up to 2 decimal places."""
 
@@ -41,6 +43,8 @@ class ReferralBalance(BaseModel):
 
 
 class ReferralProfit(BaseModel):
+    """Total lifetime earnings from referral commissions."""
+
     amount: str
     """Monetary amount as a string with up to 2 decimal places."""
 
@@ -71,6 +75,8 @@ class Statistics(BaseModel):
 
 
 class ProfileRetrieveResponse(BaseModel):
+    """Successful response."""
+
     balance: Balance
 
     created_at: str

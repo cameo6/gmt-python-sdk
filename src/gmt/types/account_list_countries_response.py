@@ -33,6 +33,9 @@ class AccountListCountriesResponse(BaseModel):
 
     display_name: DisplayName
 
+    emoji: str
+    """Country flag emoji."""
+
     price: Price
 
     tags: List[Literal["HIGH_QUALITY", "HIGH_DEMAND"]]

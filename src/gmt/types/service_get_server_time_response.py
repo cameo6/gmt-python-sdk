@@ -8,6 +8,8 @@ __all__ = ["ServiceGetServerTimeResponse"]
 
 
 class ServiceGetServerTimeResponse(BaseModel):
+    """Successful response."""
+
     epoch_ms: int = FieldInfo(alias="epochMs")
     """Current server time in milliseconds since Unix epoch."""
 
