@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,8 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import profile, service, accounts, webhooks, purchases
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import GmtError, APIStatusError
 from ._base_client import (
@@ -30,18 +30,18 @@ from ._base_client import (
     AsyncAPIClient,
 )
 
+if TYPE_CHECKING:
+    from .resources import profile, service, accounts, webhooks, purchases
+    from .resources.profile import ProfileResource, AsyncProfileResource
+    from .resources.service import ServiceResource, AsyncServiceResource
+    from .resources.accounts import AccountsResource, AsyncAccountsResource
+    from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
+    from .resources.purchases import PurchasesResource, AsyncPurchasesResource
+
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Gmt", "AsyncGmt", "Client", "AsyncClient"]
 
 
 class Gmt(SyncAPIClient):
-    service: service.ServiceResource
-    accounts: accounts.AccountsResource
-    profile: profile.ProfileResource
-    purchases: purchases.PurchasesResource
-    webhooks: webhooks.WebhooksResource
-    with_raw_response: GmtWithRawResponse
-    with_streaming_response: GmtWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -96,13 +96,43 @@ class Gmt(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.service = service.ServiceResource(self)
-        self.accounts = accounts.AccountsResource(self)
-        self.profile = profile.ProfileResource(self)
-        self.purchases = purchases.PurchasesResource(self)
-        self.webhooks = webhooks.WebhooksResource(self)
-        self.with_raw_response = GmtWithRawResponse(self)
-        self.with_streaming_response = GmtWithStreamedResponse(self)
+    @cached_property
+    def service(self) -> ServiceResource:
+        from .resources.service import ServiceResource
+
+        return ServiceResource(self)
+
+    @cached_property
+    def accounts(self) -> AccountsResource:
+        from .resources.accounts import AccountsResource
+
+        return AccountsResource(self)
+
+    @cached_property
+    def profile(self) -> ProfileResource:
+        from .resources.profile import ProfileResource
+
+        return ProfileResource(self)
+
+    @cached_property
+    def purchases(self) -> PurchasesResource:
+        from .resources.purchases import PurchasesResource
+
+        return PurchasesResource(self)
+
+    @cached_property
+    def webhooks(self) -> WebhooksResource:
+        from .resources.webhooks import WebhooksResource
+
+        return WebhooksResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> GmtWithRawResponse:
+        return GmtWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> GmtWithStreamedResponse:
+        return GmtWithStreamedResponse(self)
 
     @property
     @override
@@ -210,14 +240,6 @@ class Gmt(SyncAPIClient):
 
 
 class AsyncGmt(AsyncAPIClient):
-    service: service.AsyncServiceResource
-    accounts: accounts.AsyncAccountsResource
-    profile: profile.AsyncProfileResource
-    purchases: purchases.AsyncPurchasesResource
-    webhooks: webhooks.AsyncWebhooksResource
-    with_raw_response: AsyncGmtWithRawResponse
-    with_streaming_response: AsyncGmtWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -272,13 +294,43 @@ class AsyncGmt(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.service = service.AsyncServiceResource(self)
-        self.accounts = accounts.AsyncAccountsResource(self)
-        self.profile = profile.AsyncProfileResource(self)
-        self.purchases = purchases.AsyncPurchasesResource(self)
-        self.webhooks = webhooks.AsyncWebhooksResource(self)
-        self.with_raw_response = AsyncGmtWithRawResponse(self)
-        self.with_streaming_response = AsyncGmtWithStreamedResponse(self)
+    @cached_property
+    def service(self) -> AsyncServiceResource:
+        from .resources.service import AsyncServiceResource
+
+        return AsyncServiceResource(self)
+
+    @cached_property
+    def accounts(self) -> AsyncAccountsResource:
+        from .resources.accounts import AsyncAccountsResource
+
+        return AsyncAccountsResource(self)
+
+    @cached_property
+    def profile(self) -> AsyncProfileResource:
+        from .resources.profile import AsyncProfileResource
+
+        return AsyncProfileResource(self)
+
+    @cached_property
+    def purchases(self) -> AsyncPurchasesResource:
+        from .resources.purchases import AsyncPurchasesResource
+
+        return AsyncPurchasesResource(self)
+
+    @cached_property
+    def webhooks(self) -> AsyncWebhooksResource:
+        from .resources.webhooks import AsyncWebhooksResource
+
+        return AsyncWebhooksResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncGmtWithRawResponse:
+        return AsyncGmtWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncGmtWithStreamedResponse:
+        return AsyncGmtWithStreamedResponse(self)
 
     @property
     @override
@@ -386,39 +438,151 @@ class AsyncGmt(AsyncAPIClient):
 
 
 class GmtWithRawResponse:
+    _client: Gmt
+
     def __init__(self, client: Gmt) -> None:
-        self.service = service.ServiceResourceWithRawResponse(client.service)
-        self.accounts = accounts.AccountsResourceWithRawResponse(client.accounts)
-        self.profile = profile.ProfileResourceWithRawResponse(client.profile)
-        self.purchases = purchases.PurchasesResourceWithRawResponse(client.purchases)
-        self.webhooks = webhooks.WebhooksResourceWithRawResponse(client.webhooks)
+        self._client = client
+
+    @cached_property
+    def service(self) -> service.ServiceResourceWithRawResponse:
+        from .resources.service import ServiceResourceWithRawResponse
+
+        return ServiceResourceWithRawResponse(self._client.service)
+
+    @cached_property
+    def accounts(self) -> accounts.AccountsResourceWithRawResponse:
+        from .resources.accounts import AccountsResourceWithRawResponse
+
+        return AccountsResourceWithRawResponse(self._client.accounts)
+
+    @cached_property
+    def profile(self) -> profile.ProfileResourceWithRawResponse:
+        from .resources.profile import ProfileResourceWithRawResponse
+
+        return ProfileResourceWithRawResponse(self._client.profile)
+
+    @cached_property
+    def purchases(self) -> purchases.PurchasesResourceWithRawResponse:
+        from .resources.purchases import PurchasesResourceWithRawResponse
+
+        return PurchasesResourceWithRawResponse(self._client.purchases)
+
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
+        from .resources.webhooks import WebhooksResourceWithRawResponse
+
+        return WebhooksResourceWithRawResponse(self._client.webhooks)
 
 
 class AsyncGmtWithRawResponse:
+    _client: AsyncGmt
+
     def __init__(self, client: AsyncGmt) -> None:
-        self.service = service.AsyncServiceResourceWithRawResponse(client.service)
-        self.accounts = accounts.AsyncAccountsResourceWithRawResponse(client.accounts)
-        self.profile = profile.AsyncProfileResourceWithRawResponse(client.profile)
-        self.purchases = purchases.AsyncPurchasesResourceWithRawResponse(client.purchases)
-        self.webhooks = webhooks.AsyncWebhooksResourceWithRawResponse(client.webhooks)
+        self._client = client
+
+    @cached_property
+    def service(self) -> service.AsyncServiceResourceWithRawResponse:
+        from .resources.service import AsyncServiceResourceWithRawResponse
+
+        return AsyncServiceResourceWithRawResponse(self._client.service)
+
+    @cached_property
+    def accounts(self) -> accounts.AsyncAccountsResourceWithRawResponse:
+        from .resources.accounts import AsyncAccountsResourceWithRawResponse
+
+        return AsyncAccountsResourceWithRawResponse(self._client.accounts)
+
+    @cached_property
+    def profile(self) -> profile.AsyncProfileResourceWithRawResponse:
+        from .resources.profile import AsyncProfileResourceWithRawResponse
+
+        return AsyncProfileResourceWithRawResponse(self._client.profile)
+
+    @cached_property
+    def purchases(self) -> purchases.AsyncPurchasesResourceWithRawResponse:
+        from .resources.purchases import AsyncPurchasesResourceWithRawResponse
+
+        return AsyncPurchasesResourceWithRawResponse(self._client.purchases)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
+
+        return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
 
 
 class GmtWithStreamedResponse:
+    _client: Gmt
+
     def __init__(self, client: Gmt) -> None:
-        self.service = service.ServiceResourceWithStreamingResponse(client.service)
-        self.accounts = accounts.AccountsResourceWithStreamingResponse(client.accounts)
-        self.profile = profile.ProfileResourceWithStreamingResponse(client.profile)
-        self.purchases = purchases.PurchasesResourceWithStreamingResponse(client.purchases)
-        self.webhooks = webhooks.WebhooksResourceWithStreamingResponse(client.webhooks)
+        self._client = client
+
+    @cached_property
+    def service(self) -> service.ServiceResourceWithStreamingResponse:
+        from .resources.service import ServiceResourceWithStreamingResponse
+
+        return ServiceResourceWithStreamingResponse(self._client.service)
+
+    @cached_property
+    def accounts(self) -> accounts.AccountsResourceWithStreamingResponse:
+        from .resources.accounts import AccountsResourceWithStreamingResponse
+
+        return AccountsResourceWithStreamingResponse(self._client.accounts)
+
+    @cached_property
+    def profile(self) -> profile.ProfileResourceWithStreamingResponse:
+        from .resources.profile import ProfileResourceWithStreamingResponse
+
+        return ProfileResourceWithStreamingResponse(self._client.profile)
+
+    @cached_property
+    def purchases(self) -> purchases.PurchasesResourceWithStreamingResponse:
+        from .resources.purchases import PurchasesResourceWithStreamingResponse
+
+        return PurchasesResourceWithStreamingResponse(self._client.purchases)
+
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import WebhooksResourceWithStreamingResponse
+
+        return WebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 class AsyncGmtWithStreamedResponse:
+    _client: AsyncGmt
+
     def __init__(self, client: AsyncGmt) -> None:
-        self.service = service.AsyncServiceResourceWithStreamingResponse(client.service)
-        self.accounts = accounts.AsyncAccountsResourceWithStreamingResponse(client.accounts)
-        self.profile = profile.AsyncProfileResourceWithStreamingResponse(client.profile)
-        self.purchases = purchases.AsyncPurchasesResourceWithStreamingResponse(client.purchases)
-        self.webhooks = webhooks.AsyncWebhooksResourceWithStreamingResponse(client.webhooks)
+        self._client = client
+
+    @cached_property
+    def service(self) -> service.AsyncServiceResourceWithStreamingResponse:
+        from .resources.service import AsyncServiceResourceWithStreamingResponse
+
+        return AsyncServiceResourceWithStreamingResponse(self._client.service)
+
+    @cached_property
+    def accounts(self) -> accounts.AsyncAccountsResourceWithStreamingResponse:
+        from .resources.accounts import AsyncAccountsResourceWithStreamingResponse
+
+        return AsyncAccountsResourceWithStreamingResponse(self._client.accounts)
+
+    @cached_property
+    def profile(self) -> profile.AsyncProfileResourceWithStreamingResponse:
+        from .resources.profile import AsyncProfileResourceWithStreamingResponse
+
+        return AsyncProfileResourceWithStreamingResponse(self._client.profile)
+
+    @cached_property
+    def purchases(self) -> purchases.AsyncPurchasesResourceWithStreamingResponse:
+        from .resources.purchases import AsyncPurchasesResourceWithStreamingResponse
+
+        return AsyncPurchasesResourceWithStreamingResponse(self._client.purchases)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
+
+        return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 Client = Gmt
