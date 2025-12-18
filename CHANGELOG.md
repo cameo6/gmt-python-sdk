@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.9.1 (2025-12-18)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([01da89f](https://github.com/cameo6/gmt-python-sdk/commit/01da89fb6f5f397296cb14ba73339014b59317bd))
+
+
+### Chores
+
+* speedup initial import ([61ca4cf](https://github.com/cameo6/gmt-python-sdk/commit/61ca4cf2538df91511c37987784aee18dc1e1ea6))
+
+
+### Refactors
+
+* **internal:** switch from rye to uv ([8790e4c](https://github.com/cameo6/gmt-python-sdk/commit/8790e4c2f0c0736777981ec7be27d827005a0fce))
+
 ## 0.9.0 (2025-12-16)
 
 Full Changelog: [v0.8.1...v0.9.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.8.1...v0.9.0)
