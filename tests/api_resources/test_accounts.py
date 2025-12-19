@@ -67,32 +67,24 @@ class TestAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Gmt) -> None:
-        account = client.accounts.list(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        account = client.accounts.list()
         assert_matches_type(SyncPageNumber[AccountListResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Gmt) -> None:
         account = client.accounts.list(
+            country_codes="US,RU,GB",
             page=1,
             page_size=50,
             sort="price_asc",
-            country_codes="US,RU,GB",
         )
         assert_matches_type(SyncPageNumber[AccountListResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Gmt) -> None:
-        response = client.accounts.with_raw_response.list(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        response = client.accounts.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -102,11 +94,7 @@ class TestAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Gmt) -> None:
-        with client.accounts.with_streaming_response.list(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        ) as response:
+        with client.accounts.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -118,32 +106,24 @@ class TestAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_countries(self, client: Gmt) -> None:
-        account = client.accounts.list_countries(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        account = client.accounts.list_countries()
         assert_matches_type(SyncPageNumber[AccountListCountriesResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_countries_with_all_params(self, client: Gmt) -> None:
         account = client.accounts.list_countries(
+            country_codes="US,RU,GB",
             page=1,
             page_size=50,
             sort="price_asc",
-            country_codes="US,RU,GB",
         )
         assert_matches_type(SyncPageNumber[AccountListCountriesResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list_countries(self, client: Gmt) -> None:
-        response = client.accounts.with_raw_response.list_countries(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        response = client.accounts.with_raw_response.list_countries()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -153,11 +133,7 @@ class TestAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list_countries(self, client: Gmt) -> None:
-        with client.accounts.with_streaming_response.list_countries(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        ) as response:
+        with client.accounts.with_streaming_response.list_countries() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -217,32 +193,24 @@ class TestAsyncAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncGmt) -> None:
-        account = await async_client.accounts.list(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        account = await async_client.accounts.list()
         assert_matches_type(AsyncPageNumber[AccountListResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncGmt) -> None:
         account = await async_client.accounts.list(
+            country_codes="US,RU,GB",
             page=1,
             page_size=50,
             sort="price_asc",
-            country_codes="US,RU,GB",
         )
         assert_matches_type(AsyncPageNumber[AccountListResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncGmt) -> None:
-        response = await async_client.accounts.with_raw_response.list(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        response = await async_client.accounts.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -252,11 +220,7 @@ class TestAsyncAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncGmt) -> None:
-        async with async_client.accounts.with_streaming_response.list(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        ) as response:
+        async with async_client.accounts.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -268,32 +232,24 @@ class TestAsyncAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_countries(self, async_client: AsyncGmt) -> None:
-        account = await async_client.accounts.list_countries(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        account = await async_client.accounts.list_countries()
         assert_matches_type(AsyncPageNumber[AccountListCountriesResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_countries_with_all_params(self, async_client: AsyncGmt) -> None:
         account = await async_client.accounts.list_countries(
+            country_codes="US,RU,GB",
             page=1,
             page_size=50,
             sort="price_asc",
-            country_codes="US,RU,GB",
         )
         assert_matches_type(AsyncPageNumber[AccountListCountriesResponse], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list_countries(self, async_client: AsyncGmt) -> None:
-        response = await async_client.accounts.with_raw_response.list_countries(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        )
+        response = await async_client.accounts.with_raw_response.list_countries()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -303,11 +259,7 @@ class TestAsyncAccounts:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list_countries(self, async_client: AsyncGmt) -> None:
-        async with async_client.accounts.with_streaming_response.list_countries(
-            page=1,
-            page_size=50,
-            sort="price_asc",
-        ) as response:
+        async with async_client.accounts.with_streaming_response.list_countries() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

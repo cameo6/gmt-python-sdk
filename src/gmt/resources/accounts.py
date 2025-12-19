@@ -85,10 +85,10 @@ class AccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
         country_codes: str | Omit = omit,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -100,14 +100,14 @@ class AccountsResource(SyncAPIResource):
         Returns paginated list of accounts with filtering and sorting options.
 
         Args:
+          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
+              'US,RU,GB').
+
           page: Page number.
 
           page_size: Number of items per page.
 
           sort: Sort order for accounts.
-
-          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
-              'US,RU,GB').
 
           extra_headers: Send extra headers
 
@@ -127,10 +127,10 @@ class AccountsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "country_codes": country_codes,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
-                        "country_codes": country_codes,
                     },
                     account_list_params.AccountListParams,
                 ),
@@ -141,10 +141,10 @@ class AccountsResource(SyncAPIResource):
     def list_countries(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
         country_codes: str | Omit = omit,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -157,14 +157,14 @@ class AccountsResource(SyncAPIResource):
         availability. No authentication required.
 
         Args:
+          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
+              'US,RU,GB').
+
           page: Page number.
 
           page_size: Number of items per page.
 
           sort: Sort order for accounts.
-
-          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
-              'US,RU,GB').
 
           extra_headers: Send extra headers
 
@@ -184,10 +184,10 @@ class AccountsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "country_codes": country_codes,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
-                        "country_codes": country_codes,
                     },
                     account_list_countries_params.AccountListCountriesParams,
                 ),
@@ -255,10 +255,10 @@ class AsyncAccountsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
         country_codes: str | Omit = omit,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -270,14 +270,14 @@ class AsyncAccountsResource(AsyncAPIResource):
         Returns paginated list of accounts with filtering and sorting options.
 
         Args:
+          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
+              'US,RU,GB').
+
           page: Page number.
 
           page_size: Number of items per page.
 
           sort: Sort order for accounts.
-
-          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
-              'US,RU,GB').
 
           extra_headers: Send extra headers
 
@@ -297,10 +297,10 @@ class AsyncAccountsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "country_codes": country_codes,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
-                        "country_codes": country_codes,
                     },
                     account_list_params.AccountListParams,
                 ),
@@ -311,10 +311,10 @@ class AsyncAccountsResource(AsyncAPIResource):
     def list_countries(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
         country_codes: str | Omit = omit,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -327,14 +327,14 @@ class AsyncAccountsResource(AsyncAPIResource):
         availability. No authentication required.
 
         Args:
+          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
+              'US,RU,GB').
+
           page: Page number.
 
           page_size: Number of items per page.
 
           sort: Sort order for accounts.
-
-          country_codes: Filter by country codes. Comma-separated list of ISO 3166-1 alpha-2 codes (e.g.,
-              'US,RU,GB').
 
           extra_headers: Send extra headers
 
@@ -354,10 +354,10 @@ class AsyncAccountsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "country_codes": country_codes,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
-                        "country_codes": country_codes,
                     },
                     account_list_countries_params.AccountListCountriesParams,
                 ),
