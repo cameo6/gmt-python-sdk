@@ -21,8 +21,16 @@ class TestWebhooks:
     @parametrize
     def test_method_test(self, client: Gmt) -> None:
         webhook = client.webhooks.test(
-            type="success",
             url="https://example.com/webhooks/handler",
+        )
+        assert_matches_type(WebhookTestResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_test_with_all_params(self, client: Gmt) -> None:
+        webhook = client.webhooks.test(
+            url="https://example.com/webhooks/handler",
+            type="success",
         )
         assert_matches_type(WebhookTestResponse, webhook, path=["response"])
 
@@ -30,7 +38,6 @@ class TestWebhooks:
     @parametrize
     def test_raw_response_test(self, client: Gmt) -> None:
         response = client.webhooks.with_raw_response.test(
-            type="success",
             url="https://example.com/webhooks/handler",
         )
 
@@ -43,7 +50,6 @@ class TestWebhooks:
     @parametrize
     def test_streaming_response_test(self, client: Gmt) -> None:
         with client.webhooks.with_streaming_response.test(
-            type="success",
             url="https://example.com/webhooks/handler",
         ) as response:
             assert not response.is_closed
@@ -64,8 +70,16 @@ class TestAsyncWebhooks:
     @parametrize
     async def test_method_test(self, async_client: AsyncGmt) -> None:
         webhook = await async_client.webhooks.test(
-            type="success",
             url="https://example.com/webhooks/handler",
+        )
+        assert_matches_type(WebhookTestResponse, webhook, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_test_with_all_params(self, async_client: AsyncGmt) -> None:
+        webhook = await async_client.webhooks.test(
+            url="https://example.com/webhooks/handler",
+            type="success",
         )
         assert_matches_type(WebhookTestResponse, webhook, path=["response"])
 
@@ -73,7 +87,6 @@ class TestAsyncWebhooks:
     @parametrize
     async def test_raw_response_test(self, async_client: AsyncGmt) -> None:
         response = await async_client.webhooks.with_raw_response.test(
-            type="success",
             url="https://example.com/webhooks/handler",
         )
 
@@ -86,7 +99,6 @@ class TestAsyncWebhooks:
     @parametrize
     async def test_streaming_response_test(self, async_client: AsyncGmt) -> None:
         async with async_client.webhooks.with_streaming_response.test(
-            type="success",
             url="https://example.com/webhooks/handler",
         ) as response:
             assert not response.is_closed

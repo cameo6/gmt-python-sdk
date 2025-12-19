@@ -95,10 +95,7 @@ class TestPurchases:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Gmt) -> None:
-        purchase = client.purchases.list(
-            page=1,
-            page_size=50,
-        )
+        purchase = client.purchases.list()
         assert_matches_type(SyncPageNumber[PurchaseListResponse], purchase, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -114,10 +111,7 @@ class TestPurchases:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Gmt) -> None:
-        response = client.purchases.with_raw_response.list(
-            page=1,
-            page_size=50,
-        )
+        response = client.purchases.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -127,10 +121,7 @@ class TestPurchases:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Gmt) -> None:
-        with client.purchases.with_streaming_response.list(
-            page=1,
-            page_size=50,
-        ) as response:
+        with client.purchases.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -293,10 +284,7 @@ class TestAsyncPurchases:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncGmt) -> None:
-        purchase = await async_client.purchases.list(
-            page=1,
-            page_size=50,
-        )
+        purchase = await async_client.purchases.list()
         assert_matches_type(AsyncPageNumber[PurchaseListResponse], purchase, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
@@ -312,10 +300,7 @@ class TestAsyncPurchases:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncGmt) -> None:
-        response = await async_client.purchases.with_raw_response.list(
-            page=1,
-            page_size=50,
-        )
+        response = await async_client.purchases.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -325,10 +310,7 @@ class TestAsyncPurchases:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncGmt) -> None:
-        async with async_client.purchases.with_streaming_response.list(
-            page=1,
-            page_size=50,
-        ) as response:
+        async with async_client.purchases.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
