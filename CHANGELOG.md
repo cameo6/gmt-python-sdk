@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.0 (2025-12-19)
+
+Full Changelog: [v0.9.1...v0.10.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.9.1...v0.10.0)
+
+### Features
+
+* **api:** api update ([c34332a](https://github.com/cameo6/gmt-python-sdk/commit/c34332a8618301f5674dcf581e56bea5974a2c43))
+
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([6479356](https://github.com/cameo6/gmt-python-sdk/commit/647935661dfca80dfdd23a8ee5edf945a15cf5d2))
+
 ## 0.9.1 (2025-12-18)
 
 Full Changelog: [v0.9.0...v0.9.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.9.0...v0.9.1)
