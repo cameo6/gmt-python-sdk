@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.11.0 (2026-01-14)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **client:** add support for binary request streaming ([4630e55](https://github.com/cameo6/gmt-python-sdk/commit/4630e558cea821aaf9f4997ff14fdcf524951b29))
+
+
+### Chores
+
+* **internal:** codegen related update ([3c1fe79](https://github.com/cameo6/gmt-python-sdk/commit/3c1fe79d3b6ff994d9b238c9155095dc33668f62))
+
 ## 0.10.0 (2025-12-19)
 
 Full Changelog: [v0.9.1...v0.10.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.9.1...v0.10.0)
