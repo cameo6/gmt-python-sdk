@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import webhook_test_params
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from .._types import Body, Query, Headers, NotGiven, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -46,8 +46,8 @@ class WebhooksResource(SyncAPIResource):
     def test(
         self,
         *,
+        type: Literal["success", "failed"],
         url: str,
-        type: Literal["success", "failed"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,9 +73,9 @@ class WebhooksResource(SyncAPIResource):
         **No persistence.** Test webhooks are not stored in delivery history.
 
         Args:
-          url: Webhook endpoint URL. Must be a valid URL.
-
           type: Webhook payload type to send: `success` or `failed`.
+
+          url: Webhook endpoint URL. Must be a valid URL.
 
           extra_headers: Send extra headers
 
@@ -89,8 +89,8 @@ class WebhooksResource(SyncAPIResource):
             "/v1/webhooks/test",
             body=maybe_transform(
                 {
-                    "url": url,
                     "type": type,
+                    "url": url,
                 },
                 webhook_test_params.WebhookTestParams,
             ),
@@ -124,8 +124,8 @@ class AsyncWebhooksResource(AsyncAPIResource):
     async def test(
         self,
         *,
+        type: Literal["success", "failed"],
         url: str,
-        type: Literal["success", "failed"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -151,9 +151,9 @@ class AsyncWebhooksResource(AsyncAPIResource):
         **No persistence.** Test webhooks are not stored in delivery history.
 
         Args:
-          url: Webhook endpoint URL. Must be a valid URL.
-
           type: Webhook payload type to send: `success` or `failed`.
+
+          url: Webhook endpoint URL. Must be a valid URL.
 
           extra_headers: Send extra headers
 
@@ -167,8 +167,8 @@ class AsyncWebhooksResource(AsyncAPIResource):
             "/v1/webhooks/test",
             body=await async_maybe_transform(
                 {
-                    "url": url,
                     "type": type,
+                    "url": url,
                 },
                 webhook_test_params.WebhookTestParams,
             ),

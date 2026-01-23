@@ -2,16 +2,16 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["PurchaseListParams"]
 
 
 class PurchaseListParams(TypedDict, total=False):
-    page: int
+    page: Required[int]
     """Page number."""
 
-    page_size: int
+    page_size: Required[int]
     """Number of items per page."""
 
     status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
