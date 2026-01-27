@@ -77,6 +77,9 @@ class Statistics(BaseModel):
 class ProfileRetrieveResponse(BaseModel):
     """Successful response."""
 
+    id: str
+    """User Database ID"""
+
     balance: Balance
 
     created_at: str
@@ -84,12 +87,15 @@ class ProfileRetrieveResponse(BaseModel):
 
     discount: Discount
 
+    login: Optional[str] = None
+    """Web username"""
+
     referral: Referral
 
     statistics: Statistics
 
-    telegram_id: str
-    """User's Telegram ID"""
+    telegram_id: Optional[str] = None
+    """User's Telegram ID (null for web-only users)"""
 
     telegram_username: Optional[str] = None
     """User's Telegram username"""
