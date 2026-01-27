@@ -143,7 +143,7 @@ class AccountsResource(SyncAPIResource):
         *,
         page: int,
         page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"],
         country_codes: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -313,7 +313,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         *,
         page: int,
         page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"],
         country_codes: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
