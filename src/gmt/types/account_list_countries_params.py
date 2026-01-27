@@ -14,7 +14,7 @@ class AccountListCountriesParams(TypedDict, total=False):
     page_size: Required[int]
     """Number of items per page."""
 
-    sort: Required[Literal["price_asc", "price_desc", "name_asc", "name_desc"]]
+    sort: Required[Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"]]
     """Sort order for accounts."""
 
     country_codes: str
