@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.0 (2026-01-30)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([09619c4](https://github.com/cameo6/gmt-python-sdk/commit/09619c46443faf76be753075518b53560d6dd958))
+
 ## 0.13.0 (2026-01-27)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.12.0...v0.13.0)
