@@ -6,29 +6,41 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import purchase_list_params, purchase_create_params, purchase_request_verification_code_params
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from .bulk import (
+    BulkResource,
+    AsyncBulkResource,
+    BulkResourceWithRawResponse,
+    AsyncBulkResourceWithRawResponse,
+    BulkResourceWithStreamingResponse,
+    AsyncBulkResourceWithStreamingResponse,
+)
+from ...types import purchase_list_params, purchase_create_params, purchase_request_verification_code_params
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPageNumber, AsyncPageNumber
-from .._base_client import AsyncPaginator, make_request_options
-from ..types.purchase_list_response import PurchaseListResponse
-from ..types.purchase_create_response import PurchaseCreateResponse
-from ..types.purchase_refund_response import PurchaseRefundResponse
-from ..types.purchase_retrieve_response import PurchaseRetrieveResponse
-from ..types.purchase_request_verification_code_response import PurchaseRequestVerificationCodeResponse
+from ...pagination import SyncPageNumber, AsyncPageNumber
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.purchase_list_response import PurchaseListResponse
+from ...types.purchase_create_response import PurchaseCreateResponse
+from ...types.purchase_refund_response import PurchaseRefundResponse
+from ...types.purchase_retrieve_response import PurchaseRetrieveResponse
+from ...types.purchase_request_verification_code_response import PurchaseRequestVerificationCodeResponse
 
 __all__ = ["PurchasesResource", "AsyncPurchasesResource"]
 
 
 class PurchasesResource(SyncAPIResource):
+    @cached_property
+    def bulk(self) -> BulkResource:
+        return BulkResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> PurchasesResourceWithRawResponse:
         """
@@ -312,6 +324,10 @@ class PurchasesResource(SyncAPIResource):
 
 
 class AsyncPurchasesResource(AsyncAPIResource):
+    @cached_property
+    def bulk(self) -> AsyncBulkResource:
+        return AsyncBulkResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncPurchasesResourceWithRawResponse:
         """
@@ -616,6 +632,10 @@ class PurchasesResourceWithRawResponse:
             purchases.request_verification_code,
         )
 
+    @cached_property
+    def bulk(self) -> BulkResourceWithRawResponse:
+        return BulkResourceWithRawResponse(self._purchases.bulk)
+
 
 class AsyncPurchasesResourceWithRawResponse:
     def __init__(self, purchases: AsyncPurchasesResource) -> None:
@@ -636,6 +656,10 @@ class AsyncPurchasesResourceWithRawResponse:
         self.request_verification_code = async_to_raw_response_wrapper(
             purchases.request_verification_code,
         )
+
+    @cached_property
+    def bulk(self) -> AsyncBulkResourceWithRawResponse:
+        return AsyncBulkResourceWithRawResponse(self._purchases.bulk)
 
 
 class PurchasesResourceWithStreamingResponse:
@@ -658,6 +682,10 @@ class PurchasesResourceWithStreamingResponse:
             purchases.request_verification_code,
         )
 
+    @cached_property
+    def bulk(self) -> BulkResourceWithStreamingResponse:
+        return BulkResourceWithStreamingResponse(self._purchases.bulk)
+
 
 class AsyncPurchasesResourceWithStreamingResponse:
     def __init__(self, purchases: AsyncPurchasesResource) -> None:
@@ -678,3 +706,7 @@ class AsyncPurchasesResourceWithStreamingResponse:
         self.request_verification_code = async_to_streamed_response_wrapper(
             purchases.request_verification_code,
         )
+
+    @cached_property
+    def bulk(self) -> AsyncBulkResourceWithStreamingResponse:
+        return AsyncBulkResourceWithStreamingResponse(self._purchases.bulk)

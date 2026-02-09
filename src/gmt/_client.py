@@ -36,7 +36,7 @@ if TYPE_CHECKING:
     from .resources.service import ServiceResource, AsyncServiceResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
-    from .resources.purchases import PurchasesResource, AsyncPurchasesResource
+    from .resources.purchases.purchases import PurchasesResource, AsyncPurchasesResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Gmt", "AsyncGmt", "Client", "AsyncClient"]
 
