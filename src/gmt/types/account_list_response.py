@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -37,3 +37,6 @@ class AccountListResponse(BaseModel):
 
     tags: List[Literal["HIGH_QUALITY", "HIGH_DEMAND"]]
     """Account tags (e.g., HIGH_QUALITY for premium accounts)."""
+
+    available_count: Optional[float] = None
+    """Number of available accounts for this country."""
