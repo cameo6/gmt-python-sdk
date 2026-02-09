@@ -30,12 +30,20 @@ Methods:
 Types:
 
 ```python
-from gmt.types import ProfileRetrieveResponse
+from gmt.types import (
+    ProfileRetrieveResponse,
+    ProfileChangeLoginResponse,
+    ProfileChangePasswordResponse,
+    ProfileUnbindTelegramResponse,
+)
 ```
 
 Methods:
 
 - <code title="get /v1/profile/">client.profile.<a href="./src/gmt/resources/profile.py">retrieve</a>() -> <a href="./src/gmt/types/profile_retrieve_response.py">ProfileRetrieveResponse</a></code>
+- <code title="patch /v1/profile/change-login">client.profile.<a href="./src/gmt/resources/profile.py">change_login</a>(\*\*<a href="src/gmt/types/profile_change_login_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_login_response.py">ProfileChangeLoginResponse</a></code>
+- <code title="patch /v1/profile/change-password">client.profile.<a href="./src/gmt/resources/profile.py">change_password</a>(\*\*<a href="src/gmt/types/profile_change_password_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_password_response.py">ProfileChangePasswordResponse</a></code>
+- <code title="patch /v1/profile/unbind-telegram">client.profile.<a href="./src/gmt/resources/profile.py">unbind_telegram</a>() -> <a href="./src/gmt/types/profile_unbind_telegram_response.py">ProfileUnbindTelegramResponse</a></code>
 
 # Purchases
 
@@ -53,11 +61,25 @@ from gmt.types import (
 
 Methods:
 
-- <code title="post /v1/purchases/">client.purchases.<a href="./src/gmt/resources/purchases.py">create</a>(\*\*<a href="src/gmt/types/purchase_create_params.py">params</a>) -> <a href="./src/gmt/types/purchase_create_response.py">PurchaseCreateResponse</a></code>
-- <code title="get /v1/purchases/{purchase_id}">client.purchases.<a href="./src/gmt/resources/purchases.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchase_retrieve_response.py">PurchaseRetrieveResponse</a></code>
-- <code title="get /v1/purchases/">client.purchases.<a href="./src/gmt/resources/purchases.py">list</a>(\*\*<a href="src/gmt/types/purchase_list_params.py">params</a>) -> <a href="./src/gmt/types/purchase_list_response.py">SyncPageNumber[PurchaseListResponse]</a></code>
-- <code title="post /v1/purchases/{purchase_id}/refund">client.purchases.<a href="./src/gmt/resources/purchases.py">refund</a>(purchase_id) -> <a href="./src/gmt/types/purchase_refund_response.py">PurchaseRefundResponse</a></code>
-- <code title="post /v1/purchases/{purchase_id}/request-code">client.purchases.<a href="./src/gmt/resources/purchases.py">request_verification_code</a>(purchase_id, \*\*<a href="src/gmt/types/purchase_request_verification_code_params.py">params</a>) -> <a href="./src/gmt/types/purchase_request_verification_code_response.py">PurchaseRequestVerificationCodeResponse</a></code>
+- <code title="post /v1/purchases/">client.purchases.<a href="./src/gmt/resources/purchases/purchases.py">create</a>(\*\*<a href="src/gmt/types/purchase_create_params.py">params</a>) -> <a href="./src/gmt/types/purchase_create_response.py">PurchaseCreateResponse</a></code>
+- <code title="get /v1/purchases/{purchase_id}">client.purchases.<a href="./src/gmt/resources/purchases/purchases.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchase_retrieve_response.py">PurchaseRetrieveResponse</a></code>
+- <code title="get /v1/purchases/">client.purchases.<a href="./src/gmt/resources/purchases/purchases.py">list</a>(\*\*<a href="src/gmt/types/purchase_list_params.py">params</a>) -> <a href="./src/gmt/types/purchase_list_response.py">SyncPageNumber[PurchaseListResponse]</a></code>
+- <code title="post /v1/purchases/{purchase_id}/refund">client.purchases.<a href="./src/gmt/resources/purchases/purchases.py">refund</a>(purchase_id) -> <a href="./src/gmt/types/purchase_refund_response.py">PurchaseRefundResponse</a></code>
+- <code title="post /v1/purchases/{purchase_id}/request-code">client.purchases.<a href="./src/gmt/resources/purchases/purchases.py">request_verification_code</a>(purchase_id, \*\*<a href="src/gmt/types/purchase_request_verification_code_params.py">params</a>) -> <a href="./src/gmt/types/purchase_request_verification_code_response.py">PurchaseRequestVerificationCodeResponse</a></code>
+
+## Bulk
+
+Types:
+
+```python
+from gmt.types.purchases import BulkCreateResponse, BulkRetrieveResponse
+```
+
+Methods:
+
+- <code title="post /v1/purchases/bulk">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">create</a>(\*\*<a href="src/gmt/types/purchases/bulk_create_params.py">params</a>) -> <a href="./src/gmt/types/purchases/bulk_create_response.py">BulkCreateResponse</a></code>
+- <code title="get /v1/purchases/bulk/{purchaseId}">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchases/bulk_retrieve_response.py">BulkRetrieveResponse</a></code>
+- <code title="get /v1/purchases/bulk/{purchaseId}/download">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">download</a>(purchase_id) -> None</code>
 
 # Webhooks
 
