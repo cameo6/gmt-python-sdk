@@ -74,7 +74,7 @@ class PurchaseListResponse(BaseModel):
 
     display_name: DisplayName
 
-    phone_number: str
+    phone_number: Optional[str] = None
     """
     **E.164 International Format.** Phone number with country code prefix (e.g.,
     `+12025550123` for US, `+79991234567` for Russia).

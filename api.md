@@ -72,14 +72,12 @@ Methods:
 Types:
 
 ```python
-from gmt.types.purchases import BulkCreateResponse, BulkRetrieveResponse
+from gmt.types.purchases import BulkCreateResponse
 ```
 
 Methods:
 
 - <code title="post /v1/purchases/bulk">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">create</a>(\*\*<a href="src/gmt/types/purchases/bulk_create_params.py">params</a>) -> <a href="./src/gmt/types/purchases/bulk_create_response.py">BulkCreateResponse</a></code>
-- <code title="get /v1/purchases/bulk/{purchaseId}">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchases/bulk_retrieve_response.py">BulkRetrieveResponse</a></code>
-- <code title="get /v1/purchases/bulk/{purchaseId}/download">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">download</a>(purchase_id) -> None</code>
 
 # Webhooks
 
