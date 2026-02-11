@@ -70,10 +70,10 @@ class Gmt(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Gmt client instance.
 
-        This automatically infers the `api_key` argument from the `x-api-key` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `GMT_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("x-api-key")
+            api_key = os.environ.get("GMT_API_KEY")
         self.api_key = api_key
 
         if base_url is None:
@@ -266,10 +266,10 @@ class AsyncGmt(AsyncAPIClient):
     ) -> None:
         """Construct a new async AsyncGmt client instance.
 
-        This automatically infers the `api_key` argument from the `x-api-key` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `GMT_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("x-api-key")
+            api_key = os.environ.get("GMT_API_KEY")
         self.api_key = api_key
 
         if base_url is None:
