@@ -104,6 +104,12 @@ class Purchase(BaseModel):
     volume = bigger discounts.
     """
 
+    purchase_type: Literal["SINGLE", "BULK", "ADMIN"]
+    """
+    Type of purchase: SINGLE (regular), BULK (batch purchase), ADMIN (admin
+    deduction)
+    """
+
     status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
     """
     **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
