@@ -394,7 +394,7 @@ class TestGmt:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-api-key") == api_key
 
-        with update_env(**{"x-api-key": Omit()}):
+        with update_env(**{"GMT_API_KEY": Omit()}):
             client2 = Gmt(base_url=base_url, api_key=None, _strict_response_validation=True)
 
         client2._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1275,7 +1275,7 @@ class TestAsyncGmt:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-api-key") == api_key
 
-        with update_env(**{"x-api-key": Omit()}):
+        with update_env(**{"GMT_API_KEY": Omit()}):
             client2 = AsyncGmt(base_url=base_url, api_key=None, _strict_response_validation=True)
 
         client2._build_request(FinalRequestOptions(method="get", url="/foo"))
