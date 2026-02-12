@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.1 (2026-02-12)
+
+Full Changelog: [v0.21.0...v0.21.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.21.0...v0.21.1)
+
+### Chores
+
+* **internal:** fix lint error on Python 3.14 ([f66890e](https://github.com/cameo6/gmt-python-sdk/commit/f66890e962a132c1902dd05416723e3a2cfeb286))
+
 ## 0.21.0 (2026-02-11)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.20.0...v0.21.0)
