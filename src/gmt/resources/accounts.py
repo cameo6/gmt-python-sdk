@@ -58,8 +58,23 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountRetrieveResponse:
         """
-        Returns detailed information about account for specific country including
-        pricing and discount information.
+        Returns detailed pricing breakdown for a specific country, showing how the
+        user's discount is applied.
+
+        **Response includes:**
+
+        - `price` — final price after user's personal discount
+        - `discount.base_price` — price before discount
+        - `discount.percent` — discount percentage applied
+
+        **Use case.** Account detail/checkout page where user needs to see both the
+        original price and their discounted price.
+
+        **Example.** If base price is $3.00 and user has 10% discount:
+
+        - `price.amount`: `"2.70"`
+        - `discount.base_price`: `"3.00"`
+        - `discount.percent`: `10`
 
         Args:
           country_code: ISO 3166-1 alpha-2 country code (e.g., US, RU, GB).
@@ -87,7 +102,7 @@ class AccountsResource(SyncAPIResource):
         *,
         page: int,
         page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"],
         country_codes: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -97,7 +112,22 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPageNumber[AccountListResponse]:
         """
-        Returns paginated list of accounts with filtering and sorting options.
+        Returns paginated list of available accounts with **user-specific pricing**
+        (personal discount applied).
+
+        **Pricing.** Prices reflect the authenticated user's discount level. To see base
+        prices without discount, use `GET /accounts/countries`.
+
+        **Difference from `/accounts/countries`:**
+
+        - Requires authentication
+        - Prices include user's personal discount
+
+        **Filtering.** Use `country_codes` to request specific countries (e.g.,
+        `US,RU,GB`).
+
+        **Sorting options:** `price_asc`, `price_desc`, `name_asc`, `name_desc`,
+        `popularity_asc`, `popularity_desc`.
 
         Args:
           page: Page number.
@@ -153,8 +183,20 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPageNumber[AccountListCountriesResponse]:
         """
-        Returns a list of all available countries from providers with prices and
-        availability. No authentication required.
+        Returns paginated list of all available countries with **base pricing** (no user
+        discount applied). No authentication required.
+
+        **Use case.** Public catalog for the website landing page. Shows general pricing
+        and stock availability.
+
+        **Pricing.** Prices are base prices before any user discount. For personalized
+        pricing, use `GET /accounts` (requires authentication).
+
+        **Filtering.** Use `country_codes` to request specific countries (e.g.,
+        `US,RU,GB`).
+
+        **Sorting options:** `price_asc`, `price_desc`, `name_asc`, `name_desc`,
+        `popularity_asc`, `popularity_desc`.
 
         Args:
           page: Page number.
@@ -228,8 +270,23 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountRetrieveResponse:
         """
-        Returns detailed information about account for specific country including
-        pricing and discount information.
+        Returns detailed pricing breakdown for a specific country, showing how the
+        user's discount is applied.
+
+        **Response includes:**
+
+        - `price` — final price after user's personal discount
+        - `discount.base_price` — price before discount
+        - `discount.percent` — discount percentage applied
+
+        **Use case.** Account detail/checkout page where user needs to see both the
+        original price and their discounted price.
+
+        **Example.** If base price is $3.00 and user has 10% discount:
+
+        - `price.amount`: `"2.70"`
+        - `discount.base_price`: `"3.00"`
+        - `discount.percent`: `10`
 
         Args:
           country_code: ISO 3166-1 alpha-2 country code (e.g., US, RU, GB).
@@ -257,7 +314,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         *,
         page: int,
         page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc"],
+        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"],
         country_codes: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -267,7 +324,22 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AccountListResponse, AsyncPageNumber[AccountListResponse]]:
         """
-        Returns paginated list of accounts with filtering and sorting options.
+        Returns paginated list of available accounts with **user-specific pricing**
+        (personal discount applied).
+
+        **Pricing.** Prices reflect the authenticated user's discount level. To see base
+        prices without discount, use `GET /accounts/countries`.
+
+        **Difference from `/accounts/countries`:**
+
+        - Requires authentication
+        - Prices include user's personal discount
+
+        **Filtering.** Use `country_codes` to request specific countries (e.g.,
+        `US,RU,GB`).
+
+        **Sorting options:** `price_asc`, `price_desc`, `name_asc`, `name_desc`,
+        `popularity_asc`, `popularity_desc`.
 
         Args:
           page: Page number.
@@ -323,8 +395,20 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AccountListCountriesResponse, AsyncPageNumber[AccountListCountriesResponse]]:
         """
-        Returns a list of all available countries from providers with prices and
-        availability. No authentication required.
+        Returns paginated list of all available countries with **base pricing** (no user
+        discount applied). No authentication required.
+
+        **Use case.** Public catalog for the website landing page. Shows general pricing
+        and stock availability.
+
+        **Pricing.** Prices are base prices before any user discount. For personalized
+        pricing, use `GET /accounts` (requires authentication).
+
+        **Filtering.** Use `country_codes` to request specific countries (e.g.,
+        `US,RU,GB`).
+
+        **Sorting options:** `price_asc`, `price_desc`, `name_asc`, `name_desc`,
+        `popularity_asc`, `popularity_desc`.
 
         Args:
           page: Page number.
