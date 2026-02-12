@@ -26,10 +26,10 @@ class Price(BaseModel):
 
 class AccountListCountriesResponse(BaseModel):
     available: bool
-    """Whether the country is available for purchase."""
+    """Indicates if account is available for purchase."""
 
     country_code: str
-    """Country code (ISO 3166-1 alpha-2)."""
+    """ISO 3166-1 alpha-2 country code (e.g., US, RU, GB)."""
 
     display_name: DisplayName
 
