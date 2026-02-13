@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.1 (2026-02-13)
+
+Full Changelog: [v0.22.0...v0.22.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.22.0...v0.22.1)
+
+### Chores
+
+* format all `api.md` files ([69fa483](https://github.com/cameo6/gmt-python-sdk/commit/69fa483e804814ea76ac259848a12f3d04a294ac))
+
 ## 0.22.0 (2026-02-12)
 
 Full Changelog: [v0.21.1...v0.22.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.21.1...v0.22.0)
