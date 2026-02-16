@@ -4,15 +4,23 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
 from ...types.purchases import bulk_create_params
@@ -152,7 +160,7 @@ class BulkResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
+    ) -> BinaryAPIResponse:
         """
         Download the archive file containing multiple accounts from a successful bulk
         purchase
@@ -168,13 +176,13 @@ class BulkResource(SyncAPIResource):
         """
         if not purchase_id:
             raise ValueError(f"Expected a non-empty value for `purchase_id` but received {purchase_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers = {"Accept": "application/zip", **(extra_headers or {})}
         return self._get(
             f"/v1/purchases/bulk/{purchase_id}/download",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=BinaryAPIResponse,
         )
 
 
@@ -308,7 +316,7 @@ class AsyncBulkResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
+    ) -> AsyncBinaryAPIResponse:
         """
         Download the archive file containing multiple accounts from a successful bulk
         purchase
@@ -324,13 +332,13 @@ class AsyncBulkResource(AsyncAPIResource):
         """
         if not purchase_id:
             raise ValueError(f"Expected a non-empty value for `purchase_id` but received {purchase_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers = {"Accept": "application/zip", **(extra_headers or {})}
         return await self._get(
             f"/v1/purchases/bulk/{purchase_id}/download",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AsyncBinaryAPIResponse,
         )
 
 
@@ -344,8 +352,9 @@ class BulkResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             bulk.retrieve,
         )
-        self.download = to_raw_response_wrapper(
+        self.download = to_custom_raw_response_wrapper(
             bulk.download,
+            BinaryAPIResponse,
         )
 
 
@@ -359,8 +368,9 @@ class AsyncBulkResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             bulk.retrieve,
         )
-        self.download = async_to_raw_response_wrapper(
+        self.download = async_to_custom_raw_response_wrapper(
             bulk.download,
+            AsyncBinaryAPIResponse,
         )
 
 
@@ -374,8 +384,9 @@ class BulkResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             bulk.retrieve,
         )
-        self.download = to_streamed_response_wrapper(
+        self.download = to_custom_streamed_response_wrapper(
             bulk.download,
+            StreamedBinaryAPIResponse,
         )
 
 
@@ -389,6 +400,7 @@ class AsyncBulkResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             bulk.retrieve,
         )
-        self.download = async_to_streamed_response_wrapper(
+        self.download = async_to_custom_streamed_response_wrapper(
             bulk.download,
+            AsyncStreamedBinaryAPIResponse,
         )
