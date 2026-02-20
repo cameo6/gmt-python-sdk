@@ -75,8 +75,6 @@ class Statistics(BaseModel):
 
 
 class ProfileRetrieveResponse(BaseModel):
-    """Successful response."""
-
     id: str
     """User Database ID"""
 
