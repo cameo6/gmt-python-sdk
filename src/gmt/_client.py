@@ -94,30 +94,67 @@ class Gmt(SyncAPIClient):
 
     @cached_property
     def service(self) -> ServiceResource:
+        """Service endpoints for API health checks."""
         from .resources.service import ServiceResource
 
         return ServiceResource(self)
 
     @cached_property
     def accounts(self) -> AccountsResource:
+        """Browse and purchase Telegram accounts.
+
+        **Endpoints overview:**
+        - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+        - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+        - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+        **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+        """
         from .resources.accounts import AccountsResource
 
         return AccountsResource(self)
 
     @cached_property
     def profile(self) -> ProfileResource:
+        """User profile management."""
         from .resources.profile import ProfileResource
 
         return ProfileResource(self)
 
     @cached_property
     def purchases(self) -> PurchasesResource:
+        """Purchase history and management."""
         from .resources.purchases import PurchasesResource
 
         return PurchasesResource(self)
 
     @cached_property
     def webhooks(self) -> WebhooksResource:
+        """Webhook testing and documentation.
+
+        ## Webhook Payload Types
+
+        When you provide `callback_url` in `POST /purchases/:id/request-code`, your endpoint will receive one of the following payloads:
+
+        - **WebhookSuccessPayload** — sent when verification code is successfully retrieved
+        - **WebhookFailedPayload** — sent when code retrieval fails after all retry attempts
+
+        When you provide `callback_url` in `POST /purchases/bulk`, your endpoint will receive:
+
+        - **WebhookBulkReadyPayload** — sent when bulk archive is ready
+
+        See the **Models** section below for detailed payload structure.
+
+        ## Requirements
+
+        - Your endpoint **must return HTTP 200** to acknowledge receipt
+        - Response timeout: **5 seconds**
+        - Failed deliveries are retried up to **3 times** (immediately, after 10s, after 30s)
+
+        ## Testing
+
+        Use `POST /v1/webhooks/test` to verify your endpoint. Get a temporary test URL at https://webhook.site
+        """
         from .resources.webhooks import WebhooksResource
 
         return WebhooksResource(self)
@@ -290,30 +327,67 @@ class AsyncGmt(AsyncAPIClient):
 
     @cached_property
     def service(self) -> AsyncServiceResource:
+        """Service endpoints for API health checks."""
         from .resources.service import AsyncServiceResource
 
         return AsyncServiceResource(self)
 
     @cached_property
     def accounts(self) -> AsyncAccountsResource:
+        """Browse and purchase Telegram accounts.
+
+        **Endpoints overview:**
+        - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+        - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+        - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+        **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+        """
         from .resources.accounts import AsyncAccountsResource
 
         return AsyncAccountsResource(self)
 
     @cached_property
     def profile(self) -> AsyncProfileResource:
+        """User profile management."""
         from .resources.profile import AsyncProfileResource
 
         return AsyncProfileResource(self)
 
     @cached_property
     def purchases(self) -> AsyncPurchasesResource:
+        """Purchase history and management."""
         from .resources.purchases import AsyncPurchasesResource
 
         return AsyncPurchasesResource(self)
 
     @cached_property
     def webhooks(self) -> AsyncWebhooksResource:
+        """Webhook testing and documentation.
+
+        ## Webhook Payload Types
+
+        When you provide `callback_url` in `POST /purchases/:id/request-code`, your endpoint will receive one of the following payloads:
+
+        - **WebhookSuccessPayload** — sent when verification code is successfully retrieved
+        - **WebhookFailedPayload** — sent when code retrieval fails after all retry attempts
+
+        When you provide `callback_url` in `POST /purchases/bulk`, your endpoint will receive:
+
+        - **WebhookBulkReadyPayload** — sent when bulk archive is ready
+
+        See the **Models** section below for detailed payload structure.
+
+        ## Requirements
+
+        - Your endpoint **must return HTTP 200** to acknowledge receipt
+        - Response timeout: **5 seconds**
+        - Failed deliveries are retried up to **3 times** (immediately, after 10s, after 30s)
+
+        ## Testing
+
+        Use `POST /v1/webhooks/test` to verify your endpoint. Get a temporary test URL at https://webhook.site
+        """
         from .resources.webhooks import AsyncWebhooksResource
 
         return AsyncWebhooksResource(self)
@@ -441,30 +515,67 @@ class GmtWithRawResponse:
 
     @cached_property
     def service(self) -> service.ServiceResourceWithRawResponse:
+        """Service endpoints for API health checks."""
         from .resources.service import ServiceResourceWithRawResponse
 
         return ServiceResourceWithRawResponse(self._client.service)
 
     @cached_property
     def accounts(self) -> accounts.AccountsResourceWithRawResponse:
+        """Browse and purchase Telegram accounts.
+
+        **Endpoints overview:**
+        - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+        - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+        - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+        **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+        """
         from .resources.accounts import AccountsResourceWithRawResponse
 
         return AccountsResourceWithRawResponse(self._client.accounts)
 
     @cached_property
     def profile(self) -> profile.ProfileResourceWithRawResponse:
+        """User profile management."""
         from .resources.profile import ProfileResourceWithRawResponse
 
         return ProfileResourceWithRawResponse(self._client.profile)
 
     @cached_property
     def purchases(self) -> purchases.PurchasesResourceWithRawResponse:
+        """Purchase history and management."""
         from .resources.purchases import PurchasesResourceWithRawResponse
 
         return PurchasesResourceWithRawResponse(self._client.purchases)
 
     @cached_property
     def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
+        """Webhook testing and documentation.
+
+        ## Webhook Payload Types
+
+        When you provide `callback_url` in `POST /purchases/:id/request-code`, your endpoint will receive one of the following payloads:
+
+        - **WebhookSuccessPayload** — sent when verification code is successfully retrieved
+        - **WebhookFailedPayload** — sent when code retrieval fails after all retry attempts
+
+        When you provide `callback_url` in `POST /purchases/bulk`, your endpoint will receive:
+
+        - **WebhookBulkReadyPayload** — sent when bulk archive is ready
+
+        See the **Models** section below for detailed payload structure.
+
+        ## Requirements
+
+        - Your endpoint **must return HTTP 200** to acknowledge receipt
+        - Response timeout: **5 seconds**
+        - Failed deliveries are retried up to **3 times** (immediately, after 10s, after 30s)
+
+        ## Testing
+
+        Use `POST /v1/webhooks/test` to verify your endpoint. Get a temporary test URL at https://webhook.site
+        """
         from .resources.webhooks import WebhooksResourceWithRawResponse
 
         return WebhooksResourceWithRawResponse(self._client.webhooks)
@@ -478,30 +589,67 @@ class AsyncGmtWithRawResponse:
 
     @cached_property
     def service(self) -> service.AsyncServiceResourceWithRawResponse:
+        """Service endpoints for API health checks."""
         from .resources.service import AsyncServiceResourceWithRawResponse
 
         return AsyncServiceResourceWithRawResponse(self._client.service)
 
     @cached_property
     def accounts(self) -> accounts.AsyncAccountsResourceWithRawResponse:
+        """Browse and purchase Telegram accounts.
+
+        **Endpoints overview:**
+        - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+        - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+        - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+        **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+        """
         from .resources.accounts import AsyncAccountsResourceWithRawResponse
 
         return AsyncAccountsResourceWithRawResponse(self._client.accounts)
 
     @cached_property
     def profile(self) -> profile.AsyncProfileResourceWithRawResponse:
+        """User profile management."""
         from .resources.profile import AsyncProfileResourceWithRawResponse
 
         return AsyncProfileResourceWithRawResponse(self._client.profile)
 
     @cached_property
     def purchases(self) -> purchases.AsyncPurchasesResourceWithRawResponse:
+        """Purchase history and management."""
         from .resources.purchases import AsyncPurchasesResourceWithRawResponse
 
         return AsyncPurchasesResourceWithRawResponse(self._client.purchases)
 
     @cached_property
     def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
+        """Webhook testing and documentation.
+
+        ## Webhook Payload Types
+
+        When you provide `callback_url` in `POST /purchases/:id/request-code`, your endpoint will receive one of the following payloads:
+
+        - **WebhookSuccessPayload** — sent when verification code is successfully retrieved
+        - **WebhookFailedPayload** — sent when code retrieval fails after all retry attempts
+
+        When you provide `callback_url` in `POST /purchases/bulk`, your endpoint will receive:
+
+        - **WebhookBulkReadyPayload** — sent when bulk archive is ready
+
+        See the **Models** section below for detailed payload structure.
+
+        ## Requirements
+
+        - Your endpoint **must return HTTP 200** to acknowledge receipt
+        - Response timeout: **5 seconds**
+        - Failed deliveries are retried up to **3 times** (immediately, after 10s, after 30s)
+
+        ## Testing
+
+        Use `POST /v1/webhooks/test` to verify your endpoint. Get a temporary test URL at https://webhook.site
+        """
         from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
 
         return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
@@ -515,30 +663,67 @@ class GmtWithStreamedResponse:
 
     @cached_property
     def service(self) -> service.ServiceResourceWithStreamingResponse:
+        """Service endpoints for API health checks."""
         from .resources.service import ServiceResourceWithStreamingResponse
 
         return ServiceResourceWithStreamingResponse(self._client.service)
 
     @cached_property
     def accounts(self) -> accounts.AccountsResourceWithStreamingResponse:
+        """Browse and purchase Telegram accounts.
+
+        **Endpoints overview:**
+        - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+        - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+        - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+        **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+        """
         from .resources.accounts import AccountsResourceWithStreamingResponse
 
         return AccountsResourceWithStreamingResponse(self._client.accounts)
 
     @cached_property
     def profile(self) -> profile.ProfileResourceWithStreamingResponse:
+        """User profile management."""
         from .resources.profile import ProfileResourceWithStreamingResponse
 
         return ProfileResourceWithStreamingResponse(self._client.profile)
 
     @cached_property
     def purchases(self) -> purchases.PurchasesResourceWithStreamingResponse:
+        """Purchase history and management."""
         from .resources.purchases import PurchasesResourceWithStreamingResponse
 
         return PurchasesResourceWithStreamingResponse(self._client.purchases)
 
     @cached_property
     def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
+        """Webhook testing and documentation.
+
+        ## Webhook Payload Types
+
+        When you provide `callback_url` in `POST /purchases/:id/request-code`, your endpoint will receive one of the following payloads:
+
+        - **WebhookSuccessPayload** — sent when verification code is successfully retrieved
+        - **WebhookFailedPayload** — sent when code retrieval fails after all retry attempts
+
+        When you provide `callback_url` in `POST /purchases/bulk`, your endpoint will receive:
+
+        - **WebhookBulkReadyPayload** — sent when bulk archive is ready
+
+        See the **Models** section below for detailed payload structure.
+
+        ## Requirements
+
+        - Your endpoint **must return HTTP 200** to acknowledge receipt
+        - Response timeout: **5 seconds**
+        - Failed deliveries are retried up to **3 times** (immediately, after 10s, after 30s)
+
+        ## Testing
+
+        Use `POST /v1/webhooks/test` to verify your endpoint. Get a temporary test URL at https://webhook.site
+        """
         from .resources.webhooks import WebhooksResourceWithStreamingResponse
 
         return WebhooksResourceWithStreamingResponse(self._client.webhooks)
@@ -552,30 +737,67 @@ class AsyncGmtWithStreamedResponse:
 
     @cached_property
     def service(self) -> service.AsyncServiceResourceWithStreamingResponse:
+        """Service endpoints for API health checks."""
         from .resources.service import AsyncServiceResourceWithStreamingResponse
 
         return AsyncServiceResourceWithStreamingResponse(self._client.service)
 
     @cached_property
     def accounts(self) -> accounts.AsyncAccountsResourceWithStreamingResponse:
+        """Browse and purchase Telegram accounts.
+
+        **Endpoints overview:**
+        - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+        - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+        - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+        **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+        """
         from .resources.accounts import AsyncAccountsResourceWithStreamingResponse
 
         return AsyncAccountsResourceWithStreamingResponse(self._client.accounts)
 
     @cached_property
     def profile(self) -> profile.AsyncProfileResourceWithStreamingResponse:
+        """User profile management."""
         from .resources.profile import AsyncProfileResourceWithStreamingResponse
 
         return AsyncProfileResourceWithStreamingResponse(self._client.profile)
 
     @cached_property
     def purchases(self) -> purchases.AsyncPurchasesResourceWithStreamingResponse:
+        """Purchase history and management."""
         from .resources.purchases import AsyncPurchasesResourceWithStreamingResponse
 
         return AsyncPurchasesResourceWithStreamingResponse(self._client.purchases)
 
     @cached_property
     def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
+        """Webhook testing and documentation.
+
+        ## Webhook Payload Types
+
+        When you provide `callback_url` in `POST /purchases/:id/request-code`, your endpoint will receive one of the following payloads:
+
+        - **WebhookSuccessPayload** — sent when verification code is successfully retrieved
+        - **WebhookFailedPayload** — sent when code retrieval fails after all retry attempts
+
+        When you provide `callback_url` in `POST /purchases/bulk`, your endpoint will receive:
+
+        - **WebhookBulkReadyPayload** — sent when bulk archive is ready
+
+        See the **Models** section below for detailed payload structure.
+
+        ## Requirements
+
+        - Your endpoint **must return HTTP 200** to acknowledge receipt
+        - Response timeout: **5 seconds**
+        - Failed deliveries are retried up to **3 times** (immediately, after 10s, after 30s)
+
+        ## Testing
+
+        Use `POST /v1/webhooks/test` to verify your endpoint. Get a temporary test URL at https://webhook.site
+        """
         from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
 
         return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)

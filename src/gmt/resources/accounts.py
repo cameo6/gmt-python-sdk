@@ -27,6 +27,16 @@ __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
 
 class AccountsResource(SyncAPIResource):
+    """Browse and purchase Telegram accounts.
+
+    **Endpoints overview:**
+    - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+    - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+    - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+    **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+    """
+
     @cached_property
     def with_raw_response(self) -> AccountsResourceWithRawResponse:
         """
@@ -239,6 +249,16 @@ class AccountsResource(SyncAPIResource):
 
 
 class AsyncAccountsResource(AsyncAPIResource):
+    """Browse and purchase Telegram accounts.
+
+    **Endpoints overview:**
+    - `GET /accounts/countries` — Public catalog with base prices (no auth required)
+    - `GET /accounts` — Personalized list with user's discounted prices (auth required)
+    - `GET /accounts/:country_code` — Detailed pricing breakdown with discount info (auth required)
+
+    **Pricing model.** Base prices are set per country. Authenticated users may receive a personal discount based on their purchase history (discount level). Use `/accounts/:country_code` to see the full price breakdown.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAccountsResourceWithRawResponse:
         """

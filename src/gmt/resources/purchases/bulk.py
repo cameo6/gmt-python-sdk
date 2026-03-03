@@ -31,6 +31,8 @@ __all__ = ["BulkResource", "AsyncBulkResource"]
 
 
 class BulkResource(SyncAPIResource):
+    """Purchase history and management."""
+
     @cached_property
     def with_raw_response(self) -> BulkResourceWithRawResponse:
         """
@@ -187,6 +189,8 @@ class BulkResource(SyncAPIResource):
 
 
 class AsyncBulkResource(AsyncAPIResource):
+    """Purchase history and management."""
+
     @cached_property
     def with_raw_response(self) -> AsyncBulkResourceWithRawResponse:
         """
