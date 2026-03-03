@@ -37,8 +37,11 @@ __all__ = ["PurchasesResource", "AsyncPurchasesResource"]
 
 
 class PurchasesResource(SyncAPIResource):
+    """Purchase history and management."""
+
     @cached_property
     def bulk(self) -> BulkResource:
+        """Purchase history and management."""
         return BulkResource(self._client)
 
     @cached_property
@@ -324,8 +327,11 @@ class PurchasesResource(SyncAPIResource):
 
 
 class AsyncPurchasesResource(AsyncAPIResource):
+    """Purchase history and management."""
+
     @cached_property
     def bulk(self) -> AsyncBulkResource:
+        """Purchase history and management."""
         return AsyncBulkResource(self._client)
 
     @cached_property
@@ -634,6 +640,7 @@ class PurchasesResourceWithRawResponse:
 
     @cached_property
     def bulk(self) -> BulkResourceWithRawResponse:
+        """Purchase history and management."""
         return BulkResourceWithRawResponse(self._purchases.bulk)
 
 
@@ -659,6 +666,7 @@ class AsyncPurchasesResourceWithRawResponse:
 
     @cached_property
     def bulk(self) -> AsyncBulkResourceWithRawResponse:
+        """Purchase history and management."""
         return AsyncBulkResourceWithRawResponse(self._purchases.bulk)
 
 
@@ -684,6 +692,7 @@ class PurchasesResourceWithStreamingResponse:
 
     @cached_property
     def bulk(self) -> BulkResourceWithStreamingResponse:
+        """Purchase history and management."""
         return BulkResourceWithStreamingResponse(self._purchases.bulk)
 
 
@@ -709,4 +718,5 @@ class AsyncPurchasesResourceWithStreamingResponse:
 
     @cached_property
     def bulk(self) -> AsyncBulkResourceWithStreamingResponse:
+        """Purchase history and management."""
         return AsyncBulkResourceWithStreamingResponse(self._purchases.bulk)

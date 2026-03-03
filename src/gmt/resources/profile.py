@@ -25,6 +25,8 @@ __all__ = ["ProfileResource", "AsyncProfileResource"]
 
 
 class ProfileResource(SyncAPIResource):
+    """User profile management."""
+
     @cached_property
     def with_raw_response(self) -> ProfileResourceWithRawResponse:
         """
@@ -161,6 +163,8 @@ class ProfileResource(SyncAPIResource):
 
 
 class AsyncProfileResource(AsyncAPIResource):
+    """User profile management."""
+
     @cached_property
     def with_raw_response(self) -> AsyncProfileResourceWithRawResponse:
         """
