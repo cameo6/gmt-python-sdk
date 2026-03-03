@@ -21,6 +21,8 @@ __all__ = ["ServiceResource", "AsyncServiceResource"]
 
 
 class ServiceResource(SyncAPIResource):
+    """Service endpoints for API health checks."""
+
     @cached_property
     def with_raw_response(self) -> ServiceResourceWithRawResponse:
         """
@@ -80,6 +82,8 @@ class ServiceResource(SyncAPIResource):
 
 
 class AsyncServiceResource(AsyncAPIResource):
+    """Service endpoints for API health checks."""
+
     @cached_property
     def with_raw_response(self) -> AsyncServiceResourceWithRawResponse:
         """
