@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.24.1 (2026-03-17)
+
+Full Changelog: [v0.24.0...v0.24.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.24.0...v0.24.1)
+
+### Bug Fixes
+
+* **pydantic:** do not pass `by_alias` unless set ([3d7f2bc](https://github.com/cameo6/gmt-python-sdk/commit/3d7f2bc45271fa41ecbe0b08cc82b3ab10b8a695))
+
+
+### Chores
+
+* **ci:** bump uv version ([b3c966d](https://github.com/cameo6/gmt-python-sdk/commit/b3c966d2b7a95389877fd001e8ab7a3cdfc987ff))
+* **ci:** skip uploading artifacts on stainless-internal branches ([08dc917](https://github.com/cameo6/gmt-python-sdk/commit/08dc91786204947990f392f73fc82bb4cfb3441c))
+* **internal:** add request options to SSE classes ([8bfa3bd](https://github.com/cameo6/gmt-python-sdk/commit/8bfa3bd7fc05cb67e742b06e715b646a76b4d59a))
+* **internal:** codegen related update ([c3fd234](https://github.com/cameo6/gmt-python-sdk/commit/c3fd2343921fad94a00198ca01f42e389c685d72))
+* **internal:** make `test_proxy_environment_variables` more resilient ([1c0e14a](https://github.com/cameo6/gmt-python-sdk/commit/1c0e14a892b21ec457328c4bc9fd4395ef3994f8))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([928ca24](https://github.com/cameo6/gmt-python-sdk/commit/928ca2483867abd28f3d9276270860ce979c837b))
+
 ## 0.24.0 (2026-02-20)
 
 Full Changelog: [v0.23.0...v0.24.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.23.0...v0.24.0)
