@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.24.2 (2026-03-17)
+
+Full Changelog: [v0.24.1...v0.24.2](https://github.com/cameo6/gmt-python-sdk/compare/v0.24.1...v0.24.2)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([410b34f](https://github.com/cameo6/gmt-python-sdk/commit/410b34ffd6285b8a671b284af7fa6df45de529bb))
+
 ## 0.24.1 (2026-03-17)
 
 Full Changelog: [v0.24.0...v0.24.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.24.0...v0.24.1)
