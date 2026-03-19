@@ -5,15 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = [
-    "ProfileRetrieveResponse",
-    "Balance",
-    "Discount",
-    "Referral",
-    "ReferralBalance",
-    "ReferralProfit",
-    "Statistics",
-]
+__all__ = ["ProfileRetrieveResponse", "Balance", "Discount", "Statistics"]
 
 
 class Balance(BaseModel):
@@ -30,43 +22,6 @@ class Discount(BaseModel):
 
     percent: float
     """Discount percentage."""
-
-
-class ReferralBalance(BaseModel):
-    """Current referral balance available for withdrawal."""
-
-    amount: str
-    """Monetary amount as a string with up to 2 decimal places."""
-
-    currency_code: str
-    """ISO 4217 currency code."""
-
-
-class ReferralProfit(BaseModel):
-    """Total lifetime earnings from referral commissions."""
-
-    amount: str
-    """Monetary amount as a string with up to 2 decimal places."""
-
-    currency_code: str
-    """ISO 4217 currency code."""
-
-
-class Referral(BaseModel):
-    balance: ReferralBalance
-    """Current referral balance available for withdrawal."""
-
-    level: Literal["bronze", "silver", "gold", "platinum"]
-    """Current referral program level: bronze, silver, gold, platinum."""
-
-    percent: float
-    """Referral commission percentage."""
-
-    profit: ReferralProfit
-    """Total lifetime earnings from referral commissions."""
-
-    referrals_count: int
-    """Total number of users invited through referral link."""
 
 
 class Statistics(BaseModel):
@@ -87,8 +42,6 @@ class ProfileRetrieveResponse(BaseModel):
 
     login: Optional[str] = None
     """Web username"""
-
-    referral: Referral
 
     statistics: Statistics
 
