@@ -32,10 +32,10 @@ from ._base_client import (
 
 if TYPE_CHECKING:
     from .resources import profile, service, accounts, webhooks, purchases
-    from .resources.profile import ProfileResource, AsyncProfileResource
     from .resources.service import ServiceResource, AsyncServiceResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
+    from .resources.profile.profile import ProfileResource, AsyncProfileResource
     from .resources.purchases.purchases import PurchasesResource, AsyncPurchasesResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Gmt", "AsyncGmt", "Client", "AsyncClient"]
