@@ -15,14 +15,6 @@ from .discount import (
     DiscountResourceWithStreamingResponse,
     AsyncDiscountResourceWithStreamingResponse,
 )
-from .referral import (
-    ReferralResource,
-    AsyncReferralResource,
-    ReferralResourceWithRawResponse,
-    AsyncReferralResourceWithRawResponse,
-    ReferralResourceWithStreamingResponse,
-    AsyncReferralResourceWithStreamingResponse,
-)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -32,6 +24,14 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from .referral.referral import (
+    ReferralResource,
+    AsyncReferralResource,
+    ReferralResourceWithRawResponse,
+    AsyncReferralResourceWithRawResponse,
+    ReferralResourceWithStreamingResponse,
+    AsyncReferralResourceWithStreamingResponse,
+)
 from ...types.profile_retrieve_response import ProfileRetrieveResponse
 from ...types.profile_change_login_response import ProfileChangeLoginResponse
 from ...types.profile_change_password_response import ProfileChangePasswordResponse

@@ -67,8 +67,20 @@ from gmt.types.profile import ReferralRetrieveResponse, ReferralTransferBalanceR
 
 Methods:
 
-- <code title="get /v1/profile/referral">client.profile.referral.<a href="./src/gmt/resources/profile/referral.py">retrieve</a>() -> <a href="./src/gmt/types/profile/referral_retrieve_response.py">ReferralRetrieveResponse</a></code>
-- <code title="post /v1/profile/referral/transfer-balance">client.profile.referral.<a href="./src/gmt/resources/profile/referral.py">transfer_balance</a>(\*\*<a href="src/gmt/types/profile/referral_transfer_balance_params.py">params</a>) -> <a href="./src/gmt/types/profile/referral_transfer_balance_response.py">ReferralTransferBalanceResponse</a></code>
+- <code title="get /v1/profile/referral">client.profile.referral.<a href="./src/gmt/resources/profile/referral/referral.py">retrieve</a>() -> <a href="./src/gmt/types/profile/referral_retrieve_response.py">ReferralRetrieveResponse</a></code>
+- <code title="post /v1/profile/referral/transfer-balance">client.profile.referral.<a href="./src/gmt/resources/profile/referral/referral.py">transfer_balance</a>(\*\*<a href="src/gmt/types/profile/referral_transfer_balance_params.py">params</a>) -> <a href="./src/gmt/types/profile/referral_transfer_balance_response.py">ReferralTransferBalanceResponse</a></code>
+
+### Transaction
+
+Types:
+
+```python
+from gmt.types.profile.referral import TransactionListResponse
+```
+
+Methods:
+
+- <code title="get /v1/profile/referral/transaction">client.profile.referral.transaction.<a href="./src/gmt/resources/profile/referral/transaction.py">list</a>(\*\*<a href="src/gmt/types/profile/referral/transaction_list_params.py">params</a>) -> <a href="./src/gmt/types/profile/referral/transaction_list_response.py">SyncPageNumber[TransactionListResponse]</a></code>
 
 # Purchases
 
