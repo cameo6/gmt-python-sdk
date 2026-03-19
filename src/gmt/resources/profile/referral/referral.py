@@ -4,26 +4,39 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._utils import maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._utils import maybe_transform, async_maybe_transform
+from ...._compat import cached_property
+from .transaction import (
+    TransactionResource,
+    AsyncTransactionResource,
+    TransactionResourceWithRawResponse,
+    AsyncTransactionResourceWithRawResponse,
+    TransactionResourceWithStreamingResponse,
+    AsyncTransactionResourceWithStreamingResponse,
+)
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.profile import referral_transfer_balance_params
-from ...types.profile.referral_retrieve_response import ReferralRetrieveResponse
-from ...types.profile.referral_transfer_balance_response import ReferralTransferBalanceResponse
+from ...._base_client import make_request_options
+from ....types.profile import referral_transfer_balance_params
+from ....types.profile.referral_retrieve_response import ReferralRetrieveResponse
+from ....types.profile.referral_transfer_balance_response import ReferralTransferBalanceResponse
 
 __all__ = ["ReferralResource", "AsyncReferralResource"]
 
 
 class ReferralResource(SyncAPIResource):
     """User profile management."""
+
+    @cached_property
+    def transaction(self) -> TransactionResource:
+        """User profile management."""
+        return TransactionResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ReferralResourceWithRawResponse:
@@ -103,6 +116,11 @@ class ReferralResource(SyncAPIResource):
 
 class AsyncReferralResource(AsyncAPIResource):
     """User profile management."""
+
+    @cached_property
+    def transaction(self) -> AsyncTransactionResource:
+        """User profile management."""
+        return AsyncTransactionResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncReferralResourceWithRawResponse:
@@ -193,6 +211,11 @@ class ReferralResourceWithRawResponse:
             referral.transfer_balance,
         )
 
+    @cached_property
+    def transaction(self) -> TransactionResourceWithRawResponse:
+        """User profile management."""
+        return TransactionResourceWithRawResponse(self._referral.transaction)
+
 
 class AsyncReferralResourceWithRawResponse:
     def __init__(self, referral: AsyncReferralResource) -> None:
@@ -204,6 +227,11 @@ class AsyncReferralResourceWithRawResponse:
         self.transfer_balance = async_to_raw_response_wrapper(
             referral.transfer_balance,
         )
+
+    @cached_property
+    def transaction(self) -> AsyncTransactionResourceWithRawResponse:
+        """User profile management."""
+        return AsyncTransactionResourceWithRawResponse(self._referral.transaction)
 
 
 class ReferralResourceWithStreamingResponse:
@@ -217,6 +245,11 @@ class ReferralResourceWithStreamingResponse:
             referral.transfer_balance,
         )
 
+    @cached_property
+    def transaction(self) -> TransactionResourceWithStreamingResponse:
+        """User profile management."""
+        return TransactionResourceWithStreamingResponse(self._referral.transaction)
+
 
 class AsyncReferralResourceWithStreamingResponse:
     def __init__(self, referral: AsyncReferralResource) -> None:
@@ -228,3 +261,8 @@ class AsyncReferralResourceWithStreamingResponse:
         self.transfer_balance = async_to_streamed_response_wrapper(
             referral.transfer_balance,
         )
+
+    @cached_property
+    def transaction(self) -> AsyncTransactionResourceWithStreamingResponse:
+        """User profile management."""
+        return AsyncTransactionResourceWithStreamingResponse(self._referral.transaction)
