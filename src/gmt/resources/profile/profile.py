@@ -4,28 +4,54 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import profile_change_login_params, profile_change_password_params
-from .._types import Body, Query, Headers, NotGiven, not_given
-from .._utils import maybe_transform, async_maybe_transform
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ...types import profile_change_login_params, profile_change_password_params
+from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from .discount import (
+    DiscountResource,
+    AsyncDiscountResource,
+    DiscountResourceWithRawResponse,
+    AsyncDiscountResourceWithRawResponse,
+    DiscountResourceWithStreamingResponse,
+    AsyncDiscountResourceWithStreamingResponse,
+)
+from .referral import (
+    ReferralResource,
+    AsyncReferralResource,
+    ReferralResourceWithRawResponse,
+    AsyncReferralResourceWithRawResponse,
+    ReferralResourceWithStreamingResponse,
+    AsyncReferralResourceWithStreamingResponse,
+)
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.profile_retrieve_response import ProfileRetrieveResponse
-from ..types.profile_change_login_response import ProfileChangeLoginResponse
-from ..types.profile_change_password_response import ProfileChangePasswordResponse
-from ..types.profile_unbind_telegram_response import ProfileUnbindTelegramResponse
+from ..._base_client import make_request_options
+from ...types.profile_retrieve_response import ProfileRetrieveResponse
+from ...types.profile_change_login_response import ProfileChangeLoginResponse
+from ...types.profile_change_password_response import ProfileChangePasswordResponse
+from ...types.profile_unbind_telegram_response import ProfileUnbindTelegramResponse
 
 __all__ = ["ProfileResource", "AsyncProfileResource"]
 
 
 class ProfileResource(SyncAPIResource):
     """User profile management."""
+
+    @cached_property
+    def discount(self) -> DiscountResource:
+        """User profile management."""
+        return DiscountResource(self._client)
+
+    @cached_property
+    def referral(self) -> ReferralResource:
+        """User profile management."""
+        return ReferralResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ProfileResourceWithRawResponse:
@@ -164,6 +190,16 @@ class ProfileResource(SyncAPIResource):
 
 class AsyncProfileResource(AsyncAPIResource):
     """User profile management."""
+
+    @cached_property
+    def discount(self) -> AsyncDiscountResource:
+        """User profile management."""
+        return AsyncDiscountResource(self._client)
+
+    @cached_property
+    def referral(self) -> AsyncReferralResource:
+        """User profile management."""
+        return AsyncReferralResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncProfileResourceWithRawResponse:
@@ -319,6 +355,16 @@ class ProfileResourceWithRawResponse:
             profile.unbind_telegram,
         )
 
+    @cached_property
+    def discount(self) -> DiscountResourceWithRawResponse:
+        """User profile management."""
+        return DiscountResourceWithRawResponse(self._profile.discount)
+
+    @cached_property
+    def referral(self) -> ReferralResourceWithRawResponse:
+        """User profile management."""
+        return ReferralResourceWithRawResponse(self._profile.referral)
+
 
 class AsyncProfileResourceWithRawResponse:
     def __init__(self, profile: AsyncProfileResource) -> None:
@@ -336,6 +382,16 @@ class AsyncProfileResourceWithRawResponse:
         self.unbind_telegram = async_to_raw_response_wrapper(
             profile.unbind_telegram,
         )
+
+    @cached_property
+    def discount(self) -> AsyncDiscountResourceWithRawResponse:
+        """User profile management."""
+        return AsyncDiscountResourceWithRawResponse(self._profile.discount)
+
+    @cached_property
+    def referral(self) -> AsyncReferralResourceWithRawResponse:
+        """User profile management."""
+        return AsyncReferralResourceWithRawResponse(self._profile.referral)
 
 
 class ProfileResourceWithStreamingResponse:
@@ -355,6 +411,16 @@ class ProfileResourceWithStreamingResponse:
             profile.unbind_telegram,
         )
 
+    @cached_property
+    def discount(self) -> DiscountResourceWithStreamingResponse:
+        """User profile management."""
+        return DiscountResourceWithStreamingResponse(self._profile.discount)
+
+    @cached_property
+    def referral(self) -> ReferralResourceWithStreamingResponse:
+        """User profile management."""
+        return ReferralResourceWithStreamingResponse(self._profile.referral)
+
 
 class AsyncProfileResourceWithStreamingResponse:
     def __init__(self, profile: AsyncProfileResource) -> None:
@@ -372,3 +438,13 @@ class AsyncProfileResourceWithStreamingResponse:
         self.unbind_telegram = async_to_streamed_response_wrapper(
             profile.unbind_telegram,
         )
+
+    @cached_property
+    def discount(self) -> AsyncDiscountResourceWithStreamingResponse:
+        """User profile management."""
+        return AsyncDiscountResourceWithStreamingResponse(self._profile.discount)
+
+    @cached_property
+    def referral(self) -> AsyncReferralResourceWithStreamingResponse:
+        """User profile management."""
+        return AsyncReferralResourceWithStreamingResponse(self._profile.referral)
