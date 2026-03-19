@@ -40,10 +40,35 @@ from gmt.types import (
 
 Methods:
 
-- <code title="get /v1/profile/">client.profile.<a href="./src/gmt/resources/profile.py">retrieve</a>() -> <a href="./src/gmt/types/profile_retrieve_response.py">ProfileRetrieveResponse</a></code>
-- <code title="patch /v1/profile/change-login">client.profile.<a href="./src/gmt/resources/profile.py">change_login</a>(\*\*<a href="src/gmt/types/profile_change_login_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_login_response.py">ProfileChangeLoginResponse</a></code>
-- <code title="patch /v1/profile/change-password">client.profile.<a href="./src/gmt/resources/profile.py">change_password</a>(\*\*<a href="src/gmt/types/profile_change_password_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_password_response.py">ProfileChangePasswordResponse</a></code>
-- <code title="patch /v1/profile/unbind-telegram">client.profile.<a href="./src/gmt/resources/profile.py">unbind_telegram</a>() -> <a href="./src/gmt/types/profile_unbind_telegram_response.py">ProfileUnbindTelegramResponse</a></code>
+- <code title="get /v1/profile/">client.profile.<a href="./src/gmt/resources/profile/profile.py">retrieve</a>() -> <a href="./src/gmt/types/profile_retrieve_response.py">ProfileRetrieveResponse</a></code>
+- <code title="patch /v1/profile/change-login">client.profile.<a href="./src/gmt/resources/profile/profile.py">change_login</a>(\*\*<a href="src/gmt/types/profile_change_login_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_login_response.py">ProfileChangeLoginResponse</a></code>
+- <code title="patch /v1/profile/change-password">client.profile.<a href="./src/gmt/resources/profile/profile.py">change_password</a>(\*\*<a href="src/gmt/types/profile_change_password_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_password_response.py">ProfileChangePasswordResponse</a></code>
+- <code title="patch /v1/profile/unbind-telegram">client.profile.<a href="./src/gmt/resources/profile/profile.py">unbind_telegram</a>() -> <a href="./src/gmt/types/profile_unbind_telegram_response.py">ProfileUnbindTelegramResponse</a></code>
+
+## Discount
+
+Types:
+
+```python
+from gmt.types.profile import DiscountRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /v1/profile/discount">client.profile.discount.<a href="./src/gmt/resources/profile/discount.py">retrieve</a>() -> <a href="./src/gmt/types/profile/discount_retrieve_response.py">DiscountRetrieveResponse</a></code>
+
+## Referral
+
+Types:
+
+```python
+from gmt.types.profile import ReferralRetrieveResponse, ReferralTransferBalanceResponse
+```
+
+Methods:
+
+- <code title="get /v1/profile/referral">client.profile.referral.<a href="./src/gmt/resources/profile/referral.py">retrieve</a>() -> <a href="./src/gmt/types/profile/referral_retrieve_response.py">ReferralRetrieveResponse</a></code>
+- <code title="post /v1/profile/referral/transfer-balance">client.profile.referral.<a href="./src/gmt/resources/profile/referral.py">transfer_balance</a>(\*\*<a href="src/gmt/types/profile/referral_transfer_balance_params.py">params</a>) -> <a href="./src/gmt/types/profile/referral_transfer_balance_response.py">ReferralTransferBalanceResponse</a></code>
 
 # Purchases
 
