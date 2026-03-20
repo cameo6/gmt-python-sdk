@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.27.1 (2026-03-20)
+
+Full Changelog: [v0.27.0...v0.27.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.27.0...v0.27.1)
+
+### Bug Fixes
+
+* sanitize endpoint path params ([6d2a959](https://github.com/cameo6/gmt-python-sdk/commit/6d2a959bae599064b628dfeb5bb5069b337c0cdf))
+
 ## 0.27.0 (2026-03-19)
 
 Full Changelog: [v0.26.0...v0.27.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.26.0...v0.27.0)
