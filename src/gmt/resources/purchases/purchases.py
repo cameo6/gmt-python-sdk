@@ -16,7 +16,7 @@ from .bulk import (
 )
 from ...types import purchase_list_params, purchase_create_params, purchase_request_verification_code_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -141,7 +141,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            f"/v1/purchases/{purchase_id}",
+            path_template("/v1/purchases/{purchase_id}", purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -254,7 +254,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            f"/v1/purchases/{purchase_id}/refund",
+            path_template("/v1/purchases/{purchase_id}/refund", purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -314,7 +314,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            f"/v1/purchases/{purchase_id}/request-code",
+            path_template("/v1/purchases/{purchase_id}/request-code", purchase_id=purchase_id),
             body=maybe_transform(
                 {"callback_url": callback_url},
                 purchase_request_verification_code_params.PurchaseRequestVerificationCodeParams,
@@ -433,7 +433,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            f"/v1/purchases/{purchase_id}",
+            path_template("/v1/purchases/{purchase_id}", purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -546,7 +546,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            f"/v1/purchases/{purchase_id}/refund",
+            path_template("/v1/purchases/{purchase_id}/refund", purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -606,7 +606,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            f"/v1/purchases/{purchase_id}/request-code",
+            path_template("/v1/purchases/{purchase_id}/request-code", purchase_id=purchase_id),
             body=await async_maybe_transform(
                 {"callback_url": callback_url},
                 purchase_request_verification_code_params.PurchaseRequestVerificationCodeParams,
