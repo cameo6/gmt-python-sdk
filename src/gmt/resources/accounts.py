@@ -8,7 +8,7 @@ import httpx
 
 from ..types import account_list_params, account_list_countries_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import path_template, maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -100,7 +100,7 @@ class AccountsResource(SyncAPIResource):
         if not country_code:
             raise ValueError(f"Expected a non-empty value for `country_code` but received {country_code!r}")
         return self._get(
-            f"/v1/accounts/{country_code}",
+            path_template("/v1/accounts/{country_code}", country_code=country_code),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -322,7 +322,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         if not country_code:
             raise ValueError(f"Expected a non-empty value for `country_code` but received {country_code!r}")
         return await self._get(
-            f"/v1/accounts/{country_code}",
+            path_template("/v1/accounts/{country_code}", country_code=country_code),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
