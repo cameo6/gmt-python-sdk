@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 from ..._models import BaseModel
 
@@ -26,7 +27,7 @@ class CurrentLevelProgress(BaseModel):
 
 
 class CurrentLevel(BaseModel):
-    name: str
+    name: Literal["bronze", "silver", "gold", "platinum"]
     """Name of the current referral level"""
 
     percent: float
@@ -36,7 +37,7 @@ class CurrentLevel(BaseModel):
 
 
 class Level(BaseModel):
-    name: str
+    name: Literal["bronze", "silver", "gold", "platinum"]
     """Name of the referral level"""
 
     percent: float
@@ -66,7 +67,7 @@ class NextLevelRequirements(BaseModel):
 class NextLevel(BaseModel):
     """Next level information. Null if already at max level"""
 
-    name: str
+    name: Literal["bronze", "silver", "gold", "platinum"]
     """Name of the next referral level"""
 
     percent: float
