@@ -114,6 +114,7 @@ all_purchases = []
 for purchase in client.purchases.list(
     page=1,
     page_size=100,
+    sort="date_desc",
 ):
     # Do something with purchase here
     all_purchases.append(purchase)
@@ -135,6 +136,7 @@ async def main() -> None:
     async for purchase in client.purchases.list(
         page=1,
         page_size=100,
+        sort="date_desc",
     ):
         all_purchases.append(purchase)
     print(all_purchases)
@@ -149,6 +151,7 @@ Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get
 first_page = await client.purchases.list(
     page=1,
     page_size=100,
+    sort="date_desc",
 )
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
@@ -164,6 +167,7 @@ Or just work directly with the returned data:
 first_page = await client.purchases.list(
     page=1,
     page_size=100,
+    sort="date_desc",
 )
 
 print(f"page number: {first_page.pagination.current_page}")  # => "page number: 1"

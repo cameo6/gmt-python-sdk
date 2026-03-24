@@ -14,6 +14,9 @@ class PurchaseListParams(TypedDict, total=False):
     page_size: Required[int]
     """Number of items per page."""
 
+    sort: Required[Literal["date_asc", "date_desc"]]
+    """Sort purchases by creation date"""
+
     status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
     """
     **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
