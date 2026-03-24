@@ -153,6 +153,7 @@ class PurchasesResource(SyncAPIResource):
         *,
         page: int,
         page_size: int,
+        sort: Literal["date_asc", "date_desc"],
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -181,6 +182,8 @@ class PurchasesResource(SyncAPIResource):
           page: Page number.
 
           page_size: Number of items per page.
+
+          sort: Sort purchases by creation date
 
           status: **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
               request) or `ERROR` (provider failure). Any status can transition to `REFUND`
@@ -215,6 +218,7 @@ class PurchasesResource(SyncAPIResource):
                     {
                         "page": page,
                         "page_size": page_size,
+                        "sort": sort,
                         "status": status,
                     },
                     purchase_list_params.PurchaseListParams,
@@ -445,6 +449,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
         *,
         page: int,
         page_size: int,
+        sort: Literal["date_asc", "date_desc"],
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -473,6 +478,8 @@ class AsyncPurchasesResource(AsyncAPIResource):
           page: Page number.
 
           page_size: Number of items per page.
+
+          sort: Sort purchases by creation date
 
           status: **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
               request) or `ERROR` (provider failure). Any status can transition to `REFUND`
@@ -507,6 +514,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
                     {
                         "page": page,
                         "page_size": page_size,
+                        "sort": sort,
                         "status": status,
                     },
                     purchase_list_params.PurchaseListParams,

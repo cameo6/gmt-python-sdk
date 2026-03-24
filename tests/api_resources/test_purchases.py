@@ -98,6 +98,7 @@ class TestPurchases:
         purchase = client.purchases.list(
             page=1,
             page_size=50,
+            sort="date_desc",
         )
         assert_matches_type(SyncPageNumber[PurchaseListResponse], purchase, path=["response"])
 
@@ -107,6 +108,7 @@ class TestPurchases:
         purchase = client.purchases.list(
             page=1,
             page_size=50,
+            sort="date_desc",
             status="SUCCESS",
         )
         assert_matches_type(SyncPageNumber[PurchaseListResponse], purchase, path=["response"])
@@ -117,6 +119,7 @@ class TestPurchases:
         response = client.purchases.with_raw_response.list(
             page=1,
             page_size=50,
+            sort="date_desc",
         )
 
         assert response.is_closed is True
@@ -130,6 +133,7 @@ class TestPurchases:
         with client.purchases.with_streaming_response.list(
             page=1,
             page_size=50,
+            sort="date_desc",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -296,6 +300,7 @@ class TestAsyncPurchases:
         purchase = await async_client.purchases.list(
             page=1,
             page_size=50,
+            sort="date_desc",
         )
         assert_matches_type(AsyncPageNumber[PurchaseListResponse], purchase, path=["response"])
 
@@ -305,6 +310,7 @@ class TestAsyncPurchases:
         purchase = await async_client.purchases.list(
             page=1,
             page_size=50,
+            sort="date_desc",
             status="SUCCESS",
         )
         assert_matches_type(AsyncPageNumber[PurchaseListResponse], purchase, path=["response"])
@@ -315,6 +321,7 @@ class TestAsyncPurchases:
         response = await async_client.purchases.with_raw_response.list(
             page=1,
             page_size=50,
+            sort="date_desc",
         )
 
         assert response.is_closed is True
@@ -328,6 +335,7 @@ class TestAsyncPurchases:
         async with async_client.purchases.with_streaming_response.list(
             page=1,
             page_size=50,
+            sort="date_desc",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
