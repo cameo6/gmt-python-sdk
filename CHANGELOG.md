@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.30.0 (2026-03-27)
+
+Full Changelog: [v0.29.0...v0.30.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.29.0...v0.30.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([6ef35c9](https://github.com/cameo6/gmt-python-sdk/commit/6ef35c9cef6f411ca6850daa6ce74e7e4b3f6545))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([ee3a69f](https://github.com/cameo6/gmt-python-sdk/commit/ee3a69ff5c07780d08c5ca7a0607949219c2e314))
+
 ## 0.29.0 (2026-03-24)
 
 Full Changelog: [v0.28.0...v0.29.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.28.0...v0.29.0)
