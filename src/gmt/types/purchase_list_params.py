@@ -17,6 +17,12 @@ class PurchaseListParams(TypedDict, total=False):
     sort: Required[Literal["date_asc", "date_desc"]]
     """Sort purchases by creation date"""
 
+    phone_number: str
+    """Filter purchases by phone number fragment (partial match).
+
+    Example: '123' matches '+71234567890'.
+    """
+
     status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
     """
     **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
