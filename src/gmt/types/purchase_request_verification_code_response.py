@@ -98,6 +98,9 @@ class Purchase(BaseModel):
 
     display_name: PurchaseDisplayName
 
+    emoji: str
+    """Country flag emoji."""
+
     phone_number: Optional[str] = None
     """
     **E.164 International Format.** Phone number with country code prefix (e.g.,

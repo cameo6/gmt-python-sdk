@@ -154,6 +154,7 @@ class PurchasesResource(SyncAPIResource):
         page: int,
         page_size: int,
         sort: Literal["date_asc", "date_desc"],
+        phone_number: str | Omit = omit,
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -184,6 +185,9 @@ class PurchasesResource(SyncAPIResource):
           page_size: Number of items per page.
 
           sort: Sort purchases by creation date
+
+          phone_number: Filter purchases by phone number fragment (partial match). Example: '123'
+              matches '+71234567890'.
 
           status: **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
               request) or `ERROR` (provider failure). Any status can transition to `REFUND`
@@ -219,6 +223,7 @@ class PurchasesResource(SyncAPIResource):
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
+                        "phone_number": phone_number,
                         "status": status,
                     },
                     purchase_list_params.PurchaseListParams,
@@ -450,6 +455,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
         page: int,
         page_size: int,
         sort: Literal["date_asc", "date_desc"],
+        phone_number: str | Omit = omit,
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -480,6 +486,9 @@ class AsyncPurchasesResource(AsyncAPIResource):
           page_size: Number of items per page.
 
           sort: Sort purchases by creation date
+
+          phone_number: Filter purchases by phone number fragment (partial match). Example: '123'
+              matches '+71234567890'.
 
           status: **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
               request) or `ERROR` (provider failure). Any status can transition to `REFUND`
@@ -515,6 +524,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
+                        "phone_number": phone_number,
                         "status": status,
                     },
                     purchase_list_params.PurchaseListParams,
