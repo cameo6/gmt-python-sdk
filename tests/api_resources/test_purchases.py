@@ -109,6 +109,7 @@ class TestPurchases:
             page=1,
             page_size=50,
             sort="date_desc",
+            phone_number="123",
             status="SUCCESS",
         )
         assert_matches_type(SyncPageNumber[PurchaseListResponse], purchase, path=["response"])
@@ -311,6 +312,7 @@ class TestAsyncPurchases:
             page=1,
             page_size=50,
             sort="date_desc",
+            phone_number="123",
             status="SUCCESS",
         )
         assert_matches_type(AsyncPageNumber[PurchaseListResponse], purchase, path=["response"])
