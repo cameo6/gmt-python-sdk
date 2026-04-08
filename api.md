@@ -118,6 +118,39 @@ Methods:
 - <code title="get /v1/purchases/bulk/{purchase_id}">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchases/bulk_retrieve_response.py">BulkRetrieveResponse</a></code>
 - <code title="get /v1/purchases/bulk/{purchase_id}/download">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">download</a>(purchase_id) -> BinaryAPIResponse</code>
 
+# Telegram
+
+Types:
+
+```python
+from gmt.types import TelegramGetPremiumPriceResponse, TelegramGetStarsPriceResponse
+```
+
+Methods:
+
+- <code title="get /v1/telegram/premium">client.telegram.<a href="./src/gmt/resources/telegram/telegram.py">get_premium_price</a>(\*\*<a href="src/gmt/types/telegram_get_premium_price_params.py">params</a>) -> <a href="./src/gmt/types/telegram_get_premium_price_response.py">TelegramGetPremiumPriceResponse</a></code>
+- <code title="get /v1/telegram/stars">client.telegram.<a href="./src/gmt/resources/telegram/telegram.py">get_stars_price</a>(\*\*<a href="src/gmt/types/telegram_get_stars_price_params.py">params</a>) -> <a href="./src/gmt/types/telegram_get_stars_price_response.py">TelegramGetStarsPriceResponse</a></code>
+
+## Purchases
+
+Types:
+
+```python
+from gmt.types.telegram import (
+    PurchaseCreatePremiumResponse,
+    PurchaseCreateStarsResponse,
+    PurchaseListPremiumResponse,
+    PurchaseListStarsResponse,
+)
+```
+
+Methods:
+
+- <code title="post /v1/telegram/purchases/premium">client.telegram.purchases.<a href="./src/gmt/resources/telegram/purchases.py">create_premium</a>(\*\*<a href="src/gmt/types/telegram/purchase_create_premium_params.py">params</a>) -> <a href="./src/gmt/types/telegram/purchase_create_premium_response.py">PurchaseCreatePremiumResponse</a></code>
+- <code title="post /v1/telegram/purchases/stars">client.telegram.purchases.<a href="./src/gmt/resources/telegram/purchases.py">create_stars</a>(\*\*<a href="src/gmt/types/telegram/purchase_create_stars_params.py">params</a>) -> <a href="./src/gmt/types/telegram/purchase_create_stars_response.py">PurchaseCreateStarsResponse</a></code>
+- <code title="get /v1/telegram/purchases/premium">client.telegram.purchases.<a href="./src/gmt/resources/telegram/purchases.py">list_premium</a>(\*\*<a href="src/gmt/types/telegram/purchase_list_premium_params.py">params</a>) -> <a href="./src/gmt/types/telegram/purchase_list_premium_response.py">SyncPageNumber[PurchaseListPremiumResponse]</a></code>
+- <code title="get /v1/telegram/purchases/stars">client.telegram.purchases.<a href="./src/gmt/resources/telegram/purchases.py">list_stars</a>(\*\*<a href="src/gmt/types/telegram/purchase_list_stars_params.py">params</a>) -> <a href="./src/gmt/types/telegram/purchase_list_stars_response.py">SyncPageNumber[PurchaseListStarsResponse]</a></code>
+
 # Webhooks
 
 Types:
