@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.31.1 (2026-04-08)
+
+Full Changelog: [v0.31.0...v0.31.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.31.0...v0.31.1)
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([415dc38](https://github.com/cameo6/gmt-python-sdk/commit/415dc38641adccd20641ed50500cd22457a0b01f))
+
 ## 0.31.0 (2026-04-03)
 
 Full Changelog: [v0.30.0...v0.31.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.30.0...v0.31.0)
