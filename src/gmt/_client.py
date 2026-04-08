@@ -31,11 +31,12 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import profile, service, accounts, telegram, webhooks, purchases
+    from .resources import profile, service, accounts, telegram, webhooks, purchases, purchases_by_hash
     from .resources.service import ServiceResource, AsyncServiceResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
     from .resources.profile.profile import ProfileResource, AsyncProfileResource
+    from .resources.purchases_by_hash import PurchasesByHashResource, AsyncPurchasesByHashResource
     from .resources.telegram.telegram import TelegramResource, AsyncTelegramResource
     from .resources.purchases.purchases import PurchasesResource, AsyncPurchasesResource
 
@@ -128,6 +129,13 @@ class Gmt(SyncAPIClient):
         from .resources.purchases import PurchasesResource
 
         return PurchasesResource(self)
+
+    @cached_property
+    def purchases_by_hash(self) -> PurchasesByHashResource:
+        """Purchase history and management."""
+        from .resources.purchases_by_hash import PurchasesByHashResource
+
+        return PurchasesByHashResource(self)
 
     @cached_property
     def telegram(self) -> TelegramResource:
@@ -369,6 +377,13 @@ class AsyncGmt(AsyncAPIClient):
         return AsyncPurchasesResource(self)
 
     @cached_property
+    def purchases_by_hash(self) -> AsyncPurchasesByHashResource:
+        """Purchase history and management."""
+        from .resources.purchases_by_hash import AsyncPurchasesByHashResource
+
+        return AsyncPurchasesByHashResource(self)
+
+    @cached_property
     def telegram(self) -> AsyncTelegramResource:
         from .resources.telegram import AsyncTelegramResource
 
@@ -563,6 +578,13 @@ class GmtWithRawResponse:
         return PurchasesResourceWithRawResponse(self._client.purchases)
 
     @cached_property
+    def purchases_by_hash(self) -> purchases_by_hash.PurchasesByHashResourceWithRawResponse:
+        """Purchase history and management."""
+        from .resources.purchases_by_hash import PurchasesByHashResourceWithRawResponse
+
+        return PurchasesByHashResourceWithRawResponse(self._client.purchases_by_hash)
+
+    @cached_property
     def telegram(self) -> telegram.TelegramResourceWithRawResponse:
         from .resources.telegram import TelegramResourceWithRawResponse
 
@@ -641,6 +663,13 @@ class AsyncGmtWithRawResponse:
         from .resources.purchases import AsyncPurchasesResourceWithRawResponse
 
         return AsyncPurchasesResourceWithRawResponse(self._client.purchases)
+
+    @cached_property
+    def purchases_by_hash(self) -> purchases_by_hash.AsyncPurchasesByHashResourceWithRawResponse:
+        """Purchase history and management."""
+        from .resources.purchases_by_hash import AsyncPurchasesByHashResourceWithRawResponse
+
+        return AsyncPurchasesByHashResourceWithRawResponse(self._client.purchases_by_hash)
 
     @cached_property
     def telegram(self) -> telegram.AsyncTelegramResourceWithRawResponse:
@@ -723,6 +752,13 @@ class GmtWithStreamedResponse:
         return PurchasesResourceWithStreamingResponse(self._client.purchases)
 
     @cached_property
+    def purchases_by_hash(self) -> purchases_by_hash.PurchasesByHashResourceWithStreamingResponse:
+        """Purchase history and management."""
+        from .resources.purchases_by_hash import PurchasesByHashResourceWithStreamingResponse
+
+        return PurchasesByHashResourceWithStreamingResponse(self._client.purchases_by_hash)
+
+    @cached_property
     def telegram(self) -> telegram.TelegramResourceWithStreamingResponse:
         from .resources.telegram import TelegramResourceWithStreamingResponse
 
@@ -801,6 +837,13 @@ class AsyncGmtWithStreamedResponse:
         from .resources.purchases import AsyncPurchasesResourceWithStreamingResponse
 
         return AsyncPurchasesResourceWithStreamingResponse(self._client.purchases)
+
+    @cached_property
+    def purchases_by_hash(self) -> purchases_by_hash.AsyncPurchasesByHashResourceWithStreamingResponse:
+        """Purchase history and management."""
+        from .resources.purchases_by_hash import AsyncPurchasesByHashResourceWithStreamingResponse
+
+        return AsyncPurchasesByHashResourceWithStreamingResponse(self._client.purchases_by_hash)
 
     @cached_property
     def telegram(self) -> telegram.AsyncTelegramResourceWithStreamingResponse:
