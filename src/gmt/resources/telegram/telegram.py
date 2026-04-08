@@ -31,11 +31,8 @@ __all__ = ["TelegramResource", "AsyncTelegramResource"]
 
 
 class TelegramResource(SyncAPIResource):
-    """Stars and premium subscription for Telegram."""
-
     @cached_property
     def purchases(self) -> PurchasesResource:
-        """Stars and premium subscription for Telegram."""
         return PurchasesResource(self._client)
 
     @cached_property
@@ -135,11 +132,8 @@ class TelegramResource(SyncAPIResource):
 
 
 class AsyncTelegramResource(AsyncAPIResource):
-    """Stars and premium subscription for Telegram."""
-
     @cached_property
     def purchases(self) -> AsyncPurchasesResource:
-        """Stars and premium subscription for Telegram."""
         return AsyncPurchasesResource(self._client)
 
     @cached_property
@@ -253,7 +247,6 @@ class TelegramResourceWithRawResponse:
 
     @cached_property
     def purchases(self) -> PurchasesResourceWithRawResponse:
-        """Stars and premium subscription for Telegram."""
         return PurchasesResourceWithRawResponse(self._telegram.purchases)
 
 
@@ -270,7 +263,6 @@ class AsyncTelegramResourceWithRawResponse:
 
     @cached_property
     def purchases(self) -> AsyncPurchasesResourceWithRawResponse:
-        """Stars and premium subscription for Telegram."""
         return AsyncPurchasesResourceWithRawResponse(self._telegram.purchases)
 
 
@@ -287,7 +279,6 @@ class TelegramResourceWithStreamingResponse:
 
     @cached_property
     def purchases(self) -> PurchasesResourceWithStreamingResponse:
-        """Stars and premium subscription for Telegram."""
         return PurchasesResourceWithStreamingResponse(self._telegram.purchases)
 
 
@@ -304,5 +295,4 @@ class AsyncTelegramResourceWithStreamingResponse:
 
     @cached_property
     def purchases(self) -> AsyncPurchasesResourceWithStreamingResponse:
-        """Stars and premium subscription for Telegram."""
         return AsyncPurchasesResourceWithStreamingResponse(self._telegram.purchases)

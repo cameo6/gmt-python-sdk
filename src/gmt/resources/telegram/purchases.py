@@ -31,8 +31,6 @@ __all__ = ["PurchasesResource", "AsyncPurchasesResource"]
 
 
 class PurchasesResource(SyncAPIResource):
-    """Stars and premium subscription for Telegram."""
-
     @cached_property
     def with_raw_response(self) -> PurchasesResourceWithRawResponse:
         """
@@ -239,8 +237,6 @@ class PurchasesResource(SyncAPIResource):
 
 
 class AsyncPurchasesResource(AsyncAPIResource):
-    """Stars and premium subscription for Telegram."""
-
     @cached_property
     def with_raw_response(self) -> AsyncPurchasesResourceWithRawResponse:
         """

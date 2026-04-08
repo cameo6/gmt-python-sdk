@@ -131,7 +131,6 @@ class Gmt(SyncAPIClient):
 
     @cached_property
     def telegram(self) -> TelegramResource:
-        """Stars and premium subscription for Telegram."""
         from .resources.telegram import TelegramResource
 
         return TelegramResource(self)
@@ -371,7 +370,6 @@ class AsyncGmt(AsyncAPIClient):
 
     @cached_property
     def telegram(self) -> AsyncTelegramResource:
-        """Stars and premium subscription for Telegram."""
         from .resources.telegram import AsyncTelegramResource
 
         return AsyncTelegramResource(self)
@@ -566,7 +564,6 @@ class GmtWithRawResponse:
 
     @cached_property
     def telegram(self) -> telegram.TelegramResourceWithRawResponse:
-        """Stars and premium subscription for Telegram."""
         from .resources.telegram import TelegramResourceWithRawResponse
 
         return TelegramResourceWithRawResponse(self._client.telegram)
@@ -647,7 +644,6 @@ class AsyncGmtWithRawResponse:
 
     @cached_property
     def telegram(self) -> telegram.AsyncTelegramResourceWithRawResponse:
-        """Stars and premium subscription for Telegram."""
         from .resources.telegram import AsyncTelegramResourceWithRawResponse
 
         return AsyncTelegramResourceWithRawResponse(self._client.telegram)
@@ -728,7 +724,6 @@ class GmtWithStreamedResponse:
 
     @cached_property
     def telegram(self) -> telegram.TelegramResourceWithStreamingResponse:
-        """Stars and premium subscription for Telegram."""
         from .resources.telegram import TelegramResourceWithStreamingResponse
 
         return TelegramResourceWithStreamingResponse(self._client.telegram)
@@ -809,7 +804,6 @@ class AsyncGmtWithStreamedResponse:
 
     @cached_property
     def telegram(self) -> telegram.AsyncTelegramResourceWithStreamingResponse:
-        """Stars and premium subscription for Telegram."""
         from .resources.telegram import AsyncTelegramResourceWithStreamingResponse
 
         return AsyncTelegramResourceWithStreamingResponse(self._client.telegram)
