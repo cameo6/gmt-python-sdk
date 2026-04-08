@@ -118,6 +118,22 @@ Methods:
 - <code title="get /v1/purchases/bulk/{purchase_id}">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">retrieve</a>(purchase_id) -> <a href="./src/gmt/types/purchases/bulk_retrieve_response.py">BulkRetrieveResponse</a></code>
 - <code title="get /v1/purchases/bulk/{purchase_id}/download">client.purchases.bulk.<a href="./src/gmt/resources/purchases/bulk.py">download</a>(purchase_id) -> BinaryAPIResponse</code>
 
+# PurchasesByHash
+
+Types:
+
+```python
+from gmt.types import (
+    PurchasesByHashRetrieveResponse,
+    PurchasesByHashRequestVerificationCodeResponse,
+)
+```
+
+Methods:
+
+- <code title="get /v1/purchases-by-hash/{hash}">client.purchases_by_hash.<a href="./src/gmt/resources/purchases_by_hash.py">retrieve</a>(hash) -> <a href="./src/gmt/types/purchases_by_hash_retrieve_response.py">PurchasesByHashRetrieveResponse</a></code>
+- <code title="post /v1/purchases-by-hash/{hash}/request-code">client.purchases_by_hash.<a href="./src/gmt/resources/purchases_by_hash.py">request_verification_code</a>(hash, \*\*<a href="src/gmt/types/purchases_by_hash_request_verification_code_params.py">params</a>) -> <a href="./src/gmt/types/purchases_by_hash_request_verification_code_response.py">PurchasesByHashRequestVerificationCodeResponse</a></code>
+
 # Telegram
 
 Types:
