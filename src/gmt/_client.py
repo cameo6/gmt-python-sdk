@@ -31,11 +31,12 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import profile, service, accounts, webhooks, purchases
+    from .resources import profile, service, accounts, telegram, webhooks, purchases
     from .resources.service import ServiceResource, AsyncServiceResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
     from .resources.profile.profile import ProfileResource, AsyncProfileResource
+    from .resources.telegram.telegram import TelegramResource, AsyncTelegramResource
     from .resources.purchases.purchases import PurchasesResource, AsyncPurchasesResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Gmt", "AsyncGmt", "Client", "AsyncClient"]
@@ -127,6 +128,13 @@ class Gmt(SyncAPIClient):
         from .resources.purchases import PurchasesResource
 
         return PurchasesResource(self)
+
+    @cached_property
+    def telegram(self) -> TelegramResource:
+        """Stars and premium subscription for Telegram."""
+        from .resources.telegram import TelegramResource
+
+        return TelegramResource(self)
 
     @cached_property
     def webhooks(self) -> WebhooksResource:
@@ -362,6 +370,13 @@ class AsyncGmt(AsyncAPIClient):
         return AsyncPurchasesResource(self)
 
     @cached_property
+    def telegram(self) -> AsyncTelegramResource:
+        """Stars and premium subscription for Telegram."""
+        from .resources.telegram import AsyncTelegramResource
+
+        return AsyncTelegramResource(self)
+
+    @cached_property
     def webhooks(self) -> AsyncWebhooksResource:
         """Webhook testing and documentation.
 
@@ -550,6 +565,13 @@ class GmtWithRawResponse:
         return PurchasesResourceWithRawResponse(self._client.purchases)
 
     @cached_property
+    def telegram(self) -> telegram.TelegramResourceWithRawResponse:
+        """Stars and premium subscription for Telegram."""
+        from .resources.telegram import TelegramResourceWithRawResponse
+
+        return TelegramResourceWithRawResponse(self._client.telegram)
+
+    @cached_property
     def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
         """Webhook testing and documentation.
 
@@ -622,6 +644,13 @@ class AsyncGmtWithRawResponse:
         from .resources.purchases import AsyncPurchasesResourceWithRawResponse
 
         return AsyncPurchasesResourceWithRawResponse(self._client.purchases)
+
+    @cached_property
+    def telegram(self) -> telegram.AsyncTelegramResourceWithRawResponse:
+        """Stars and premium subscription for Telegram."""
+        from .resources.telegram import AsyncTelegramResourceWithRawResponse
+
+        return AsyncTelegramResourceWithRawResponse(self._client.telegram)
 
     @cached_property
     def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
@@ -698,6 +727,13 @@ class GmtWithStreamedResponse:
         return PurchasesResourceWithStreamingResponse(self._client.purchases)
 
     @cached_property
+    def telegram(self) -> telegram.TelegramResourceWithStreamingResponse:
+        """Stars and premium subscription for Telegram."""
+        from .resources.telegram import TelegramResourceWithStreamingResponse
+
+        return TelegramResourceWithStreamingResponse(self._client.telegram)
+
+    @cached_property
     def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
         """Webhook testing and documentation.
 
@@ -770,6 +806,13 @@ class AsyncGmtWithStreamedResponse:
         from .resources.purchases import AsyncPurchasesResourceWithStreamingResponse
 
         return AsyncPurchasesResourceWithStreamingResponse(self._client.purchases)
+
+    @cached_property
+    def telegram(self) -> telegram.AsyncTelegramResourceWithStreamingResponse:
+        """Stars and premium subscription for Telegram."""
+        from .resources.telegram import AsyncTelegramResourceWithStreamingResponse
+
+        return AsyncTelegramResourceWithStreamingResponse(self._client.telegram)
 
     @cached_property
     def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
