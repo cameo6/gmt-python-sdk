@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.32.0 (2026-04-08)
+
+Full Changelog: [v0.31.1...v0.32.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.31.1...v0.32.0)
+
+### Features
+
+* **api:** add telegram ([417ab06](https://github.com/cameo6/gmt-python-sdk/commit/417ab06e9d213911e57247da3ed24820eceed7fa))
+
 ## 0.31.1 (2026-04-08)
 
 Full Changelog: [v0.31.0...v0.31.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.31.0...v0.31.1)
