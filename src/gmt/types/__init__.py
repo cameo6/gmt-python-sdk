@@ -26,10 +26,17 @@ from .profile_unbind_telegram_response import ProfileUnbindTelegramResponse as P
 from .service_get_server_time_response import ServiceGetServerTimeResponse as ServiceGetServerTimeResponse
 from .telegram_get_premium_price_params import TelegramGetPremiumPriceParams as TelegramGetPremiumPriceParams
 from .telegram_get_stars_price_response import TelegramGetStarsPriceResponse as TelegramGetStarsPriceResponse
+from .purchases_by_hash_retrieve_response import PurchasesByHashRetrieveResponse as PurchasesByHashRetrieveResponse
 from .telegram_get_premium_price_response import TelegramGetPremiumPriceResponse as TelegramGetPremiumPriceResponse
 from .purchase_request_verification_code_params import (
     PurchaseRequestVerificationCodeParams as PurchaseRequestVerificationCodeParams,
 )
 from .purchase_request_verification_code_response import (
     PurchaseRequestVerificationCodeResponse as PurchaseRequestVerificationCodeResponse,
+)
+from .purchases_by_hash_request_verification_code_params import (
+    PurchasesByHashRequestVerificationCodeParams as PurchasesByHashRequestVerificationCodeParams,
+)
+from .purchases_by_hash_request_verification_code_response import (
+    PurchasesByHashRequestVerificationCodeResponse as PurchasesByHashRequestVerificationCodeResponse,
 )

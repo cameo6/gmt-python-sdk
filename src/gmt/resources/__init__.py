@@ -48,6 +48,14 @@ from .purchases import (
     PurchasesResourceWithStreamingResponse,
     AsyncPurchasesResourceWithStreamingResponse,
 )
+from .purchases_by_hash import (
+    PurchasesByHashResource,
+    AsyncPurchasesByHashResource,
+    PurchasesByHashResourceWithRawResponse,
+    AsyncPurchasesByHashResourceWithRawResponse,
+    PurchasesByHashResourceWithStreamingResponse,
+    AsyncPurchasesByHashResourceWithStreamingResponse,
+)
 
 __all__ = [
     "ServiceResource",
@@ -74,6 +82,12 @@ __all__ = [
     "AsyncPurchasesResourceWithRawResponse",
     "PurchasesResourceWithStreamingResponse",
     "AsyncPurchasesResourceWithStreamingResponse",
+    "PurchasesByHashResource",
+    "AsyncPurchasesByHashResource",
+    "PurchasesByHashResourceWithRawResponse",
+    "AsyncPurchasesByHashResourceWithRawResponse",
+    "PurchasesByHashResourceWithStreamingResponse",
+    "AsyncPurchasesByHashResourceWithStreamingResponse",
     "TelegramResource",
     "AsyncTelegramResource",
     "TelegramResourceWithRawResponse",
