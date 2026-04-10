@@ -44,7 +44,7 @@ class Verification(BaseModel):
     code: str
     """Verification code for account."""
 
-    password: str
+    password: Optional[str] = None
     """Account password."""
 
     received_at: str
