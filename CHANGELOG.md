@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.35.1 (2026-04-11)
+
+Full Changelog: [v0.35.0...v0.35.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.35.0...v0.35.1)
+
+### Bug Fixes
+
+* ensure file data are only sent as 1 parameter ([4bb3a7e](https://github.com/cameo6/gmt-python-sdk/commit/4bb3a7e1f8f6b46f5857896ed67ef0aca503c4a2))
+
 ## 0.35.0 (2026-04-10)
 
 Full Changelog: [v0.34.0...v0.35.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.34.0...v0.35.0)
