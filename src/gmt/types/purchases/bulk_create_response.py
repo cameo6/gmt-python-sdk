@@ -23,7 +23,7 @@ class Item(BaseModel):
     quantity: int
     """Number of accounts in the archive"""
 
-    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
+    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"]
     """Status of bulk purchase"""
 
 
@@ -66,7 +66,7 @@ class BulkCreateResponse(BaseModel):
     quantity: int
     """Number of accounts in this purchase"""
 
-    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
+    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"]
     """Current status of bulk purchase"""
 
     total_price: TotalPrice

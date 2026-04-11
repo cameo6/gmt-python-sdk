@@ -129,7 +129,7 @@ class Purchase(BaseModel):
     deduction)
     """
 
-    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
+    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"]
     """
     **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
     request) or `ERROR` (provider failure). Any status can transition to `REFUND`
