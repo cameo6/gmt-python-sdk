@@ -23,7 +23,7 @@ class PurchaseListParams(TypedDict, total=False):
     Example: '123' matches '+71234567890'.
     """
 
-    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND"]
+    status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"]
     """
     **Purchase Status Lifecycle.** `PENDING` (initial) → `SUCCESS` (after code
     request) or `ERROR` (provider failure). Any status can transition to `REFUND`
