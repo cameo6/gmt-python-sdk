@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.36.0 (2026-04-11)
+
+Full Changelog: [v0.35.1...v0.36.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.35.1...v0.36.0)
+
+### Features
+
+* **api:** api update ([8a698e3](https://github.com/cameo6/gmt-python-sdk/commit/8a698e3b7766f2a73b6d555df4f00c1579ce110d))
+
 ## 0.35.1 (2026-04-11)
 
 Full Changelog: [v0.35.0...v0.35.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.35.0...v0.35.1)
