@@ -40,6 +40,9 @@ class ProfileRetrieveResponse(BaseModel):
 
     discount: Discount
 
+    language: str
+    """Preferred user interface language"""
+
     login: Optional[str] = None
     """Web username"""
 
