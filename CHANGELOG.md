@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.37.0 (2026-04-28)
+
+Full Changelog: [v0.36.0...v0.37.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.36.0...v0.37.0)
+
+### Features
+
+* support setting headers via env ([c55427d](https://github.com/cameo6/gmt-python-sdk/commit/c55427de52cb37445691ee9be890e94144394e3c))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([ddbca94](https://github.com/cameo6/gmt-python-sdk/commit/ddbca94beeb11a9012d71d216788d4906dd8880e))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([7a46aa1](https://github.com/cameo6/gmt-python-sdk/commit/7a46aa13908eb43a8f5d2d004a938ea604e22f4a))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([1248c86](https://github.com/cameo6/gmt-python-sdk/commit/1248c865522e5e041927e73fac626d2cb7acf234))
+
 ## 0.36.0 (2026-04-11)
 
 Full Changelog: [v0.35.1...v0.36.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.35.1...v0.36.0)
