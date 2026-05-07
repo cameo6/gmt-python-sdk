@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.39.0 (2026-05-07)
+
+Full Changelog: [v0.38.0...v0.39.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.38.0...v0.39.0)
+
+### Features
+
+* **api:** manual updates ([1590c15](https://github.com/cameo6/gmt-python-sdk/commit/1590c153c5e65e5cb3890519976b77c57d13b399))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([8728a09](https://github.com/cameo6/gmt-python-sdk/commit/8728a0977b8b9784936357d2c3946f0843ffe0ab))
+
 ## 0.38.0 (2026-04-29)
 
 Full Changelog: [v0.37.0...v0.38.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.37.0...v0.38.0)
