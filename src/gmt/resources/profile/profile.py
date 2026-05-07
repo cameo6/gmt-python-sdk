@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
-from ...types import profile_change_login_params, profile_change_password_params
+from ...types import profile_change_login_params, profile_change_language_params, profile_change_password_params
 from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from .discount import (
@@ -34,6 +36,7 @@ from .referral.referral import (
 )
 from ...types.profile_retrieve_response import ProfileRetrieveResponse
 from ...types.profile_change_login_response import ProfileChangeLoginResponse
+from ...types.profile_change_language_response import ProfileChangeLanguageResponse
 from ...types.profile_change_password_response import ProfileChangePasswordResponse
 from ...types.profile_unbind_telegram_response import ProfileUnbindTelegramResponse
 
@@ -92,6 +95,40 @@ class ProfileResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ProfileRetrieveResponse,
+        )
+
+    def change_language(
+        self,
+        *,
+        language: Literal["ru", "ua", "en", "es", "zh"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ProfileChangeLanguageResponse:
+        """
+        Change the preferred user interface language on the website and in the bot.
+
+        Args:
+          language: Preferred user interface language
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._patch(
+            "/v1/profile/language",
+            body=maybe_transform({"language": language}, profile_change_language_params.ProfileChangeLanguageParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ProfileChangeLanguageResponse,
         )
 
     def change_login(
@@ -242,6 +279,42 @@ class AsyncProfileResource(AsyncAPIResource):
             cast_to=ProfileRetrieveResponse,
         )
 
+    async def change_language(
+        self,
+        *,
+        language: Literal["ru", "ua", "en", "es", "zh"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ProfileChangeLanguageResponse:
+        """
+        Change the preferred user interface language on the website and in the bot.
+
+        Args:
+          language: Preferred user interface language
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._patch(
+            "/v1/profile/language",
+            body=await async_maybe_transform(
+                {"language": language}, profile_change_language_params.ProfileChangeLanguageParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ProfileChangeLanguageResponse,
+        )
+
     async def change_login(
         self,
         *,
@@ -345,6 +418,9 @@ class ProfileResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             profile.retrieve,
         )
+        self.change_language = to_raw_response_wrapper(
+            profile.change_language,
+        )
         self.change_login = to_raw_response_wrapper(
             profile.change_login,
         )
@@ -372,6 +448,9 @@ class AsyncProfileResourceWithRawResponse:
 
         self.retrieve = async_to_raw_response_wrapper(
             profile.retrieve,
+        )
+        self.change_language = async_to_raw_response_wrapper(
+            profile.change_language,
         )
         self.change_login = async_to_raw_response_wrapper(
             profile.change_login,
@@ -401,6 +480,9 @@ class ProfileResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             profile.retrieve,
         )
+        self.change_language = to_streamed_response_wrapper(
+            profile.change_language,
+        )
         self.change_login = to_streamed_response_wrapper(
             profile.change_login,
         )
@@ -428,6 +510,9 @@ class AsyncProfileResourceWithStreamingResponse:
 
         self.retrieve = async_to_streamed_response_wrapper(
             profile.retrieve,
+        )
+        self.change_language = async_to_streamed_response_wrapper(
+            profile.change_language,
         )
         self.change_login = async_to_streamed_response_wrapper(
             profile.change_login,
