@@ -11,6 +11,7 @@ from gmt import Gmt, AsyncGmt
 from gmt.types import (
     ProfileRetrieveResponse,
     ProfileChangeLoginResponse,
+    ProfileChangeLanguageResponse,
     ProfileChangePasswordResponse,
     ProfileUnbindTelegramResponse,
 )
@@ -47,6 +48,40 @@ class TestProfile:
 
             profile = response.parse()
             assert_matches_type(ProfileRetrieveResponse, profile, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_change_language(self, client: Gmt) -> None:
+        profile = client.profile.change_language(
+            language="en",
+        )
+        assert_matches_type(ProfileChangeLanguageResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_change_language(self, client: Gmt) -> None:
+        response = client.profile.with_raw_response.change_language(
+            language="en",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        profile = response.parse()
+        assert_matches_type(ProfileChangeLanguageResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_change_language(self, client: Gmt) -> None:
+        with client.profile.with_streaming_response.change_language(
+            language="en",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            profile = response.parse()
+            assert_matches_type(ProfileChangeLanguageResponse, profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -177,6 +212,40 @@ class TestAsyncProfile:
 
             profile = await response.parse()
             assert_matches_type(ProfileRetrieveResponse, profile, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_change_language(self, async_client: AsyncGmt) -> None:
+        profile = await async_client.profile.change_language(
+            language="en",
+        )
+        assert_matches_type(ProfileChangeLanguageResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_change_language(self, async_client: AsyncGmt) -> None:
+        response = await async_client.profile.with_raw_response.change_language(
+            language="en",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        profile = await response.parse()
+        assert_matches_type(ProfileChangeLanguageResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_change_language(self, async_client: AsyncGmt) -> None:
+        async with async_client.profile.with_streaming_response.change_language(
+            language="en",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            profile = await response.parse()
+            assert_matches_type(ProfileChangeLanguageResponse, profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -32,6 +32,7 @@ Types:
 ```python
 from gmt.types import (
     ProfileRetrieveResponse,
+    ProfileChangeLanguageResponse,
     ProfileChangeLoginResponse,
     ProfileChangePasswordResponse,
     ProfileUnbindTelegramResponse,
@@ -41,6 +42,7 @@ from gmt.types import (
 Methods:
 
 - <code title="get /v1/profile/">client.profile.<a href="./src/gmt/resources/profile/profile.py">retrieve</a>() -> <a href="./src/gmt/types/profile_retrieve_response.py">ProfileRetrieveResponse</a></code>
+- <code title="patch /v1/profile/language">client.profile.<a href="./src/gmt/resources/profile/profile.py">change_language</a>(\*\*<a href="src/gmt/types/profile_change_language_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_language_response.py">ProfileChangeLanguageResponse</a></code>
 - <code title="patch /v1/profile/change-login">client.profile.<a href="./src/gmt/resources/profile/profile.py">change_login</a>(\*\*<a href="src/gmt/types/profile_change_login_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_login_response.py">ProfileChangeLoginResponse</a></code>
 - <code title="patch /v1/profile/change-password">client.profile.<a href="./src/gmt/resources/profile/profile.py">change_password</a>(\*\*<a href="src/gmt/types/profile_change_password_params.py">params</a>) -> <a href="./src/gmt/types/profile_change_password_response.py">ProfileChangePasswordResponse</a></code>
 - <code title="patch /v1/profile/unbind-telegram">client.profile.<a href="./src/gmt/resources/profile/profile.py">unbind_telegram</a>() -> <a href="./src/gmt/types/profile_unbind_telegram_response.py">ProfileUnbindTelegramResponse</a></code>
