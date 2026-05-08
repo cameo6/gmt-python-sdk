@@ -8,5 +8,5 @@ __all__ = ["ProfileChangeLanguageParams"]
 
 
 class ProfileChangeLanguageParams(TypedDict, total=False):
-    language: Required[Literal["ru", "ua", "en", "es", "zh"]]
+    language: Required[Literal["ru", "uk", "en", "es", "zh"]]
     """Preferred user interface language"""

@@ -40,8 +40,8 @@ class ProfileRetrieveResponse(BaseModel):
 
     discount: Discount
 
-    language: str
-    """Preferred user interface language"""
+    language: Optional[Literal["ru", "uk", "en", "es", "zh"]] = None
+    """Preferred user interface language; null until the user selects one"""
 
     login: Optional[str] = None
     """Web username"""
