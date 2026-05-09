@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.40.1 (2026-05-09)
+
+Full Changelog: [v0.40.0...v0.40.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.40.0...v0.40.1)
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([870072a](https://github.com/cameo6/gmt-python-sdk/commit/870072ae0c63292e040c446ff0d4220ae9cab145))
+
 ## 0.40.0 (2026-05-08)
 
 Full Changelog: [v0.39.0...v0.40.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.39.0...v0.40.0)
