@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.41.0 (2026-05-12)
+
+Full Changelog: [v0.40.1...v0.41.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.40.1...v0.41.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([6f57eab](https://github.com/cameo6/gmt-python-sdk/commit/6f57eab5d36d8ebe7e1da5a46b3ac0cf66e82ed4))
+
 ## 0.40.1 (2026-05-09)
 
 Full Changelog: [v0.40.0...v0.40.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.40.0...v0.40.1)
