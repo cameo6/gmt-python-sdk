@@ -107,6 +107,9 @@ class Purchase(BaseModel):
     volume = bigger discounts.
     """
 
+    purchase_source: Literal["BOT", "WEB", "API"]
+    """Purchase channel: BOT (Telegram), WEB (site JWT), API (x-api-key)"""
+
     purchase_type: Literal["SINGLE", "BULK", "ADMIN"]
     """
     Type of purchase: SINGLE (regular), BULK (batch purchase), ADMIN (admin
