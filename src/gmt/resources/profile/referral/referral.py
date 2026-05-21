@@ -91,7 +91,8 @@ class ReferralResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReferralTransferBalanceResponse:
         """
-        Change the current user password to a new one.
+        Transfers a specified amount from the user's referral balance to their main
+        balance. The amount must be between 1 and 100,000 USD.
 
         Args:
           amount: Amount to transfer from referral balance
@@ -175,7 +176,8 @@ class AsyncReferralResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReferralTransferBalanceResponse:
         """
-        Change the current user password to a new one.
+        Transfers a specified amount from the user's referral balance to their main
+        balance. The amount must be between 1 and 100,000 USD.
 
         Args:
           amount: Amount to transfer from referral balance

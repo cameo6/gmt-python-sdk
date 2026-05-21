@@ -4,23 +4,15 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
-    BinaryAPIResponse,
-    AsyncBinaryAPIResponse,
-    StreamedBinaryAPIResponse,
-    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
-    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
-    to_custom_streamed_response_wrapper,
-    async_to_custom_raw_response_wrapper,
-    async_to_custom_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
 from ...types.purchases import bulk_create_params
@@ -120,7 +112,7 @@ class BulkResource(SyncAPIResource):
 
     def retrieve(
         self,
-        purchase_id: str,
+        purchase_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -134,6 +126,8 @@ class BulkResource(SyncAPIResource):
         archive.
 
         Args:
+          purchase_id: Unique purchase identifier.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -142,8 +136,6 @@ class BulkResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not purchase_id:
-            raise ValueError(f"Expected a non-empty value for `purchase_id` but received {purchase_id!r}")
         return self._get(
             path_template("/v1/purchases/bulk/{purchase_id}", purchase_id=purchase_id),
             options=make_request_options(
@@ -154,7 +146,7 @@ class BulkResource(SyncAPIResource):
 
     def download(
         self,
-        purchase_id: str,
+        purchase_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -162,12 +154,14 @@ class BulkResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
+    ) -> None:
         """
         Download the archive file containing multiple accounts from a successful bulk
         purchase
 
         Args:
+          purchase_id: Unique purchase identifier.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -176,15 +170,13 @@ class BulkResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not purchase_id:
-            raise ValueError(f"Expected a non-empty value for `purchase_id` but received {purchase_id!r}")
-        extra_headers = {"Accept": "application/zip", **(extra_headers or {})}
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             path_template("/v1/purchases/bulk/{purchase_id}/download", purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BinaryAPIResponse,
+            cast_to=NoneType,
         )
 
 
@@ -278,7 +270,7 @@ class AsyncBulkResource(AsyncAPIResource):
 
     async def retrieve(
         self,
-        purchase_id: str,
+        purchase_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -292,6 +284,8 @@ class AsyncBulkResource(AsyncAPIResource):
         archive.
 
         Args:
+          purchase_id: Unique purchase identifier.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -300,8 +294,6 @@ class AsyncBulkResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not purchase_id:
-            raise ValueError(f"Expected a non-empty value for `purchase_id` but received {purchase_id!r}")
         return await self._get(
             path_template("/v1/purchases/bulk/{purchase_id}", purchase_id=purchase_id),
             options=make_request_options(
@@ -312,7 +304,7 @@ class AsyncBulkResource(AsyncAPIResource):
 
     async def download(
         self,
-        purchase_id: str,
+        purchase_id: int,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -320,12 +312,14 @@ class AsyncBulkResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
+    ) -> None:
         """
         Download the archive file containing multiple accounts from a successful bulk
         purchase
 
         Args:
+          purchase_id: Unique purchase identifier.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -334,15 +328,13 @@ class AsyncBulkResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not purchase_id:
-            raise ValueError(f"Expected a non-empty value for `purchase_id` but received {purchase_id!r}")
-        extra_headers = {"Accept": "application/zip", **(extra_headers or {})}
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             path_template("/v1/purchases/bulk/{purchase_id}/download", purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AsyncBinaryAPIResponse,
+            cast_to=NoneType,
         )
 
 
@@ -356,9 +348,8 @@ class BulkResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             bulk.retrieve,
         )
-        self.download = to_custom_raw_response_wrapper(
+        self.download = to_raw_response_wrapper(
             bulk.download,
-            BinaryAPIResponse,
         )
 
 
@@ -372,9 +363,8 @@ class AsyncBulkResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             bulk.retrieve,
         )
-        self.download = async_to_custom_raw_response_wrapper(
+        self.download = async_to_raw_response_wrapper(
             bulk.download,
-            AsyncBinaryAPIResponse,
         )
 
 
@@ -388,9 +378,8 @@ class BulkResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             bulk.retrieve,
         )
-        self.download = to_custom_streamed_response_wrapper(
+        self.download = to_streamed_response_wrapper(
             bulk.download,
-            StreamedBinaryAPIResponse,
         )
 
 
@@ -404,7 +393,6 @@ class AsyncBulkResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             bulk.retrieve,
         )
-        self.download = async_to_custom_streamed_response_wrapper(
+        self.download = async_to_streamed_response_wrapper(
             bulk.download,
-            AsyncStreamedBinaryAPIResponse,
         )
