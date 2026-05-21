@@ -24,14 +24,6 @@ from .accounts import (
     AccountsResourceWithStreamingResponse,
     AsyncAccountsResourceWithStreamingResponse,
 )
-from .telegram import (
-    TelegramResource,
-    AsyncTelegramResource,
-    TelegramResourceWithRawResponse,
-    AsyncTelegramResourceWithRawResponse,
-    TelegramResourceWithStreamingResponse,
-    AsyncTelegramResourceWithStreamingResponse,
-)
 from .webhooks import (
     WebhooksResource,
     AsyncWebhooksResource,
@@ -88,12 +80,6 @@ __all__ = [
     "AsyncPurchasesByHashResourceWithRawResponse",
     "PurchasesByHashResourceWithStreamingResponse",
     "AsyncPurchasesByHashResourceWithStreamingResponse",
-    "TelegramResource",
-    "AsyncTelegramResource",
-    "TelegramResourceWithRawResponse",
-    "AsyncTelegramResourceWithRawResponse",
-    "TelegramResourceWithStreamingResponse",
-    "AsyncTelegramResourceWithStreamingResponse",
     "WebhooksResource",
     "AsyncWebhooksResource",
     "WebhooksResourceWithRawResponse",

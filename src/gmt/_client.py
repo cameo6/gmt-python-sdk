@@ -35,13 +35,12 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import profile, service, accounts, telegram, webhooks, purchases, purchases_by_hash
+    from .resources import profile, service, accounts, webhooks, purchases, purchases_by_hash
     from .resources.service import ServiceResource, AsyncServiceResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
     from .resources.profile.profile import ProfileResource, AsyncProfileResource
     from .resources.purchases_by_hash import PurchasesByHashResource, AsyncPurchasesByHashResource
-    from .resources.telegram.telegram import TelegramResource, AsyncTelegramResource
     from .resources.purchases.purchases import PurchasesResource, AsyncPurchasesResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Gmt", "AsyncGmt", "Client", "AsyncClient"]
@@ -145,16 +144,12 @@ class Gmt(SyncAPIClient):
 
     @cached_property
     def purchases_by_hash(self) -> PurchasesByHashResource:
-        """Purchase history and management."""
+        """
+        Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+        """
         from .resources.purchases_by_hash import PurchasesByHashResource
 
         return PurchasesByHashResource(self)
-
-    @cached_property
-    def telegram(self) -> TelegramResource:
-        from .resources.telegram import TelegramResource
-
-        return TelegramResource(self)
 
     @cached_property
     def webhooks(self) -> WebhooksResource:
@@ -400,16 +395,12 @@ class AsyncGmt(AsyncAPIClient):
 
     @cached_property
     def purchases_by_hash(self) -> AsyncPurchasesByHashResource:
-        """Purchase history and management."""
+        """
+        Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+        """
         from .resources.purchases_by_hash import AsyncPurchasesByHashResource
 
         return AsyncPurchasesByHashResource(self)
-
-    @cached_property
-    def telegram(self) -> AsyncTelegramResource:
-        from .resources.telegram import AsyncTelegramResource
-
-        return AsyncTelegramResource(self)
 
     @cached_property
     def webhooks(self) -> AsyncWebhooksResource:
@@ -601,16 +592,12 @@ class GmtWithRawResponse:
 
     @cached_property
     def purchases_by_hash(self) -> purchases_by_hash.PurchasesByHashResourceWithRawResponse:
-        """Purchase history and management."""
+        """
+        Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+        """
         from .resources.purchases_by_hash import PurchasesByHashResourceWithRawResponse
 
         return PurchasesByHashResourceWithRawResponse(self._client.purchases_by_hash)
-
-    @cached_property
-    def telegram(self) -> telegram.TelegramResourceWithRawResponse:
-        from .resources.telegram import TelegramResourceWithRawResponse
-
-        return TelegramResourceWithRawResponse(self._client.telegram)
 
     @cached_property
     def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
@@ -688,16 +675,12 @@ class AsyncGmtWithRawResponse:
 
     @cached_property
     def purchases_by_hash(self) -> purchases_by_hash.AsyncPurchasesByHashResourceWithRawResponse:
-        """Purchase history and management."""
+        """
+        Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+        """
         from .resources.purchases_by_hash import AsyncPurchasesByHashResourceWithRawResponse
 
         return AsyncPurchasesByHashResourceWithRawResponse(self._client.purchases_by_hash)
-
-    @cached_property
-    def telegram(self) -> telegram.AsyncTelegramResourceWithRawResponse:
-        from .resources.telegram import AsyncTelegramResourceWithRawResponse
-
-        return AsyncTelegramResourceWithRawResponse(self._client.telegram)
 
     @cached_property
     def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
@@ -775,16 +758,12 @@ class GmtWithStreamedResponse:
 
     @cached_property
     def purchases_by_hash(self) -> purchases_by_hash.PurchasesByHashResourceWithStreamingResponse:
-        """Purchase history and management."""
+        """
+        Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+        """
         from .resources.purchases_by_hash import PurchasesByHashResourceWithStreamingResponse
 
         return PurchasesByHashResourceWithStreamingResponse(self._client.purchases_by_hash)
-
-    @cached_property
-    def telegram(self) -> telegram.TelegramResourceWithStreamingResponse:
-        from .resources.telegram import TelegramResourceWithStreamingResponse
-
-        return TelegramResourceWithStreamingResponse(self._client.telegram)
 
     @cached_property
     def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
@@ -862,16 +841,12 @@ class AsyncGmtWithStreamedResponse:
 
     @cached_property
     def purchases_by_hash(self) -> purchases_by_hash.AsyncPurchasesByHashResourceWithStreamingResponse:
-        """Purchase history and management."""
+        """
+        Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+        """
         from .resources.purchases_by_hash import AsyncPurchasesByHashResourceWithStreamingResponse
 
         return AsyncPurchasesByHashResourceWithStreamingResponse(self._client.purchases_by_hash)
-
-    @cached_property
-    def telegram(self) -> telegram.AsyncTelegramResourceWithStreamingResponse:
-        from .resources.telegram import AsyncTelegramResourceWithStreamingResponse
-
-        return AsyncTelegramResourceWithStreamingResponse(self._client.telegram)
 
     @cached_property
     def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:

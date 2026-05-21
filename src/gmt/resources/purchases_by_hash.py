@@ -23,7 +23,9 @@ __all__ = ["PurchasesByHashResource", "AsyncPurchasesByHashResource"]
 
 
 class PurchasesByHashResource(SyncAPIResource):
-    """Purchase history and management."""
+    """
+    Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+    """
 
     @cached_property
     def with_raw_response(self) -> PurchasesByHashResourceWithRawResponse:
@@ -60,6 +62,10 @@ class PurchasesByHashResource(SyncAPIResource):
         verification data if available.
 
         **No authentication required.** The hash code serves as the access token.
+
+        **Path parameter `hash`.** If it is missing or empty in the URL (e.g.
+        `/v1/purchases-by-hash/` or `/v1/purchases-by-hash//`), the API returns **400**
+        with `fieldViolations` on `hash`.
 
         Args:
           hash: Unique hash code of the purchase
@@ -103,6 +109,10 @@ class PurchasesByHashResource(SyncAPIResource):
         **Idempotent Operation.** Safe to retry on network errors - will not generate
         duplicate codes.
 
+        **Path parameter `hash`.** If it is missing or empty before `/request-code`
+        (e.g. `/v1/purchases-by-hash/request-code`), the API returns **400** with
+        `fieldViolations` on `hash`.
+
         Args:
           hash: Unique hash code of the purchase
 
@@ -137,7 +147,9 @@ class PurchasesByHashResource(SyncAPIResource):
 
 
 class AsyncPurchasesByHashResource(AsyncAPIResource):
-    """Purchase history and management."""
+    """
+    Endpoints for accessing purchase details and requesting verification codes using a unique hash identifier instead of purchase ID. This allows retrieval of purchase information without authentication, using the hash as a secure access token.
+    """
 
     @cached_property
     def with_raw_response(self) -> AsyncPurchasesByHashResourceWithRawResponse:
@@ -174,6 +186,10 @@ class AsyncPurchasesByHashResource(AsyncAPIResource):
         verification data if available.
 
         **No authentication required.** The hash code serves as the access token.
+
+        **Path parameter `hash`.** If it is missing or empty in the URL (e.g.
+        `/v1/purchases-by-hash/` or `/v1/purchases-by-hash//`), the API returns **400**
+        with `fieldViolations` on `hash`.
 
         Args:
           hash: Unique hash code of the purchase
@@ -216,6 +232,10 @@ class AsyncPurchasesByHashResource(AsyncAPIResource):
 
         **Idempotent Operation.** Safe to retry on network errors - will not generate
         duplicate codes.
+
+        **Path parameter `hash`.** If it is missing or empty before `/request-code`
+        (e.g. `/v1/purchases-by-hash/request-code`), the API returns **400** with
+        `fieldViolations` on `hash`.
 
         Args:
           hash: Unique hash code of the purchase
