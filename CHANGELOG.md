@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.43.1 (2026-07-14)
+
+Full Changelog: [v0.43.0...v0.43.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.43.0...v0.43.1)
+
+### Bug Fixes
+
+* **internal:** resolve build failures ([aed6a8b](https://github.com/cameo6/gmt-python-sdk/commit/aed6a8bae6e9fb10cb88194cd1744e893e0ddcc4))
+
 ## 0.43.0 (2026-05-21)
 
 Full Changelog: [v0.42.0...v0.43.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.42.0...v0.43.0)
