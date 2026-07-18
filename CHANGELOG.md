@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.44.0 (2026-07-18)
+
+Full Changelog: [v0.43.1...v0.44.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.43.1...v0.44.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([4d93700](https://github.com/cameo6/gmt-python-sdk/commit/4d93700cb0cdb3d588faee5f6c97332d39742161))
+
 ## 0.43.1 (2026-07-14)
 
 Full Changelog: [v0.43.0...v0.43.1](https://github.com/cameo6/gmt-python-sdk/compare/v0.43.0...v0.43.1)
