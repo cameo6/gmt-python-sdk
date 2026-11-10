@@ -1,9 +1,8 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 import httpx
 
+from ...._operations import OPERATIONS
 from ...._types import Body, Query, Headers, NotGiven, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
@@ -72,7 +71,7 @@ class ReferralResource(SyncAPIResource):
         percentage, referral count, and earnings.
         """
         return self._get(
-            "/v1/profile/referral",
+            OPERATIONS["getV1ProfileReferral"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -106,7 +105,7 @@ class ReferralResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/v1/profile/referral/transfer-balance",
+            OPERATIONS["postV1ProfileReferralTransfer-balance"],
             body=maybe_transform({"amount": amount}, referral_transfer_balance_params.ReferralTransferBalanceParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -157,7 +156,7 @@ class AsyncReferralResource(AsyncAPIResource):
         percentage, referral count, and earnings.
         """
         return await self._get(
-            "/v1/profile/referral",
+            OPERATIONS["getV1ProfileReferral"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -191,7 +190,7 @@ class AsyncReferralResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/v1/profile/referral/transfer-balance",
+            OPERATIONS["postV1ProfileReferralTransfer-balance"],
             body=await async_maybe_transform(
                 {"amount": amount}, referral_transfer_balance_params.ReferralTransferBalanceParams
             ),

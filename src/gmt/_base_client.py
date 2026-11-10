@@ -40,6 +40,7 @@ from httpx import URL
 from pydantic import PrivateAttr
 
 from . import _exceptions
+from ._operations import OPERATIONS
 from ._qs import Querystring
 from ._files import to_httpx_files, async_to_httpx_files
 from ._types import (
@@ -443,6 +444,14 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
         idempotency_header = self._idempotency_header
         if idempotency_header and options.idempotency_key and idempotency_header not in headers:
             headers[idempotency_header] = options.idempotency_key
+
+        if (
+            options.method.lower() == "post"
+            and options.url in (OPERATIONS["postV1Purchases"], OPERATIONS["postV1PurchasesBulk"])
+            and options.idempotency_key
+            and not headers.get("Idempotency-Key")
+        ):
+            headers["Idempotency-Key"] = options.idempotency_key
 
         # Don't set these headers if they were already set or removed by the caller. We check
         # `custom_headers`, which can contain `Omit()`, instead of `headers` to account for the removal case.

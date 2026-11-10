@@ -1,11 +1,10 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 from typing_extensions import Literal
 
 import httpx
 
+from ..._operations import OPERATIONS
 from ...types import profile_change_login_params, profile_change_language_params, profile_change_password_params
 from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._utils import maybe_transform, async_maybe_transform
@@ -90,7 +89,7 @@ class ProfileResource(SyncAPIResource):
         program levels.
         """
         return self._get(
-            "/v1/profile/",
+            OPERATIONS["getV1Profile"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -123,7 +122,7 @@ class ProfileResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            "/v1/profile/language",
+            OPERATIONS["patchV1ProfileLanguage"],
             body=maybe_transform({"language": language}, profile_change_language_params.ProfileChangeLanguageParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -157,7 +156,7 @@ class ProfileResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            "/v1/profile/change-login",
+            OPERATIONS["patchV1ProfileChange-login"],
             body=maybe_transform({"new_login": new_login}, profile_change_login_params.ProfileChangeLoginParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -192,7 +191,7 @@ class ProfileResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            "/v1/profile/change-password",
+            OPERATIONS["patchV1ProfileChange-password"],
             body=maybe_transform(
                 {"new_password": new_password}, profile_change_password_params.ProfileChangePasswordParams
             ),
@@ -217,7 +216,7 @@ class ProfileResource(SyncAPIResource):
         remains on the web account.
         """
         return self._patch(
-            "/v1/profile/unbind-telegram",
+            OPERATIONS["patchV1ProfileUnbind-telegram"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -272,7 +271,7 @@ class AsyncProfileResource(AsyncAPIResource):
         program levels.
         """
         return await self._get(
-            "/v1/profile/",
+            OPERATIONS["getV1Profile"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -305,7 +304,7 @@ class AsyncProfileResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            "/v1/profile/language",
+            OPERATIONS["patchV1ProfileLanguage"],
             body=await async_maybe_transform(
                 {"language": language}, profile_change_language_params.ProfileChangeLanguageParams
             ),
@@ -341,7 +340,7 @@ class AsyncProfileResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            "/v1/profile/change-login",
+            OPERATIONS["patchV1ProfileChange-login"],
             body=await async_maybe_transform(
                 {"new_login": new_login}, profile_change_login_params.ProfileChangeLoginParams
             ),
@@ -378,7 +377,7 @@ class AsyncProfileResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            "/v1/profile/change-password",
+            OPERATIONS["patchV1ProfileChange-password"],
             body=await async_maybe_transform(
                 {"new_password": new_password}, profile_change_password_params.ProfileChangePasswordParams
             ),
@@ -403,7 +402,7 @@ class AsyncProfileResource(AsyncAPIResource):
         remains on the web account.
         """
         return await self._patch(
-            "/v1/profile/unbind-telegram",
+            OPERATIONS["patchV1ProfileUnbind-telegram"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

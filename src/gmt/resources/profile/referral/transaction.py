@@ -1,9 +1,8 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 import httpx
 
+from ...._operations import OPERATIONS
 from ...._types import Body, Query, Headers, NotGiven, not_given
 from ...._utils import maybe_transform
 from ...._compat import cached_property
@@ -74,7 +73,7 @@ class TransactionResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/v1/profile/referral/transaction",
+            OPERATIONS["getV1ProfileReferralTransaction"],
             page=SyncPageNumber[TransactionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -145,7 +144,7 @@ class AsyncTransactionResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/v1/profile/referral/transaction",
+            OPERATIONS["getV1ProfileReferralTransaction"],
             page=AsyncPageNumber[TransactionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
