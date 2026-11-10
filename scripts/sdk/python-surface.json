@@ -1,0 +1,330 @@
+{
+  "async": {
+    "getV1Accounts": {
+      "coroutine": false,
+      "method": "AsyncAccountsResource.list",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1AccountsByCountry_code": {
+      "coroutine": true,
+      "method": "AsyncAccountsResource.retrieve",
+      "signature": "self, country_code: str, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1AccountsCountries": {
+      "coroutine": false,
+      "method": "AsyncAccountsResource.list_countries",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1Profile": {
+      "coroutine": true,
+      "method": "AsyncProfileResource.retrieve",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ProfileDiscount": {
+      "coroutine": true,
+      "method": "AsyncDiscountResource.retrieve",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ProfileReferral": {
+      "coroutine": true,
+      "method": "AsyncReferralResource.retrieve",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ProfileReferralTransaction": {
+      "coroutine": false,
+      "method": "AsyncTransactionResource.list",
+      "signature": "self, *, page: int, page_size: int, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1Purchases": {
+      "coroutine": false,
+      "method": "AsyncPurchasesResource.list",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1Purchases-by-hashByHash": {
+      "coroutine": true,
+      "method": "AsyncPurchasesByHashResource.retrieve",
+      "signature": "self, hash: str, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesBulk": {
+      "coroutine": true,
+      "method": "AsyncBulkResource.list",
+      "signature": "self, *, page: int | None=None, page_size: int | None=None, sort: PurchaseSort | None=None, status: PurchaseStatus | None=None, extra_headers: Headers | None=None",
+      "verb": "GET"
+    },
+    "getV1PurchasesBulkByPurchase_id": {
+      "coroutine": true,
+      "method": "AsyncBulkResource.retrieve",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesBulkByPurchase_idDownload": {
+      "coroutine": true,
+      "method": "AsyncBulkResource.download",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesByPurchase_id": {
+      "coroutine": true,
+      "method": "AsyncPurchasesResource.retrieve",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesHistory": {
+      "coroutine": true,
+      "method": "AsyncPurchasesResource.history",
+      "signature": "self, *, page: int | None=None, page_size: int | None=None, sort: PurchaseSort | None=None, status: PurchaseStatus | None=None, phone_number: str | None=None, search: str | None=None, extra_headers: Headers | None=None",
+      "verb": "GET"
+    },
+    "getV1ServiceHealth": {
+      "coroutine": true,
+      "method": "AsyncServiceResource.health_check",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ServiceTime": {
+      "coroutine": true,
+      "method": "AsyncServiceResource.get_server_time",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "patchV1ProfileChange-login": {
+      "coroutine": true,
+      "method": "AsyncProfileResource.change_login",
+      "signature": "self, *, new_login: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "patchV1ProfileChange-password": {
+      "coroutine": true,
+      "method": "AsyncProfileResource.change_password",
+      "signature": "self, *, new_password: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "patchV1ProfileLanguage": {
+      "coroutine": true,
+      "method": "AsyncProfileResource.change_language",
+      "signature": "self, *, language: Literal['ru', 'uk', 'en', 'es', 'zh'], extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "patchV1ProfileUnbind-telegram": {
+      "coroutine": true,
+      "method": "AsyncProfileResource.unbind_telegram",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "postV1ProfileReferralTransfer-balance": {
+      "coroutine": true,
+      "method": "AsyncReferralResource.transfer_balance",
+      "signature": "self, *, amount: float, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1Purchases": {
+      "coroutine": true,
+      "method": "AsyncPurchasesResource.create",
+      "signature": "self, *, country_code: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1Purchases-by-hashByHashRequest-code": {
+      "coroutine": true,
+      "method": "AsyncPurchasesByHashResource.request_verification_code",
+      "signature": "self, hash: str, *, callback_url: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1PurchasesBulk": {
+      "coroutine": true,
+      "method": "AsyncBulkResource.create",
+      "signature": "self, *, country_code: str, quantity: int, callback_url: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1PurchasesByPurchase_idRefund": {
+      "coroutine": true,
+      "method": "AsyncPurchasesResource.refund",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1PurchasesByPurchase_idRequest-code": {
+      "coroutine": true,
+      "method": "AsyncPurchasesResource.request_verification_code",
+      "signature": "self, purchase_id: int, *, callback_url: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1WebhooksTest": {
+      "coroutine": true,
+      "method": "AsyncWebhooksResource.test",
+      "signature": "self, *, type: Literal['success', 'failed'], url: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    }
+  },
+  "sync": {
+    "getV1Accounts": {
+      "coroutine": false,
+      "method": "AccountsResource.list",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1AccountsByCountry_code": {
+      "coroutine": false,
+      "method": "AccountsResource.retrieve",
+      "signature": "self, country_code: str, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1AccountsCountries": {
+      "coroutine": false,
+      "method": "AccountsResource.list_countries",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1Profile": {
+      "coroutine": false,
+      "method": "ProfileResource.retrieve",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ProfileDiscount": {
+      "coroutine": false,
+      "method": "DiscountResource.retrieve",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ProfileReferral": {
+      "coroutine": false,
+      "method": "ReferralResource.retrieve",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ProfileReferralTransaction": {
+      "coroutine": false,
+      "method": "TransactionResource.list",
+      "signature": "self, *, page: int, page_size: int, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1Purchases": {
+      "coroutine": false,
+      "method": "PurchasesResource.list",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1Purchases-by-hashByHash": {
+      "coroutine": false,
+      "method": "PurchasesByHashResource.retrieve",
+      "signature": "self, hash: str, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesBulk": {
+      "coroutine": false,
+      "method": "BulkResource.list",
+      "signature": "self, *, page: int | None=None, page_size: int | None=None, sort: PurchaseSort | None=None, status: PurchaseStatus | None=None, extra_headers: Headers | None=None",
+      "verb": "GET"
+    },
+    "getV1PurchasesBulkByPurchase_id": {
+      "coroutine": false,
+      "method": "BulkResource.retrieve",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesBulkByPurchase_idDownload": {
+      "coroutine": false,
+      "method": "BulkResource.download",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesByPurchase_id": {
+      "coroutine": false,
+      "method": "PurchasesResource.retrieve",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1PurchasesHistory": {
+      "coroutine": false,
+      "method": "PurchasesResource.history",
+      "signature": "self, *, page: int | None=None, page_size: int | None=None, sort: PurchaseSort | None=None, status: PurchaseStatus | None=None, phone_number: str | None=None, search: str | None=None, extra_headers: Headers | None=None",
+      "verb": "GET"
+    },
+    "getV1ServiceHealth": {
+      "coroutine": false,
+      "method": "ServiceResource.health_check",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "getV1ServiceTime": {
+      "coroutine": false,
+      "method": "ServiceResource.get_server_time",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "GET"
+    },
+    "patchV1ProfileChange-login": {
+      "coroutine": false,
+      "method": "ProfileResource.change_login",
+      "signature": "self, *, new_login: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "patchV1ProfileChange-password": {
+      "coroutine": false,
+      "method": "ProfileResource.change_password",
+      "signature": "self, *, new_password: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "patchV1ProfileLanguage": {
+      "coroutine": false,
+      "method": "ProfileResource.change_language",
+      "signature": "self, *, language: Literal['ru', 'uk', 'en', 'es', 'zh'], extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "patchV1ProfileUnbind-telegram": {
+      "coroutine": false,
+      "method": "ProfileResource.unbind_telegram",
+      "signature": "self, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "PATCH"
+    },
+    "postV1ProfileReferralTransfer-balance": {
+      "coroutine": false,
+      "method": "ReferralResource.transfer_balance",
+      "signature": "self, *, amount: float, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1Purchases": {
+      "coroutine": false,
+      "method": "PurchasesResource.create",
+      "signature": "self, *, country_code: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1Purchases-by-hashByHashRequest-code": {
+      "coroutine": false,
+      "method": "PurchasesByHashResource.request_verification_code",
+      "signature": "self, hash: str, *, callback_url: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1PurchasesBulk": {
+      "coroutine": false,
+      "method": "BulkResource.create",
+      "signature": "self, *, country_code: str, quantity: int, callback_url: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1PurchasesByPurchase_idRefund": {
+      "coroutine": false,
+      "method": "PurchasesResource.refund",
+      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1PurchasesByPurchase_idRequest-code": {
+      "coroutine": false,
+      "method": "PurchasesResource.request_verification_code",
+      "signature": "self, purchase_id: int, *, callback_url: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    },
+    "postV1WebhooksTest": {
+      "coroutine": false,
+      "method": "WebhooksResource.test",
+      "signature": "self, *, type: Literal['success', 'failed'], url: str, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "verb": "POST"
+    }
+  }
+}

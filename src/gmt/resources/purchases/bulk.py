@@ -1,9 +1,9 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 import httpx
 
+from ..._operations import OPERATIONS
+from ...types.purchases.list_responses import BulkListResponse, PurchaseSort, PurchaseStatus
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -24,6 +24,20 @@ __all__ = ["BulkResource", "AsyncBulkResource"]
 
 class BulkResource(SyncAPIResource):
     """Purchase history and management."""
+
+    def list(
+        self, *, page: int | None = None, page_size: int | None = None,
+        sort: PurchaseSort | None = None, status: PurchaseStatus | None = None,
+        extra_headers: Headers | None = None,
+    ) -> BulkListResponse:
+        query = {"page": page, "page_size": page_size, "sort": sort, "status": status}
+        return self._get(
+            OPERATIONS["getV1PurchasesBulk"],
+            options=make_request_options(query={key: value for key, value in query.items() if value is not None},
+                                         extra_headers=extra_headers),
+            cast_to=BulkListResponse,
+        )
+
 
     @cached_property
     def with_raw_response(self) -> BulkResourceWithRawResponse:
@@ -95,7 +109,7 @@ class BulkResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/v1/purchases/bulk",
+            OPERATIONS["postV1PurchasesBulk"],
             body=maybe_transform(
                 {
                     "country_code": country_code,
@@ -137,7 +151,7 @@ class BulkResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            path_template("/v1/purchases/bulk/{purchase_id}", purchase_id=purchase_id),
+            path_template(OPERATIONS["getV1PurchasesBulkByPurchase_id"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -172,7 +186,7 @@ class BulkResource(SyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            path_template("/v1/purchases/bulk/{purchase_id}/download", purchase_id=purchase_id),
+            path_template(OPERATIONS["getV1PurchasesBulkByPurchase_idDownload"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -182,6 +196,20 @@ class BulkResource(SyncAPIResource):
 
 class AsyncBulkResource(AsyncAPIResource):
     """Purchase history and management."""
+
+    async def list(
+        self, *, page: int | None = None, page_size: int | None = None,
+        sort: PurchaseSort | None = None, status: PurchaseStatus | None = None,
+        extra_headers: Headers | None = None,
+    ) -> BulkListResponse:
+        query = {"page": page, "page_size": page_size, "sort": sort, "status": status}
+        return await self._get(
+            OPERATIONS["getV1PurchasesBulk"],
+            options=make_request_options(query={key: value for key, value in query.items() if value is not None},
+                                         extra_headers=extra_headers),
+            cast_to=BulkListResponse,
+        )
+
 
     @cached_property
     def with_raw_response(self) -> AsyncBulkResourceWithRawResponse:
@@ -253,7 +281,7 @@ class AsyncBulkResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/v1/purchases/bulk",
+            OPERATIONS["postV1PurchasesBulk"],
             body=await async_maybe_transform(
                 {
                     "country_code": country_code,
@@ -295,7 +323,7 @@ class AsyncBulkResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            path_template("/v1/purchases/bulk/{purchase_id}", purchase_id=purchase_id),
+            path_template(OPERATIONS["getV1PurchasesBulkByPurchase_id"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -330,7 +358,7 @@ class AsyncBulkResource(AsyncAPIResource):
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            path_template("/v1/purchases/bulk/{purchase_id}/download", purchase_id=purchase_id),
+            path_template(OPERATIONS["getV1PurchasesBulkByPurchase_idDownload"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

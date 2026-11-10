@@ -1,9 +1,8 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 import httpx
 
+from ..._operations import OPERATIONS
 from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -56,7 +55,7 @@ class DiscountResource(SyncAPIResource):
         history.
         """
         return self._get(
-            "/v1/profile/discount",
+            OPERATIONS["getV1ProfileDiscount"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -101,7 +100,7 @@ class AsyncDiscountResource(AsyncAPIResource):
         history.
         """
         return await self._get(
-            "/v1/profile/discount",
+            OPERATIONS["getV1ProfileDiscount"],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

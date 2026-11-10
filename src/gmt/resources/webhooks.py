@@ -1,11 +1,10 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 from typing_extensions import Literal
 
 import httpx
 
+from .._operations import OPERATIONS
 from ..types import webhook_test_params
 from .._types import Body, Query, Headers, NotGiven, not_given
 from .._utils import maybe_transform, async_maybe_transform
@@ -112,7 +111,7 @@ class WebhooksResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/v1/webhooks/test",
+            OPERATIONS["postV1WebhooksTest"],
             body=maybe_transform(
                 {
                     "type": type,
@@ -216,7 +215,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/v1/webhooks/test",
+            OPERATIONS["postV1WebhooksTest"],
             body=await async_maybe_transform(
                 {
                     "type": type,

@@ -1,5 +1,3 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from typing import Optional
 from typing_extensions import Literal
 
@@ -48,6 +46,7 @@ class TotalPrice(BaseModel):
 
 
 class BulkRetrieveResponse(BaseModel):
+    refunded_quantity: Optional[int] = None
     bulk_purchase_id: int
     """Unique ID of the bulk purchase request"""
 

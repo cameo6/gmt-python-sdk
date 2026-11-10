@@ -1,9 +1,8 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 import httpx
 
+from .._operations import OPERATIONS
 from ..types import purchases_by_hash_request_verification_code_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
@@ -81,7 +80,7 @@ class PurchasesByHashResource(SyncAPIResource):
         if not hash:
             raise ValueError(f"Expected a non-empty value for `hash` but received {hash!r}")
         return self._get(
-            path_template("/v1/purchases-by-hash/{hash}", hash=hash),
+            path_template(OPERATIONS["getV1Purchases-by-hashByHash"], hash=hash),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -134,7 +133,7 @@ class PurchasesByHashResource(SyncAPIResource):
         if not hash:
             raise ValueError(f"Expected a non-empty value for `hash` but received {hash!r}")
         return self._post(
-            path_template("/v1/purchases-by-hash/{hash}/request-code", hash=hash),
+            path_template(OPERATIONS["postV1Purchases-by-hashByHashRequest-code"], hash=hash),
             body=maybe_transform(
                 {"callback_url": callback_url},
                 purchases_by_hash_request_verification_code_params.PurchasesByHashRequestVerificationCodeParams,
@@ -205,7 +204,7 @@ class AsyncPurchasesByHashResource(AsyncAPIResource):
         if not hash:
             raise ValueError(f"Expected a non-empty value for `hash` but received {hash!r}")
         return await self._get(
-            path_template("/v1/purchases-by-hash/{hash}", hash=hash),
+            path_template(OPERATIONS["getV1Purchases-by-hashByHash"], hash=hash),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -258,7 +257,7 @@ class AsyncPurchasesByHashResource(AsyncAPIResource):
         if not hash:
             raise ValueError(f"Expected a non-empty value for `hash` but received {hash!r}")
         return await self._post(
-            path_template("/v1/purchases-by-hash/{hash}/request-code", hash=hash),
+            path_template(OPERATIONS["postV1Purchases-by-hashByHashRequest-code"], hash=hash),
             body=await async_maybe_transform(
                 {"callback_url": callback_url},
                 purchases_by_hash_request_verification_code_params.PurchasesByHashRequestVerificationCodeParams,

@@ -1,11 +1,11 @@
-# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
-
 from __future__ import annotations
 
 from typing_extensions import Literal
 
 import httpx
 
+from ..._operations import OPERATIONS
+from ...types.purchases.list_responses import PurchaseHistoryResponse, PurchaseSort, PurchaseStatus
 from .bulk import (
     BulkResource,
     AsyncBulkResource,
@@ -38,6 +38,20 @@ __all__ = ["PurchasesResource", "AsyncPurchasesResource"]
 
 class PurchasesResource(SyncAPIResource):
     """Purchase history and management."""
+
+    def history(
+        self, *, page: int | None = None, page_size: int | None = None,
+        sort: PurchaseSort | None = None, status: PurchaseStatus | None = None, phone_number: str | None = None, search: str | None = None,
+        extra_headers: Headers | None = None,
+    ) -> PurchaseHistoryResponse:
+        query = {"page": page, "page_size": page_size, "sort": sort, "status": status, "phone_number": phone_number, "search": search}
+        return self._get(
+            OPERATIONS["getV1PurchasesHistory"],
+            options=make_request_options(query={key: value for key, value in query.items() if value is not None},
+                                         extra_headers=extra_headers),
+            cast_to=PurchaseHistoryResponse,
+        )
+
 
     @cached_property
     def bulk(self) -> BulkResource:
@@ -104,7 +118,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/v1/purchases/",
+            OPERATIONS["postV1Purchases"],
             body=maybe_transform({"country_code": country_code}, purchase_create_params.PurchaseCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -141,7 +155,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            path_template("/v1/purchases/{purchase_id}", purchase_id=purchase_id),
+            path_template(OPERATIONS["getV1PurchasesByPurchase_id"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -211,7 +225,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/v1/purchases/",
+            OPERATIONS["getV1Purchases"],
             page=SyncPageNumber[PurchaseListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -263,7 +277,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            path_template("/v1/purchases/{purchase_id}/refund", purchase_id=purchase_id),
+            path_template(OPERATIONS["postV1PurchasesByPurchase_idRefund"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -323,7 +337,7 @@ class PurchasesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            path_template("/v1/purchases/{purchase_id}/request-code", purchase_id=purchase_id),
+            path_template(OPERATIONS["postV1PurchasesByPurchase_idRequest-code"], purchase_id=purchase_id),
             body=maybe_transform(
                 {"callback_url": callback_url},
                 purchase_request_verification_code_params.PurchaseRequestVerificationCodeParams,
@@ -337,6 +351,20 @@ class PurchasesResource(SyncAPIResource):
 
 class AsyncPurchasesResource(AsyncAPIResource):
     """Purchase history and management."""
+
+    async def history(
+        self, *, page: int | None = None, page_size: int | None = None,
+        sort: PurchaseSort | None = None, status: PurchaseStatus | None = None, phone_number: str | None = None, search: str | None = None,
+        extra_headers: Headers | None = None,
+    ) -> PurchaseHistoryResponse:
+        query = {"page": page, "page_size": page_size, "sort": sort, "status": status, "phone_number": phone_number, "search": search}
+        return await self._get(
+            OPERATIONS["getV1PurchasesHistory"],
+            options=make_request_options(query={key: value for key, value in query.items() if value is not None},
+                                         extra_headers=extra_headers),
+            cast_to=PurchaseHistoryResponse,
+        )
+
 
     @cached_property
     def bulk(self) -> AsyncBulkResource:
@@ -403,7 +431,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/v1/purchases/",
+            OPERATIONS["postV1Purchases"],
             body=await async_maybe_transform(
                 {"country_code": country_code}, purchase_create_params.PurchaseCreateParams
             ),
@@ -442,7 +470,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            path_template("/v1/purchases/{purchase_id}", purchase_id=purchase_id),
+            path_template(OPERATIONS["getV1PurchasesByPurchase_id"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -512,7 +540,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/v1/purchases/",
+            OPERATIONS["getV1Purchases"],
             page=AsyncPageNumber[PurchaseListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -564,7 +592,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            path_template("/v1/purchases/{purchase_id}/refund", purchase_id=purchase_id),
+            path_template(OPERATIONS["postV1PurchasesByPurchase_idRefund"], purchase_id=purchase_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -624,7 +652,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            path_template("/v1/purchases/{purchase_id}/request-code", purchase_id=purchase_id),
+            path_template(OPERATIONS["postV1PurchasesByPurchase_idRequest-code"], purchase_id=purchase_id),
             body=await async_maybe_transform(
                 {"callback_url": callback_url},
                 purchase_request_verification_code_params.PurchaseRequestVerificationCodeParams,
