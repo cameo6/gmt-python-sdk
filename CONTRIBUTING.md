@@ -35,3 +35,28 @@ The public resource methods and response models live under `src/gmt`.
 Review them when the contract changes and keep the compatibility checks
 aligned with the public API. See the [GMT API reference](https://api.getmytg.com/docs)
 for the current endpoints and examples.
+
+## Release workflow
+
+The release workflow builds and tests installable packages and uploads
+`pypi-release-candidate` with `SHA256SUMS`. Pull requests that change the release
+workflow run these checks automatically. After merge, run the workflow on
+`main` with `publish` left off to verify a candidate without registry writes.
+
+Before the first release, configure the GitHub `pypi` environment to allow
+only `main` and require a release reviewer. In the registry settings for
+`gmt-python-sdk`, add a GitHub Actions Trusted Publisher
+using these values:
+
+| Setting | Value |
+| --- | --- |
+| Owner | `cameo6` |
+| Repository | `gmt-python-sdk` |
+| Workflow filename | `release.yml` |
+| GitHub environment | `pypi` |
+
+For a release, select `main`, enable `publish`, and enter the new stable version
+from `pyproject.toml`. The publish job downloads the tested artifact from the same
+run, checks SHA-256, and authenticates via OIDC.
+
+[Trusted Publishing setup](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)
