@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.44.3
+
+- Clarify the Unix epoch in the public OpenAPI description of the service time response.
+
 ## 0.44.0 (2026-07-18)
 
 Full Changelog: [v0.43.1...v0.44.0](https://github.com/cameo6/gmt-python-sdk/compare/v0.43.1...v0.44.0)
