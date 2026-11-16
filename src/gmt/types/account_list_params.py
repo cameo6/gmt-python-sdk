@@ -1,18 +1,18 @@
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["AccountListParams"]
 
 
 class AccountListParams(TypedDict, total=False):
-    page: Required[int]
+    page: int
     """Page number."""
 
-    page_size: Required[int]
+    page_size: int
     """Number of items per page."""
 
-    sort: Required[Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"]]
+    sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"]
     """Sort order for accounts."""
 
     country_codes: str
