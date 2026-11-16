@@ -169,6 +169,7 @@ class PurchasesResource(SyncAPIResource):
         page_size: int,
         sort: Literal["date_asc", "date_desc"],
         phone_number: str | Omit = omit,
+        include: Literal["code_request"] | Omit = omit,
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -199,6 +200,8 @@ class PurchasesResource(SyncAPIResource):
           page_size: Number of items per page.
 
           sort: Sort purchases by creation date
+
+          include: Opt in to the current verification code request and durable purchase status.
 
           phone_number: Filter purchases by phone number fragment (partial match). Example: '123'
               matches '+71234567890'.
@@ -238,6 +241,7 @@ class PurchasesResource(SyncAPIResource):
                         "page_size": page_size,
                         "sort": sort,
                         "phone_number": phone_number,
+                        "include": include,
                         "status": status,
                     },
                     purchase_list_params.PurchaseListParams,
@@ -484,6 +488,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
         page_size: int,
         sort: Literal["date_asc", "date_desc"],
         phone_number: str | Omit = omit,
+        include: Literal["code_request"] | Omit = omit,
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -514,6 +519,8 @@ class AsyncPurchasesResource(AsyncAPIResource):
           page_size: Number of items per page.
 
           sort: Sort purchases by creation date
+
+          include: Opt in to the current verification code request and durable purchase status.
 
           phone_number: Filter purchases by phone number fragment (partial match). Example: '123'
               matches '+71234567890'.
@@ -553,6 +560,7 @@ class AsyncPurchasesResource(AsyncAPIResource):
                         "page_size": page_size,
                         "sort": sort,
                         "phone_number": phone_number,
+                        "include": include,
                         "status": status,
                     },
                     purchase_list_params.PurchaseListParams,

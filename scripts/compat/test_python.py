@@ -103,3 +103,31 @@ class AsyncCompatibility(unittest.IsolatedAsyncioTestCase):
                 async for purchase in client.purchases.list(**PAGE)
             ]
         self.assertEqual(ids, [101, 102])
+
+
+def assert_purchase_fields(test, legacy, current, explicit_null):
+    test.assertEqual(legacy.items[0].status, "SUCCESS")
+    test.assertEqual(legacy.items[0].code_page.title, "GMT")
+    test.assertIsNone(legacy.items[0].code_page.brand_name)
+    test.assertIsNone(legacy.items[0].code_request)
+    test.assertEqual(current.items[0].code_page.brand_name, "GMT Shop")
+    test.assertEqual(current.items[0].code_request.status, "pending")
+    test.assertEqual(current.items[0].code_request.attempt, 1)
+    test.assertIsNone(explicit_null.items[0].code_page.brand_name)
+    test.assertIsNone(explicit_null.items[0].code_request)
+
+
+class PurchaseResponseCompatibility(unittest.IsolatedAsyncioTestCase):
+    def test_sync_purchase_list_preserves_old_and_new_fields(self):
+        with Gmt(**OPTIONS, api_key="test-api-key", _strict_response_validation=True) as client:
+            legacy = client.purchases.list(**PAGE)
+            current = client.purchases.list(**PAGE, include="code_request")
+            explicit_null = client.purchases.list(**{**PAGE, "page": 2}, include="code_request")
+        assert_purchase_fields(self, legacy, current, explicit_null)
+
+    async def test_async_purchase_list_preserves_old_and_new_fields(self):
+        async with AsyncGmt(**OPTIONS, api_key="test-api-key", _strict_response_validation=True) as client:
+            legacy = await client.purchases.list(**PAGE)
+            current = await client.purchases.list(**PAGE, include="code_request")
+            explicit_null = await client.purchases.list(**{**PAGE, "page": 2}, include="code_request")
+        assert_purchase_fields(self, legacy, current, explicit_null)

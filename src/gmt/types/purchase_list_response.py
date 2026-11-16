@@ -2,7 +2,7 @@ from typing import Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
-from .code_page import CodePage
+from .code_page import CodePage, PurchaseResponseFields
 
 __all__ = ["PurchaseListResponse", "DisplayName", "Price", "Verification"]
 
@@ -61,7 +61,7 @@ class Verification(BaseModel):
     """
 
 
-class PurchaseListResponse(BaseModel):
+class PurchaseListResponse(PurchaseResponseFields):
     code_page: Optional[CodePage] = None
 
     id: int
