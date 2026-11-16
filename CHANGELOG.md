@@ -2,7 +2,7 @@
 
 ## 0.44.4
 
-- Add the optional purchase-list filter `include=code_request` and type the current code request in purchase responses.
+- Add `include=code_request` as an opt-in to current code request details in the sync and async purchase lists.
 - Add shop name and default language to code-page models. Older responses can still omit either field.
 
 ## 0.44.3
