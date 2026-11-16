@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.44.5
+
+- Allow accounts and purchases lists to omit pagination and sorting parameters in synchronous and asynchronous clients, matching API defaults.
+
 ## 0.44.4
 
 - Add `include=code_request` as an opt-in to current code request details in the sync and async purchase lists.

@@ -3,7 +3,7 @@
     "getV1Accounts": {
       "coroutine": false,
       "method": "AsyncAccountsResource.list",
-      "signature": "self, *, page: int, page_size: int, sort: Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], Omit]=omit, country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
       "verb": "GET"
     },
     "getV1AccountsByCountry_code": {
@@ -45,7 +45,7 @@
     "getV1Purchases": {
       "coroutine": false,
       "method": "AsyncPurchasesResource.list",
-      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['date_asc', 'date_desc'], Omit]=omit, phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
       "verb": "GET"
     },
     "getV1Purchases-by-hashByHash": {
@@ -167,7 +167,7 @@
     "getV1Accounts": {
       "coroutine": false,
       "method": "AccountsResource.list",
-      "signature": "self, *, page: int, page_size: int, sort: Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], Omit]=omit, country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
       "verb": "GET"
     },
     "getV1AccountsByCountry_code": {
@@ -209,7 +209,7 @@
     "getV1Purchases": {
       "coroutine": false,
       "method": "PurchasesResource.list",
-      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['date_asc', 'date_desc'], Omit]=omit, phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
       "verb": "GET"
     },
     "getV1Purchases-by-hashByHash": {

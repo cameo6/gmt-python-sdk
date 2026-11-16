@@ -1,5 +1,6 @@
 import os
 import unittest
+from typing import Dict, List, cast
 
 import httpx
 from gmt import APIError, APITimeoutError, AsyncGmt, Gmt
@@ -131,3 +132,59 @@ class PurchaseResponseCompatibility(unittest.IsolatedAsyncioTestCase):
             current = await client.purchases.list(**PAGE, include="code_request")
             explicit_null = await client.purchases.list(**{**PAGE, "page": 2}, include="code_request")
         assert_purchase_fields(self, legacy, current, explicit_null)
+
+
+def list_transport(requests: List[httpx.Request]) -> httpx.MockTransport:
+    def reply(request: httpx.Request) -> httpx.Response:
+        requests.append(request)
+        page = int(request.url.params.get("page", "1"))
+        item: Dict[str, object] = {"country_code": "US"} if request.url.path.endswith("/accounts/") else {"id": page}
+        return httpx.Response(200, json={
+            "items": [item],
+            "pagination": {"current_page": page, "total_pages": 2, "has_next": page == 1},
+        })
+    return httpx.MockTransport(reply)
+
+
+LIST_CASES = (
+    ("accounts", {"country_codes": "US,GB", "sort": "price_asc"}),
+    ("purchases", {"phone_number": "123", "status": "SUCCESS", "sort": "date_asc"}),
+)
+
+
+class SyncOptionalLists(unittest.TestCase):
+    def test_defaults_and_explicit_filters_survive_pagination(self) -> None:
+        for resource, filters in LIST_CASES:
+            for params in ({}, {**filters, "page": 1, "page_size": 1}):
+                with self.subTest(resource=resource, params=params):
+                    requests: List[httpx.Request] = []
+                    with Gmt(
+                        base_url=cast(str, OPTIONS["base_url"]),
+                        max_retries=cast(int, OPTIONS["max_retries"]),
+                        timeout=cast(int, OPTIONS["timeout"]),
+                        http_client=httpx.Client(transport=list_transport(requests)),
+                    ) as client:
+                        items = list(getattr(client, resource).list(**params))
+                    self.assertEqual(len(items), 2)
+                    self.assertEqual([r.url.path for r in requests], [f"/v1/{resource}/"] * 2)
+                    self.assertEqual(dict(requests[0].url.params), {k: str(v) for k, v in params.items()})
+                    self.assertEqual(dict(requests[1].url.params), {**{k: str(v) for k, v in params.items()}, "page": "2"})
+
+
+class AsyncOptionalLists(unittest.IsolatedAsyncioTestCase):
+    async def test_defaults_and_explicit_filters_survive_pagination(self) -> None:
+        for resource, filters in LIST_CASES:
+            for params in ({}, {**filters, "page": 1, "page_size": 1}):
+                with self.subTest(resource=resource, params=params):
+                    requests: List[httpx.Request] = []
+                    async with AsyncGmt(
+                        base_url=cast(str, OPTIONS["base_url"]),
+                        max_retries=cast(int, OPTIONS["max_retries"]),
+                        timeout=cast(int, OPTIONS["timeout"]),
+                        http_client=httpx.AsyncClient(transport=list_transport(requests)),
+                    ) as client:
+                        items = [item async for item in getattr(client, resource).list(**params)]
+                    self.assertEqual(len(items), 2)
+                    self.assertEqual([r.url.path for r in requests], [f"/v1/{resource}/"] * 2)
+                    self.assertEqual(dict(requests[0].url.params), {k: str(v) for k, v in params.items()})
+                    self.assertEqual(dict(requests[1].url.params), {**{k: str(v) for k, v in params.items()}, "page": "2"})

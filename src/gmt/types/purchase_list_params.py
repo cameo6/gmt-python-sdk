@@ -1,18 +1,18 @@
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["PurchaseListParams"]
 
 
 class PurchaseListParams(TypedDict, total=False):
-    page: Required[int]
+    page: int
     """Page number."""
 
-    page_size: Required[int]
+    page_size: int
     """Number of items per page."""
 
-    sort: Required[Literal["date_asc", "date_desc"]]
+    sort: Literal["date_asc", "date_desc"]
     """Sort purchases by creation date"""
 
     include: Literal["code_request"]
