@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import Literal
 
 import httpx
@@ -165,9 +166,9 @@ class PurchasesResource(SyncAPIResource):
     def list(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["date_asc", "date_desc"],
+        page: Union[int, Omit] = omit,
+        page_size: Union[int, Omit] = omit,
+        sort: Union[Literal["date_asc", "date_desc"], Omit] = omit,
         phone_number: str | Omit = omit,
         include: Literal["code_request"] | Omit = omit,
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"] | Omit = omit,
@@ -484,9 +485,9 @@ class AsyncPurchasesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["date_asc", "date_desc"],
+        page: Union[int, Omit] = omit,
+        page_size: Union[int, Omit] = omit,
+        sort: Union[Literal["date_asc", "date_desc"], Omit] = omit,
         phone_number: str | Omit = omit,
         include: Literal["code_request"] | Omit = omit,
         status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"] | Omit = omit,

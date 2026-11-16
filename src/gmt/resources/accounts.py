@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import Literal
 
 import httpx
@@ -109,9 +110,9 @@ class AccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"],
+        page: Union[int, Omit] = omit,
+        page_size: Union[int, Omit] = omit,
+        sort: Union[Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"], Omit] = omit,
         country_codes: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -331,9 +332,9 @@ class AsyncAccountsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        page: int,
-        page_size: int,
-        sort: Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"],
+        page: Union[int, Omit] = omit,
+        page_size: Union[int, Omit] = omit,
+        sort: Union[Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"], Omit] = omit,
         country_codes: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
