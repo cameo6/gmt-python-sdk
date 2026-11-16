@@ -8,6 +8,7 @@ from .._models import BaseModel
 
 class CodePage(BaseModel):
     brand_name: Optional[str] = None
+    default_locale: Optional[str] = None
     description: Optional[str]
     logo_url: Optional[str]
     support_url: Optional[str]
