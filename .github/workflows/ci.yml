@@ -16,11 +16,19 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
+          fetch-depth: 2
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: '3.11'
       - name: Build and test wheel and sdist
         run: sh scripts/check-sdk.sh
+      - name: Check response compatibility with the target branch
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git show "$BASE_SHA:openapi.json" > "$RUNNER_TEMP/base-openapi.json"
+          python3 -B scripts/sdk/check_response_compat.py "$RUNNER_TEMP/base-openapi.json" openapi.json
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: python-sdk

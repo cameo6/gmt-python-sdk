@@ -15,6 +15,9 @@ class PurchaseListParams(TypedDict, total=False):
     sort: Required[Literal["date_asc", "date_desc"]]
     """Sort purchases by creation date"""
 
+    include: Literal["code_request"]
+    """Opt in to the current verification code request and durable purchase status."""
+
     phone_number: str
     """Filter purchases by phone number fragment (partial match).
 

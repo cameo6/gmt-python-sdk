@@ -45,7 +45,7 @@
     "getV1Purchases": {
       "coroutine": false,
       "method": "AsyncPurchasesResource.list",
-      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
       "verb": "GET"
     },
     "getV1Purchases-by-hashByHash": {
@@ -209,7 +209,7 @@
     "getV1Purchases": {
       "coroutine": false,
       "method": "PurchasesResource.list",
-      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
+      "signature": "self, *, page: int, page_size: int, sort: Literal['date_asc', 'date_desc'], phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
       "verb": "GET"
     },
     "getV1Purchases-by-hashByHash": {
