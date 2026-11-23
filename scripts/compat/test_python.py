@@ -1,5 +1,9 @@
 import os
 import unittest
+from io import BytesIO
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from zipfile import ZipFile
 from typing import Dict, List, cast
 
 import httpx
@@ -188,3 +192,109 @@ class AsyncOptionalLists(unittest.IsolatedAsyncioTestCase):
                     self.assertEqual([r.url.path for r in requests], [f"/v1/{resource}/"] * 2)
                     self.assertEqual(dict(requests[0].url.params), {k: str(v) for k, v in params.items()})
                     self.assertEqual(dict(requests[1].url.params), {**{k: str(v) for k, v in params.items()}, "page": "2"})
+
+
+def single_account_zip():
+    output = BytesIO()
+    with ZipFile(output, "w") as archive:
+        archive.writestr("account.session", bytes([0, 255, 128, 13, 10, 42]))
+    return output.getvalue()
+
+
+ZIP_BYTES = single_account_zip()
+ARCHIVE_ERROR = {
+    "code": 409, "status": "ABORTED", "message": "Archive not ready",
+    "details": [{"reason": "BULK_ARCHIVE_NOT_READY", "domain": "gmt"}],
+}
+
+
+def archive_transport(status=200):
+    def reply(request):
+        assert request.method == "GET"
+        assert request.url.path == "/v1/purchases/bulk/123/download"
+        assert request.headers["x-api-key"] == "test-api-key"
+        if status != 200:
+            return httpx.Response(status, json=ARCHIVE_ERROR)
+        return httpx.Response(200, stream=httpx.ByteStream(ZIP_BYTES), headers={
+            "content-type": "application/octet-stream",
+            "content-disposition": 'attachment; filename="accounts.zip"',
+        })
+    return httpx.MockTransport(reply)
+
+
+@unittest.skipUnless(os.environ.get("SDK_COMPAT_RELEASE"), "requires release candidate")
+class SyncArchiveDownload(unittest.TestCase):
+    def test_single_account_zip_in_normal_raw_and_streaming_modes(self):
+        with Gmt(**OPTIONS, api_key="test-api-key", http_client=httpx.Client(transport=archive_transport())) as client:
+            for mode in ("normal", "raw", "streaming"):
+                with self.subTest(mode=mode), TemporaryDirectory() as directory:
+                    path = Path(directory) / "accounts.zip"
+                    if mode == "streaming":
+                        with client.purchases.bulk.with_streaming_response.download(123) as response:
+                            self.assertFalse(response.http_response.is_stream_consumed)
+                            response.stream_to_file(path)
+                        self.assertTrue(response.is_closed)
+                    else:
+                        resource = client.purchases.bulk if mode == "normal" else client.purchases.bulk.with_raw_response
+                        response = resource.download(123)
+                        self.assertEqual(response.read(), ZIP_BYTES)
+                        self.assertEqual(response.parse(), ZIP_BYTES)
+                        response.write_to_file(path)
+                    self.assertEqual(response.headers["content-type"], "application/octet-stream")
+                    self.assertEqual(path.read_bytes(), ZIP_BYTES)
+                    with ZipFile(path) as archive:
+                        self.assertEqual(archive.namelist(), ["account.session"])
+                        self.assertEqual(archive.read("account.session"), bytes([0, 255, 128, 13, 10, 42]))
+
+    def test_not_ready_remains_a_typed_http_error_in_all_modes(self):
+        from gmt import ConflictError
+        with Gmt(**OPTIONS, api_key="test-api-key", http_client=httpx.Client(transport=archive_transport(409))) as client:
+            for mode in ("normal", "raw", "streaming"):
+                with self.subTest(mode=mode), self.assertRaises(ConflictError) as caught:
+                    if mode == "streaming":
+                        with client.purchases.bulk.with_streaming_response.download(123):
+                            self.fail("409 must raise before exposing archive data")
+                    else:
+                        resource = client.purchases.bulk if mode == "normal" else client.purchases.bulk.with_raw_response
+                        resource.download(123)
+                self.assertEqual(caught.exception.status_code, 409)
+                self.assertEqual(caught.exception.body, ARCHIVE_ERROR)
+
+
+@unittest.skipUnless(os.environ.get("SDK_COMPAT_RELEASE"), "requires release candidate")
+class AsyncArchiveDownload(unittest.IsolatedAsyncioTestCase):
+    async def test_single_account_zip_in_normal_raw_and_streaming_modes(self):
+        async with AsyncGmt(**OPTIONS, api_key="test-api-key", http_client=httpx.AsyncClient(transport=archive_transport())) as client:
+            for mode in ("normal", "raw", "streaming"):
+                with self.subTest(mode=mode), TemporaryDirectory() as directory:
+                    path = Path(directory) / "accounts.zip"
+                    if mode == "streaming":
+                        async with client.purchases.bulk.with_streaming_response.download(123) as response:
+                            self.assertFalse(response.http_response.is_stream_consumed)
+                            await response.stream_to_file(path)
+                        self.assertTrue(response.is_closed)
+                    else:
+                        resource = client.purchases.bulk if mode == "normal" else client.purchases.bulk.with_raw_response
+                        response = await resource.download(123)
+                        self.assertEqual(await response.read(), ZIP_BYTES)
+                        self.assertEqual(await response.parse(), ZIP_BYTES)
+                        await response.write_to_file(path)
+                    self.assertEqual(response.headers["content-type"], "application/octet-stream")
+                    self.assertEqual(path.read_bytes(), ZIP_BYTES)
+                    with ZipFile(path) as archive:
+                        self.assertEqual(archive.namelist(), ["account.session"])
+                        self.assertEqual(archive.read("account.session"), bytes([0, 255, 128, 13, 10, 42]))
+
+    async def test_not_ready_remains_a_typed_http_error_in_all_modes(self):
+        from gmt import ConflictError
+        async with AsyncGmt(**OPTIONS, api_key="test-api-key", http_client=httpx.AsyncClient(transport=archive_transport(409))) as client:
+            for mode in ("normal", "raw", "streaming"):
+                with self.subTest(mode=mode), self.assertRaises(ConflictError) as caught:
+                    if mode == "streaming":
+                        async with client.purchases.bulk.with_streaming_response.download(123):
+                            self.fail("409 must raise before exposing archive data")
+                    else:
+                        resource = client.purchases.bulk if mode == "normal" else client.purchases.bulk.with_raw_response
+                        await resource.download(123)
+                self.assertEqual(caught.exception.status_code, 409)
+                self.assertEqual(caught.exception.body, ARCHIVE_ERROR)
