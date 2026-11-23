@@ -104,7 +104,7 @@ class TestBulk:
         bulk = client.purchases.bulk.download(
             12345,
         )
-        assert bulk is None
+        assert isinstance(bulk.read(), bytes)
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -116,7 +116,7 @@ class TestBulk:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bulk = response.parse()
-        assert bulk is None
+        assert isinstance(bulk, bytes)
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -128,7 +128,7 @@ class TestBulk:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bulk = response.parse()
-            assert bulk is None
+            assert isinstance(bulk, bytes)
 
         assert cast(Any, response.is_closed) is True
 
@@ -225,7 +225,7 @@ class TestAsyncBulk:
         bulk = await async_client.purchases.bulk.download(
             12345,
         )
-        assert bulk is None
+        assert isinstance(await bulk.read(), bytes)
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -237,7 +237,7 @@ class TestAsyncBulk:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bulk = await response.parse()
-        assert bulk is None
+        assert isinstance(bulk, bytes)
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -249,6 +249,6 @@ class TestAsyncBulk:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bulk = await response.parse()
-            assert bulk is None
+            assert isinstance(bulk, bytes)
 
         assert cast(Any, response.is_closed) is True

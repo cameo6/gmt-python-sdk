@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.44.6
+
+- Return a readable binary response from bulk archive downloads.
+
 ## 0.44.5
 
 - Allow accounts and purchases lists to omit pagination and sorting parameters in synchronous and asynchronous clients, matching API defaults.
