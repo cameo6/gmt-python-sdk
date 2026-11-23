@@ -169,15 +169,15 @@ class PurchasesResource(SyncAPIResource):
         page: Union[int, Omit] = omit,
         page_size: Union[int, Omit] = omit,
         sort: Union[Literal["date_asc", "date_desc"], Omit] = omit,
-        phone_number: str | Omit = omit,
-        include: Literal["code_request"] | Omit = omit,
-        status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"] | Omit = omit,
+        phone_number: Union[str, Omit] = omit,
+        include: Union[Literal["code_request"], Omit] = omit,
+        status: Union[Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"], Omit] = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        extra_headers: Union[Headers, None] = None,
+        extra_query: Union[Query, None] = None,
+        extra_body: Union[Body, None] = None,
+        timeout: Union[float, httpx.Timeout, None, NotGiven] = not_given,
     ) -> SyncPageNumber[PurchaseListResponse]:
         """
         Returns paginated list of user's purchases with optional status filtering.
@@ -488,15 +488,15 @@ class AsyncPurchasesResource(AsyncAPIResource):
         page: Union[int, Omit] = omit,
         page_size: Union[int, Omit] = omit,
         sort: Union[Literal["date_asc", "date_desc"], Omit] = omit,
-        phone_number: str | Omit = omit,
-        include: Literal["code_request"] | Omit = omit,
-        status: Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"] | Omit = omit,
+        phone_number: Union[str, Omit] = omit,
+        include: Union[Literal["code_request"], Omit] = omit,
+        status: Union[Literal["PENDING", "SUCCESS", "ERROR", "REFUND", "EXPIRED"], Omit] = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        extra_headers: Union[Headers, None] = None,
+        extra_query: Union[Query, None] = None,
+        extra_body: Union[Body, None] = None,
+        timeout: Union[float, httpx.Timeout, None, NotGiven] = not_given,
     ) -> AsyncPaginator[PurchaseListResponse, AsyncPageNumber[PurchaseListResponse]]:
         """
         Returns paginated list of user's purchases with optional status filtering.

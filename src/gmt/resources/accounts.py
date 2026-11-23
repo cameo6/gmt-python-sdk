@@ -113,13 +113,13 @@ class AccountsResource(SyncAPIResource):
         page: Union[int, Omit] = omit,
         page_size: Union[int, Omit] = omit,
         sort: Union[Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"], Omit] = omit,
-        country_codes: str | Omit = omit,
+        country_codes: Union[str, Omit] = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        extra_headers: Union[Headers, None] = None,
+        extra_query: Union[Query, None] = None,
+        extra_body: Union[Body, None] = None,
+        timeout: Union[float, httpx.Timeout, None, NotGiven] = not_given,
     ) -> SyncPageNumber[AccountListResponse]:
         """
         Returns paginated list of available accounts with **user-specific pricing**
@@ -335,13 +335,13 @@ class AsyncAccountsResource(AsyncAPIResource):
         page: Union[int, Omit] = omit,
         page_size: Union[int, Omit] = omit,
         sort: Union[Literal["price_asc", "price_desc", "name_asc", "name_desc", "popularity_asc", "popularity_desc"], Omit] = omit,
-        country_codes: str | Omit = omit,
+        country_codes: Union[str, Omit] = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        extra_headers: Union[Headers, None] = None,
+        extra_query: Union[Query, None] = None,
+        extra_body: Union[Body, None] = None,
+        timeout: Union[float, httpx.Timeout, None, NotGiven] = not_given,
     ) -> AsyncPaginator[AccountListResponse, AsyncPageNumber[AccountListResponse]]:
         """
         Returns paginated list of available accounts with **user-specific pricing**

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Union
+
 import httpx
 
 from ..._operations import OPERATIONS
@@ -172,10 +174,10 @@ class BulkResource(SyncAPIResource):
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        extra_headers: Union[Headers, None] = None,
+        extra_query: Union[Query, None] = None,
+        extra_body: Union[Body, None] = None,
+        timeout: Union[float, httpx.Timeout, None, NotGiven] = not_given,
     ) -> BinaryAPIResponse:
         """
         Download the archive file containing multiple accounts from a successful bulk
@@ -344,10 +346,10 @@ class AsyncBulkResource(AsyncAPIResource):
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        extra_headers: Union[Headers, None] = None,
+        extra_query: Union[Query, None] = None,
+        extra_body: Union[Body, None] = None,
+        timeout: Union[float, httpx.Timeout, None, NotGiven] = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
         Download the archive file containing multiple accounts from a successful bulk

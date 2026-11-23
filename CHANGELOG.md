@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.44.7
+
+- Make the annotations for account and purchase lists and bulk archive downloads readable on Python 3.9.
+
 ## 0.44.6
 
 - Return a readable binary response from bulk archive downloads.

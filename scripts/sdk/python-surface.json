@@ -1,10 +1,10 @@
 {
   "async": {
     "getV1Accounts": {
-      "coroutine": false,
       "method": "AsyncAccountsResource.list",
-      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], Omit]=omit, country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
-      "verb": "GET"
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], Omit]=omit, country_codes: Union[str, Omit]=omit, extra_headers: Union[Headers, None]=None, extra_query: Union[Query, None]=None, extra_body: Union[Body, None]=None, timeout: Union[float, httpx.Timeout, None, NotGiven]=not_given",
+      "verb": "GET",
+      "coroutine": false
     },
     "getV1AccountsByCountry_code": {
       "coroutine": true,
@@ -43,10 +43,10 @@
       "verb": "GET"
     },
     "getV1Purchases": {
-      "coroutine": false,
       "method": "AsyncPurchasesResource.list",
-      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['date_asc', 'date_desc'], Omit]=omit, phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
-      "verb": "GET"
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['date_asc', 'date_desc'], Omit]=omit, phone_number: Union[str, Omit]=omit, include: Union[Literal['code_request'], Omit]=omit, status: Union[Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'], Omit]=omit, extra_headers: Union[Headers, None]=None, extra_query: Union[Query, None]=None, extra_body: Union[Body, None]=None, timeout: Union[float, httpx.Timeout, None, NotGiven]=not_given",
+      "verb": "GET",
+      "coroutine": false
     },
     "getV1Purchases-by-hashByHash": {
       "coroutine": true,
@@ -67,10 +67,10 @@
       "verb": "GET"
     },
     "getV1PurchasesBulkByPurchase_idDownload": {
-      "coroutine": true,
       "method": "AsyncBulkResource.download",
-      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
-      "verb": "GET"
+      "signature": "self, purchase_id: int, *, extra_headers: Union[Headers, None]=None, extra_query: Union[Query, None]=None, extra_body: Union[Body, None]=None, timeout: Union[float, httpx.Timeout, None, NotGiven]=not_given",
+      "verb": "GET",
+      "coroutine": true
     },
     "getV1PurchasesByPurchase_id": {
       "coroutine": true,
@@ -165,10 +165,10 @@
   },
   "sync": {
     "getV1Accounts": {
-      "coroutine": false,
       "method": "AccountsResource.list",
-      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], Omit]=omit, country_codes: str | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
-      "verb": "GET"
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['price_asc', 'price_desc', 'name_asc', 'name_desc', 'popularity_asc', 'popularity_desc'], Omit]=omit, country_codes: Union[str, Omit]=omit, extra_headers: Union[Headers, None]=None, extra_query: Union[Query, None]=None, extra_body: Union[Body, None]=None, timeout: Union[float, httpx.Timeout, None, NotGiven]=not_given",
+      "verb": "GET",
+      "coroutine": false
     },
     "getV1AccountsByCountry_code": {
       "coroutine": false,
@@ -207,10 +207,10 @@
       "verb": "GET"
     },
     "getV1Purchases": {
-      "coroutine": false,
       "method": "PurchasesResource.list",
-      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['date_asc', 'date_desc'], Omit]=omit, phone_number: str | Omit=omit, include: Literal['code_request'] | Omit=omit, status: Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'] | Omit=omit, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
-      "verb": "GET"
+      "signature": "self, *, page: Union[int, Omit]=omit, page_size: Union[int, Omit]=omit, sort: Union[Literal['date_asc', 'date_desc'], Omit]=omit, phone_number: Union[str, Omit]=omit, include: Union[Literal['code_request'], Omit]=omit, status: Union[Literal['PENDING', 'SUCCESS', 'ERROR', 'REFUND', 'EXPIRED'], Omit]=omit, extra_headers: Union[Headers, None]=None, extra_query: Union[Query, None]=None, extra_body: Union[Body, None]=None, timeout: Union[float, httpx.Timeout, None, NotGiven]=not_given",
+      "verb": "GET",
+      "coroutine": false
     },
     "getV1Purchases-by-hashByHash": {
       "coroutine": false,
@@ -231,10 +231,10 @@
       "verb": "GET"
     },
     "getV1PurchasesBulkByPurchase_idDownload": {
-      "coroutine": false,
       "method": "BulkResource.download",
-      "signature": "self, purchase_id: int, *, extra_headers: Headers | None=None, extra_query: Query | None=None, extra_body: Body | None=None, timeout: float | httpx.Timeout | None | NotGiven=not_given",
-      "verb": "GET"
+      "signature": "self, purchase_id: int, *, extra_headers: Union[Headers, None]=None, extra_query: Union[Query, None]=None, extra_body: Union[Body, None]=None, timeout: Union[float, httpx.Timeout, None, NotGiven]=not_given",
+      "verb": "GET",
+      "coroutine": false
     },
     "getV1PurchasesByPurchase_id": {
       "coroutine": false,
